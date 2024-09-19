@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfvc7apcniln8"]
+
+[ext_resource type="PackedScene" uid="uid://ddui4sd3fw402" path="res://character/monster.tscn" id="1_rs6ca"]
+[ext_resource type="PackedScene" uid="uid://dvex5jaqtfi3p" path="res://item/bomb.tscn" id="2_76k2g"]
+[ext_resource type="Script" path="res://character/goblin.gd" id="2_wtvsy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgb14"]
+albedo_color = Color(0.18, 0.5, 0.18, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mhngj"]
+material = SubResource("StandardMaterial3D_lgb14")
+radial_segments = 4
+rings = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w6ics"]
+radius = 2.0
+
+[node name="Goblin" instance=ExtResource("1_rs6ca")]
+script = ExtResource("2_wtvsy")
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Torso" parent="." index="1"]
+mesh = SubResource("CapsuleMesh_mhngj")
+
+[node name="Inventory" type="Area3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Inventory" index="0"]
+shape = SubResource("SphereShape3D_w6ics")
+
+[node name="Hands" type="Node3D" parent="Inventory" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.11111)
+
+[node name="Back" type="Node3D" parent="Inventory" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="Bomb" parent="Inventory/Back" index="0" instance=ExtResource("2_76k2g")]

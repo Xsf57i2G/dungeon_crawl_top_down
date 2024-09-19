@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://ptemqk5lnfq7"]
+
+[ext_resource type="Texture2D" uid="uid://d3qwq6s6raniw" path="res://effects/shimmer.png" id="1_6jxpm"]
+
+[sub_resource type="Curve" id="Curve_plmgs"]
+_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tdbuq"]
+curve = SubResource("Curve_plmgs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pbedw"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_tdbuq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_voy6o"]
+transparency = 1
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(2, 2, 1, 0.501961)
+albedo_texture = ExtResource("1_6jxpm")
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_i3u3l"]
+material = SubResource("StandardMaterial3D_voy6o")
+
+[node name="Shimmer" type="GPUParticles3D"]
+lifetime = 2.0
+randomness = 1.0
+fixed_fps = 6
+process_material = SubResource("ParticleProcessMaterial_pbedw")
+draw_pass_1 = SubResource("QuadMesh_i3u3l")

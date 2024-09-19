@@ -1,0 +1,2 @@
+class_name Ladder
+extends StaticBody3D

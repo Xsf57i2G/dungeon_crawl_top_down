@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmy1fjbb7a0ir"]
+
+[ext_resource type="PackedScene" uid="uid://dijo1unbl6q5f" path="res://item/item.tscn" id="1_j4rag"]
+[ext_resource type="Script" path="res://item/gib.gd" id="2_4apjh"]
+[ext_resource type="ArrayMesh" uid="uid://b7ggxcbtsqarc" path="res://item/gib.res" id="3_2d7h3"]
+
+[node name="Gib" instance=ExtResource("1_j4rag")]
+script = ExtResource("2_4apjh")
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = ExtResource("3_2d7h3")
+
+[node name="Shadow" parent="MeshInstance3D" index="0"]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -0.4, 0)
