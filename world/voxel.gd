@@ -1,8 +1,8 @@
 class_name Voxel
 extends StaticBody3D
 
-var health := 3
-var items := {
+var health = 3
+var items = {
 	preload("res://item/gem.tscn"): 0.01,
 }
 
@@ -12,7 +12,7 @@ func _ready():
 			var i = item.instantiate()
 			add_child(i)
 
-func hit(n: int):
+func hit(n):
 	$AnimationPlayer.play("Hit")
 
 	health -= n

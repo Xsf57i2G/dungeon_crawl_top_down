@@ -8,13 +8,12 @@ func use():
 	$Timer.start()
 
 func explode():
-	top_level = true
 	add_child(explosion.instantiate())
+	top_level = true
 
 func _on_timer_timeout():
 	explode()
 
 func _on_body_entered(body):
 	if body is Character:
-		$AnimationPlayer.play("Grow")
-		$Timer.start()
+		use()

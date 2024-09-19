@@ -1,22 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dijo1unbl6q5f"]
+[gd_scene load_steps=6 format=3 uid="uid://dijo1unbl6q5f"]
 
 [ext_resource type="Script" path="res://item/item.gd" id="1_wv88b"]
 [ext_resource type="PackedScene" uid="uid://ptemqk5lnfq7" path="res://effects/shimmer.tscn" id="2_2a8lu"]
 [ext_resource type="PackedScene" uid="uid://by7wi8brogbv6" path="res://effects/shadow.tscn" id="3_spb82"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rp82g"]
-rough = true
-absorbent = true
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_kq0or"]
+size = Vector3(0.7, 1.4, 0.3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_evyuh"]
 
 [node name="Item" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-physics_material_override = SubResource("PhysicsMaterial_rp82g")
-sleeping = true
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_wv88b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -25,7 +22,7 @@ shape = SubResource("BoxShape3D_kq0or")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_evyuh")
 
-[node name="Shadow" parent="MeshInstance3D" instance=ExtResource("3_spb82")]
+[node name="Shadow" parent="." instance=ExtResource("3_spb82")]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -0.5, 0)
 
-[node name="Shimmer" parent="MeshInstance3D" instance=ExtResource("2_2a8lu")]
+[node name="Shimmer" parent="." instance=ExtResource("2_2a8lu")]

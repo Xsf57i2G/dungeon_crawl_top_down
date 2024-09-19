@@ -1,22 +1,22 @@
 class_name Chest
 extends Item
 
-var closed := true
-var items := {
+var items = {
 	preload("res://item/bomb.tscn"): 0.1,
 	preload("res://item/boots.tscn"): 0.1,
 	preload("res://item/potion.tscn"): 0.1,
 }
 
 func open():
-	closed = false
-
 	$AnimationPlayer.play("Open")
 
-	var item = items.keys()[randi() % items.size()]
-	var v = item.instantiate()
-	v.position = Vector3.UP
-	add_child(v)
+	var item = items.keys()[randi() % items.size()].instantiate()
 
-func _on_body_entered(_body: Node):
-	open()
+	item.position = Vector3.UP
+	add_child(item)
+	if item is Bomb:
+		item.explode()
+
+func _on_body_entered(body):
+	if body is Key:
+		open()

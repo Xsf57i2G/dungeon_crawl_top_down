@@ -1,16 +1,16 @@
 class_name Character
 extends CharacterBody3D
 
-signal dropped(item: Node)
+signal dropped(item)
 signal died
 
-var damage := 1
-var health := 3
-var items := []
-var speed := 5.0
-var gib := preload("res://item/gib.tscn")
+var damage = 1
+var gib = preload("res://item/gib.tscn")
+var health = 3
+var items = []
+var speed = 5.0
 
-func hit(n: int):
+func hit(n):
 	health -= n
 	if health <= 0:
 		die()
@@ -22,20 +22,23 @@ func die():
 	var g = gib.instantiate()
 	add_child(g)
 
-func move(direction: Vector3):
+func move(direction):
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 
-func heal(n: int):
+func heal(n):
 	health += n
 
 func pickup():
 	var bodies = $Torso/Inventory.get_overlapping_bodies()
 	for body in bodies:
 		if body is Item:
-			body.reparent($Torso/Inventory/Hands)
-			body.position = Vector3.FORWARD
-			break
+			if abs(body.position.y - position.y) < 1.0:
+				body.reparent($Torso/Inventory/Hands)
+				body.position = Vector3.FORWARD
+				body.position.y = 0
+				body.held = true
+				break
 
 func drop():
 	var hands = $Torso/Inventory/Hands

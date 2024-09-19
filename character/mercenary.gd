@@ -5,8 +5,8 @@ func _input(event):
 		aim()
 
 func _physics_process(delta: float):
-	var input_dir := Input.get_vector("left", "right", "forward", "backward")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var input_dir = Input.get_vector("left", "right", "forward", "backward")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		move(direction)
 	else:
@@ -34,17 +34,17 @@ func _physics_process(delta: float):
 		else:
 			pickup()
 
-	push(delta)
 	move_and_slide()
 
 func throw():
 	var hands = $Torso/Inventory/Hands
 	if hands.get_child_count() > 0:
 		var item = hands.get_child(0)
-		var throw_impulse = ($Torso.global_transform.basis * Vector3.FORWARD * 5) + (Vector3.UP * 10)
-		item.apply_impulse(throw_impulse, Vector3.FORWARD)
-		item.reparent(get_parent())
-		drop()
+		var impulse = ($Torso.global_transform.basis * Vector3.FORWARD * 5) + (Vector3.UP * 10)
+		if item is Item:
+			item.apply_impulse(impulse, Vector3.FORWARD)
+			item.reparent(get_parent())
+			drop()
 
 func push(delta):
 	var col = get_last_slide_collision()

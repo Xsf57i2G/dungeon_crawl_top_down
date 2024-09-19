@@ -124,7 +124,6 @@ _data = {
 
 [node name="Bomb" instance=ExtResource("1_jatkk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-sleeping = false
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("2_ippwu")
@@ -135,10 +134,8 @@ shape = SubResource("SphereShape3D_al66v")
 
 [node name="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_ngje5")
-
-[node name="Shadow" parent="MeshInstance3D" index="0"]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0.1, 0)
 
 [node name="Timer" type="Timer" parent="." index="2"]
 one_shot = true
@@ -147,6 +144,9 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_1yr2h")
 }
+
+[node name="Shadow" parent="." index="4"]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0.1, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

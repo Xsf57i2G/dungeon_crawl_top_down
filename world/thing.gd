@@ -3,7 +3,7 @@
 class_name Thing
 extends Node3D
 
-var things := [
+var things = [
 	"res://item/torch.tscn",
 ]
 

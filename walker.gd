@@ -1,16 +1,16 @@
 class_name Walker
 extends Node3D
 
-var path := []
+var path = []
 var visited = {}
-var directions := [
+var directions = [
 	Vector3.BACK,
 	Vector3.LEFT,
 	Vector3.RIGHT,
 	Vector3.FORWARD,
 ]
 
-func walk(steps: int) -> Array:
+func walk(steps) -> Array:
 	visited[Vector3.ZERO] = true
 	path.push_back(Vector3.ZERO)
 
