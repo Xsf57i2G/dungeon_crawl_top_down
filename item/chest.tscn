@@ -134,6 +134,7 @@ _data = {
 
 [node name="Chest" instance=ExtResource("1_4s1ch")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.5, 0)
+collision_mask = 2
 script = ExtResource("2_7mdo0")
 
 [node name="CollisionShape3D" parent="." index="0"]

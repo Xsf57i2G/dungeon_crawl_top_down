@@ -9,6 +9,7 @@
 radius = 2.0
 
 [node name="Mercenary" groups=["Mercenary"] instance=ExtResource("1_stl4w")]
+collision_mask = 7
 script = ExtResource("2_r7haa")
 
 [node name="CollisionShape3D" parent="Torso/Inventory" index="0"]

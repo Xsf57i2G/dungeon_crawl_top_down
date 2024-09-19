@@ -10,6 +10,9 @@ func _ready():
 	for item in items:
 		if randf() < items[item]:
 			var i = item.instantiate()
+			var r = randf_range(-0.5, 1.5)
+			i.scale = Vector3(r, r, r)
+			i.position = Vector3(r, 0, r)
 			add_child(i)
 
 func hit(n):

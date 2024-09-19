@@ -5,6 +5,8 @@
 [ext_resource type="ArrayMesh" uid="uid://bxaghd8j6462p" path="res://item/key.res" id="2_eiskh"]
 
 [node name="Key" instance=ExtResource("1_eytxo")]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("2_3tj0u")
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -13,3 +15,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 [node name="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = ExtResource("2_eiskh")
+
+[node name="Shadow" parent="." index="2"]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, -0.4, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
