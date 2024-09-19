@@ -1,28 +1,32 @@
+
 extends Node3D
 
-@export var noise = FastNoiseLite.new()
-
+var noise = FastNoiseLite.new()
 var width = 64
 var depth = 64
 var ladder = preload("res://world/ladder.tscn")
 var voxel = preload("res://world/voxel.tscn")
 var items = {
 	preload("res://item/bomb.tscn"): 0.001,
-	preload("res://item/key.tscn"): 0.0005,
-	preload("res://item/chest.tscn"): 0.0001,
+	preload("res://item/key.tscn"): 0.005,
+	preload("res://item/chest.tscn"): 0.001,
 	preload("res://item/torch.tscn"): 0.005,
 	preload("res://item/potion.tscn"): 0.001,
 }
 var monsters = {
-	preload("res://character/goblin.tscn"): 0.1,
+	preload("res://character/goblin.tscn"): 0.01,
 	preload("res://character/zander.tscn"): 0.01,
 }
 
 func _ready():
 	noise.seed = randi()
-	generate()
+	noise.frequency = 0.1
 
-func _process(_delta: float):
+	generate()
+	$NavigationRegion3D.bake_navigation_mesh()
+
+
+func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		for body in $Mercenary/Torso/Inventory.get_overlapping_bodies():
 			if body is Ladder:
@@ -46,7 +50,7 @@ func generate():
 				var v = voxel.instantiate()
 				v.scale = Vector3(1, n + 1, 1)
 				v.position = Vector3(x, (n + 1) / 2, z)
-				add_child(v)
+				$NavigationRegion3D.add_child(v)
 				voxel_positions[Vector3(x, 0, z)] = v.position.y
 
 	for x in range(-width, width):
@@ -62,9 +66,9 @@ func generate():
 					if Vector3(x, 0, z) in voxel_positions:
 						item_position.y = voxel_positions[Vector3(x, 0, z)] + 0.5
 					i.position = item_position
-					add_child(i)
+					$NavigationRegion3D.add_child(i)
 
-func spawn(what: PackedScene, where: Vector3):
+func spawn(what, where):
 	var instance = what.instantiate()
 	instance.position = where
 	add_child(instance)
@@ -72,8 +76,8 @@ func spawn(what: PackedScene, where: Vector3):
 func decent():
 	get_tree().reload_current_scene()
 
-func _on_mercenary_dropped(item: Node):
+func _on_mercenary_dropped(item):
 	item.reparent(self)
 
 func _on_timer_timeout():
-	spawn(preload("res://character/reaper.tscn"), Vector3(0, 1, 0))
+	spawn(preload("res://character/reaper.tscn"), Vector3.UP)

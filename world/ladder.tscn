@@ -30,5 +30,5 @@ mesh = ExtResource("2_5fr3t")
 shape = SubResource("ConcavePolygonShape3D_7aeya")
 
 [node name="Shadow" parent="." instance=ExtResource("3_o50gf")]
-transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0)
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0.1, 0)
 texture = SubResource("GradientTexture2D_ri58p")

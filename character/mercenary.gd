@@ -4,7 +4,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		aim()
 
-func _physics_process(delta: float):
+func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -43,29 +43,13 @@ func throw():
 	var hands = $Torso/Inventory/Hands
 	if hands.get_child_count() > 0:
 		var item = hands.get_child(0)
-		var impulse = (torso.global_transform.basis * Vector3.FORWARD * 2) + (Vector3.UP * 8)
+		var impulse = (torso.global_transform.basis * Vector3.FORWARD * 10) + (Vector3.UP * 5)
 		if item is Item:
 			item.apply_impulse(impulse, Vector3.FORWARD)
 			item.reparent(get_parent())
 			drop()
 
-func push(delta):
-	var collider = get_last_slide_collision()
-
-	if collider:
-		var col_collider = collider.get_collider()
-		var col_position = collider.get_position()
-
-		if not col_collider is RigidBody3D:
-			return
-
-		var push_direction = -collider.get_normal()
-		var push_position = col_position - col_collider.global_position
-		col_collider.apply_impulse(push_direction * 64 * delta, push_position)
-
 func aim():
-	var torso = $Torso
-	var camera = $Camera3D
-	torso.look_at(camera.aim())
-	torso.rotation.x = 0
-	torso.rotation.z = 0
+	$Torso.look_at($Camera3D.aim())
+	$Torso.rotation.x = 0
+	$Torso.rotation.z = 0

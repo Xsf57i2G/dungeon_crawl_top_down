@@ -5,7 +5,6 @@
 [ext_resource type="ArrayMesh" uid="uid://bxaghd8j6462p" path="res://item/key.res" id="2_eiskh"]
 
 [node name="Key" instance=ExtResource("1_eytxo")]
-collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_3tj0u")
 
