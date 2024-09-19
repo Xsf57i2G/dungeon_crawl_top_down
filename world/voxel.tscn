@@ -1,7 +1,45 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7yr18inm5rha"]
+[gd_scene load_steps=9 format=4 uid="uid://b7yr18inm5rha"]
 
 [ext_resource type="Script" path="res://world/voxel.gd" id="1_xy14a"]
-[ext_resource type="ArrayMesh" uid="uid://pj0y0h11cwr8" path="res://world/voxel.res" id="2_7f5hp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v7qw"]
+resource_local_to_scene = true
+resource_name = "Material"
+vertex_color_use_as_albedo = true
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_e4sf2"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAAGAAQAAAACAAYAAwAGAAIAAwAHAAYABwAEAAYABwAFAAQABQADAAEABQAHAAMAAQACAAAAAQADAAIABQAAAAQABQABAAAA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAD//wAAAAAAAP///////wAA//8AAP//AAAAAP//AAAAAAAAAAAAAAAAAAD/////AAAAAAAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jl6ji"]
+resource_local_to_scene = true
+resource_name = "voxel_Cube"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("//////+f/3///////5//f///////n/9/AAAA//9f/38AAAD//1//fwAAAP//X/9///////+f/z///////5//P///////n/8/AAAA//9f/z8AAAD//1//PwAAAP//X/8///////+f/7///////9//f///////n/+/AAAA//9f/78AAAD//x//fwAAAP//X/+///////+fAAD//////9//P///////n///AAAA//9fAAAAAAD//x//PwAAAP//X///"),
+"format": 34896613407,
+"index_count": 36,
+"index_data": PackedByteArray("AQATAA0AAQAHABMACQASAAYACQAVABIAFwAOABQAFwARAA4AEAAKAAQAEAAWAAoABQAIAAIABQALAAgADwAAAAwADwADAAAA"),
+"material": SubResource("StandardMaterial3D_7v7qw"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA////////AAD///////8AAFTV//8AAAAA/////wAAAAD/v///AAAAAFTV/////////7///////////////////1TV//8AAP///7///wAA////v///AAD//1TVAAD//wAA//8AAP//AAD//wAA//8AAFTVAAAAAAAA//8AAAAAAAD/vwAAAAAAAFTVAAD//////78AAP///////wAA/////1TVAAAAAP///78AAAAA////vwAAAAD//1TV/7//v/9//7+qKqoq/7//vwAA/3+qKqoq//////9//7+qKqoq/////wAA/3+qKqoq/7//v/9//79U1VTV/7//vwAA/39U1VTV//////9//79U1VTV/////wAA/39U1VTV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_e4sf2")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ljo6f"]
 
@@ -46,7 +84,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_xy14a")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("2_7f5hp")
+mesh = SubResource("ArrayMesh_jl6ji")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ljo6f")

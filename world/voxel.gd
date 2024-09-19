@@ -32,5 +32,5 @@ func drop(item: Item):
 	get_parent().add_child(item)
 	item.translate(position)
 
-func _on_animation_player_animation_finished(_anim_name: StringName):
+func _on_animation_player_animation_finished(_anim_name):
 	queue_free()

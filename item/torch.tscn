@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://78xnej5ntss3"]
+[gd_scene load_steps=5 format=3 uid="uid://78xnej5ntss3"]
 
 [ext_resource type="PackedScene" uid="uid://dijo1unbl6q5f" path="res://item/item.tscn" id="1_w6nmv"]
 [ext_resource type="PackedScene" uid="uid://827yyutx4185" path="res://effects/fire.tscn" id="2_0wn7j"]
@@ -7,11 +7,7 @@
 height = 1.0
 radius = 0.1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jc5q4"]
-albedo_color = Color(0.654574, 0.435662, 0.363523, 1)
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_5m8di"]
-material = SubResource("StandardMaterial3D_jc5q4")
 top_radius = 0.1
 bottom_radius = 0.1
 height = 1.0
@@ -21,6 +17,7 @@ cap_top = false
 cap_bottom = false
 
 [node name="Torch" instance=ExtResource("1_w6nmv")]
+collision_mask = 1
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("CylinderShape3D_k8813")
@@ -32,4 +29,4 @@ mesh = SubResource("CylinderMesh_5m8di")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Shadow" parent="." index="3"]
-transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, -0.4, 0)
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -0.4, 0)

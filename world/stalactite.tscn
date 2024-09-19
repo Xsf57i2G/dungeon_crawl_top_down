@@ -1,0 +1,123 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6l0m1uh7ylgj"]
+
+[ext_resource type="Script" path="res://world/stalactite.gd" id="1_35dh8"]
+[ext_resource type="ArrayMesh" uid="uid://dbmk71d1ckp7c" path="res://world/stalactite.res" id="1_bv8ss"]
+[ext_resource type="PackedScene" uid="uid://by7wi8brogbv6" path="res://effects/shadow.tscn" id="2_8y54a"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2l5bd"]
+data = PackedVector3Array(-0.2351, 0.5536, 0.3236, -0.3578, 0.2986, 0, -0.3804, 0.5536, 0.1236, -0.3578, 0.2986, 0, -0.1106, 0.2986, 0.3403, 0, -0.6894, 0, -0.3578, 0.2986, 0, -0.2351, 0.5536, 0.3236, -0.1106, 0.2986, 0.3403, 0, -0.6894, 0, 0.3804, 0.5536, -0.1236, 0.2894, 0.2986, -0.2103, 0.3804, 0.5536, -0.1236, 0.2894, 0.2986, 0.2103, 0.3804, 0.5536, 0.1236, 0.3804, 0.5536, -0.1236, 0, -0.6894, 0, 0.2894, 0.2986, 0.2103, -0.3804, 0.5536, -0.1236, -0.1106, 0.2986, -0.3403, -0.2351, 0.5536, -0.3236, -0.1106, 0.2986, -0.3403, -0.3578, 0.2986, 0, 0, -0.6894, 0, -0.1106, 0.2986, -0.3403, -0.3804, 0.5536, -0.1236, -0.3578, 0.2986, 0, 0, 0.5536, -0.4, 0.2894, 0.2986, -0.2103, 0.2351, 0.5536, -0.3236, 0.2894, 0.2986, -0.2103, -0.1106, 0.2986, -0.3403, 0, -0.6894, 0, 0.2894, 0.2986, -0.2103, 0, 0.5536, -0.4, -0.1106, 0.2986, -0.3403, 0.2894, 0.2986, 0.2103, 0.2351, 0.5536, 0.3236, 0.3804, 0.5536, 0.1236, -0.1106, 0.2986, 0.3403, -0.2351, 0.5536, 0.3236, 0, 0.5536, 0.4, -0.3578, 0.2986, 0, -0.3804, 0.5536, -0.1236, -0.3804, 0.5536, 0.1236, -0.1106, 0.2986, -0.3403, 0, 0.5536, -0.4, -0.2351, 0.5536, -0.3236, 0.2894, 0.2986, -0.2103, 0.3804, 0.5536, -0.1236, 0.2351, 0.5536, -0.3236, 0, 0.5536, 0.1528, -0.2351, 0.5536, 0.3236, -0.3804, 0.5536, 0.1236, 0, 0.5536, 0.1528, 0, 0.5536, 0.4, -0.2351, 0.5536, 0.3236, 0.3804, 0.5536, 0.1236, 0, 0.5536, 0.4, 0, 0.5536, 0.1528, 0.3804, 0.5536, 0.1236, 0.2351, 0.5536, 0.3236, 0, 0.5536, 0.4, 0, 0.5536, -0.1528, -0.3804, 0.5536, 0.1236, -0.3804, 0.5536, -0.1236, 0, 0.5536, -0.1528, 0, 0.5536, 0.1528, -0.3804, 0.5536, 0.1236, 0.3804, 0.5536, -0.1236, 0, 0.5536, 0.1528, 0, 0.5536, -0.1528, 0.3804, 0.5536, -0.1236, 0.3804, 0.5536, 0.1236, 0, 0.5536, 0.1528, 0, 0.5536, -0.4, -0.3804, 0.5536, -0.1236, -0.2351, 0.5536, -0.3236, 0, 0.5536, -0.4, 0, 0.5536, -0.1528, -0.3804, 0.5536, -0.1236, 0.2351, 0.5536, -0.3236, 0, 0.5536, -0.1528, 0, 0.5536, -0.4, 0.2351, 0.5536, -0.3236, 0.3804, 0.5536, -0.1236, 0, 0.5536, -0.1528, 0.2351, 0.5536, 0.3236, -0.1106, 0.2986, 0.3403, 0, 0.5536, 0.4, -0.1106, 0.2986, 0.3403, 0.2894, 0.2986, 0.2103, 0, -0.6894, 0, -0.1106, 0.2986, 0.3403, 0.2351, 0.5536, 0.3236, 0.2894, 0.2986, 0.2103)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_es01y"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Animation" id="Animation_5eqp4"]
+resource_name = "Fall"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -3, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_hulof"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jdw8a"]
+_data = {
+"Fall": SubResource("Animation_5eqp4"),
+"RESET": SubResource("Animation_hulof")
+}
+
+[node name="Stalactite" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("1_35dh8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = ExtResource("1_bv8ss")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_2l5bd")
+
+[node name="Shadow" parent="." instance=ExtResource("2_8y54a")]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -3, 0)
+
+[node name="Area3D" type="Area3D" parent="Shadow"]
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shadow/Area3D"]
+shape = SubResource("BoxShape3D_es01y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jdw8a")
+}
+
+[connection signal="body_entered" from="Shadow/Area3D" to="." method="_on_area_3d_body_entered"]

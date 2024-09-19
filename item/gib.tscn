@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dijo1unbl6q5f" path="res://item/item.tscn" id="1_j4rag"]
 [ext_resource type="Script" path="res://item/gib.gd" id="2_4apjh"]
-[ext_resource type="ArrayMesh" path="res://item/brain.res" id="3_0xmtk"]
+[ext_resource type="ArrayMesh" uid="uid://dy0px46mbnylr" path="res://item/brain.res" id="3_0xmtk"]
 
 [node name="Gib" instance=ExtResource("1_j4rag")]
+lock_rotation = false
 script = ExtResource("2_4apjh")
 
 [node name="MeshInstance3D" parent="." index="1"]

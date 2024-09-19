@@ -4,12 +4,12 @@ extends Item
 var explosion = preload("res://effects/explosion.tscn")
 
 func use():
+	$Fire.show()
 	$AnimationPlayer.play("Grow")
 	$Timer.start()
 
 func explode():
 	add_child(explosion.instantiate())
-	top_level = true
 
 func _on_timer_timeout():
 	explode()

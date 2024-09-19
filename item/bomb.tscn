@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://dvex5jaqtfi3p"]
+[gd_scene load_steps=11 format=4 uid="uid://dvex5jaqtfi3p"]
 
 [ext_resource type="PackedScene" uid="uid://dijo1unbl6q5f" path="res://item/item.tscn" id="1_jatkk"]
 [ext_resource type="Script" path="res://item/bomb.gd" id="2_ippwu"]
+[ext_resource type="PackedScene" uid="uid://827yyutx4185" path="res://effects/fire.tscn" id="3_xy6e0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_al66v"]
 
@@ -124,8 +125,8 @@ _data = {
 
 [node name="Bomb" instance=ExtResource("1_jatkk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-contact_monitor = true
-max_contacts_reported = 1
+mass = 20.0
+lock_rotation = false
 script = ExtResource("2_ippwu")
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -146,7 +147,11 @@ libraries = {
 }
 
 [node name="Shadow" parent="." index="4"]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0.1, 0)
+transform = Transform3D(20, 0, 0, 0, -8.74228e-07, -20, 0, 20, -8.74228e-07, 0, 0.1, 0)
+
+[node name="Fire" parent="." index="6" instance=ExtResource("3_xy6e0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

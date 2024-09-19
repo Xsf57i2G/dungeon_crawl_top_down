@@ -1,14 +1,16 @@
-
 extends Node3D
 
 var noise = FastNoiseLite.new()
 var width = 64
 var depth = 64
-var ladder = preload("res://world/ladder.tscn")
-var voxel = preload("res://world/voxel.tscn")
+var structures = {
+	preload("res://world/ladder.tscn"): 1.0, # Always spawn
+	preload("res://world/voxel.tscn"): 1.0, # Always spawn
+	preload("res://world/stalactite.tscn"): 0.001 # Rarely spawn
+}
 var items = {
 	preload("res://item/bomb.tscn"): 0.001,
-	preload("res://item/key.tscn"): 0.005,
+	preload("res://item/key.tscn"): 0.001,
 	preload("res://item/chest.tscn"): 0.001,
 	preload("res://item/torch.tscn"): 0.005,
 	preload("res://item/potion.tscn"): 0.001,
@@ -25,7 +27,6 @@ func _ready():
 	generate()
 	$NavigationRegion3D.bake_navigation_mesh()
 
-
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		for body in $Mercenary/Torso/Inventory.get_overlapping_bodies():
@@ -33,7 +34,7 @@ func _process(_delta):
 				decent()
 
 func generate():
-	var l = ladder.instantiate()
+	var l = structures.keys()[0].instantiate()
 	var w = randi_range(-width, width)
 	var d = randi_range(-depth, depth)
 	add_child(l)
@@ -45,9 +46,9 @@ func generate():
 		for z in range(-depth, depth):
 			var n = noise.get_noise_2d(x, z)
 			if n > 0.05:
-				if abs(x) < 2 and abs(z) < 2:
+				if abs(x) < 6 and abs(z) < 6:
 					continue
-				var v = voxel.instantiate()
+				var v = structures.keys()[1].instantiate()
 				v.scale = Vector3(1, n + 1, 1)
 				v.position = Vector3(x, (n + 1) / 2, z)
 				$NavigationRegion3D.add_child(v)
@@ -67,11 +68,16 @@ func generate():
 						item_position.y = voxel_positions[Vector3(x, 0, z)] + 0.5
 					i.position = item_position
 					$NavigationRegion3D.add_child(i)
+			if randf() < structures[structures.keys()[2]]:
+				var s = structures.keys()[2].instantiate()
+				var stalactite_position = Vector3(x, 3, z)
+				s.position = stalactite_position
+				add_child(s)
 
 func spawn(what, where):
 	var instance = what.instantiate()
-	instance.position = where
 	add_child(instance)
+	instance.position = where
 
 func decent():
 	get_tree().reload_current_scene()
