@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://1i2ivhttko7d"]
 
 [ext_resource type="PackedScene" uid="uid://dijo1unbl6q5f" path="res://item/item.tscn" id="1_4s1ch"]
-[ext_resource type="Script" path="res://item/chest.gd" id="2_7mdo0"]
+[ext_resource type="Script" path="res://item/src/chest.gd" id="2_7mdo0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_egxti"]
 
@@ -148,5 +148,6 @@ libraries = {
 
 [node name="Shadow" parent="." index="3"]
 transform = Transform3D(15, 0, 0, 0, -6.55671e-07, -15, 0, 15, -6.55671e-07, 0, -0.4, 0)
+modulate = Color(0, 0, 0, 0.501961)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

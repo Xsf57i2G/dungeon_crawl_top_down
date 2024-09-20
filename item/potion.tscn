@@ -106,13 +106,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wfbae")
 
 [node name="Potion" instance=ExtResource("1_ob86x")]
-lock_rotation = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("SphereShape3D_xkd7e")
 
 [node name="MeshInstance3D" parent="." index="1"]
 mesh = SubResource("ArrayMesh_dtpiw")
-
-[node name="Shadow" parent="." index="2"]
-transform = Transform3D(20, 0, 0, 0, -8.74228e-07, -20, 0, 20, -8.74228e-07, 0, -0.4, 0)

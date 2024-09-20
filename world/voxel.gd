@@ -4,15 +4,16 @@ extends StaticBody3D
 var health = 3
 var items = {
 	preload("res://item/gem.tscn"): 0.01,
+	preload("res://item/bomb.tscn"): 0.01,
 }
 
 func _ready():
 	for item in items:
 		if randf() < items[item]:
 			var i = item.instantiate()
-			var r = randf_range(-0.5, 1.5)
-			i.scale = Vector3(r, r, r)
-			i.position = Vector3(r, 0, r)
+			i.collision_layer = 0
+			i.collision_mask = 0
+			i.freeze = true
 			add_child(i)
 
 func hit(n):

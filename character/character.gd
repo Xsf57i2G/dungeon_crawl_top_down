@@ -4,11 +4,12 @@ extends CharacterBody3D
 signal dropped(item)
 signal died
 
-var damage = 1
+@export var speed = 5.0
+@export var damage = 1
+@export var health = 3
+
 var gib = preload("res://item/gib.tscn")
-var health = 3
 var items = []
-var speed = 5.0
 
 func hit(n):
 	health -= n
@@ -28,17 +29,6 @@ func move(direction):
 
 func heal(n):
 	health += n
-
-func pickup():
-	var bodies = $Torso/Inventory.get_overlapping_bodies()
-	for body in bodies:
-		if body is Item:
-			if abs(body.position.y - position.y) < 1.0:
-				body.reparent($Torso/Inventory/Hands)
-				body.position = Vector3.FORWARD
-				body.position.y = 0
-				body.held = true
-				break
 
 func drop():
 	var hands = $Torso/Inventory/Hands

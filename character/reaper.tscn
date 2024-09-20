@@ -11,10 +11,13 @@ rings = 1
 
 [node name="Reaper" instance=ExtResource("1_r636f")]
 script = ExtResource("2_mvwk6")
+speed = 2.0
+damage = 10
+health = 16
 
 [node name="Torso" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("CapsuleMesh_ljhrd")
 
 [node name="Shadow" parent="." index="3"]
-transform = Transform3D(20, 0, 0, 0, -8.74228e-07, -20, 0, 20, -8.74228e-07, 0, 0, 0)
+transform = Transform3D(15, 0, 0, 0, -6.55671e-07, -15, 0, 15, -6.55671e-07, 0, 0, 0)

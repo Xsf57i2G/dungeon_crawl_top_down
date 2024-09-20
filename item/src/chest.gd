@@ -14,7 +14,10 @@ func open():
 	var item = items.keys()[randi() % items.size()].instantiate()
 
 	item.position = Vector3.UP
-	add_child(item)
+	get_parent().add_child(item)
+
+	queue_free()
+
 	if item is Bomb:
 		item.explode()
 
