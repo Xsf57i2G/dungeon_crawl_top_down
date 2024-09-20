@@ -13,8 +13,8 @@ func open():
 
 	var item = items.keys()[randi() % items.size()].instantiate()
 
-	item.position = Vector3.UP
 	get_parent().add_child(item)
+	item.position = position + Vector3.UP
 
 	queue_free()
 
