@@ -76,9 +76,9 @@ func generate():
 					add_child(item)
 
 func spawn(what, where):
-	var instance = what.instantiate()
-	add_child(instance)
-	instance.position = where
+	var w = what.instantiate()
+	w.position = where
+	add_child(w)
 
 func decent():
 	get_tree().reload_current_scene()
