@@ -3,12 +3,20 @@ extends Character
 
 @onready var target = closest("Mercenary")
 
-func _physics_process(_delta):
-	var destination = $NavigationAgent3D.get_next_path_position()
-	var direction = global_position.direction_to(destination).normalized()
-	var new_velocity = direction * speed
+var astar = AStar3D.new()
+var path = []
+var current = 0
 
-	$NavigationAgent3D.set_velocity(new_velocity)
+func _process(_delta):
+	if path.size() > 0:
+		var next = path[current]
+		if position.distance_to(next) < 1.0:
+			current += 1
+			if current >= path.size():
+				path = []
+				current = 0
+		else:
+			move(next)
 
 func closest(group):
 	var characters = get_tree().get_nodes_in_group(group)
@@ -24,13 +32,12 @@ func closest(group):
 	if closest_character and closest_character is Character:
 		return closest_character
 
-func move(to):
-	$NavigationAgent3D.set_target_position(to)
+func traverse():
+	pass
 
 func follow():
-	move(target.global_position)
-
-func _on_navigation_agent_3d_velocity_computed(safe_velocity):
-	velocity = safe_velocity
-
-	move_and_slide()
+	if target:
+		var start = astar.get_closest_point(position)
+		var end = astar.get_closest_point(target.position)
+		path = astar.get_point_path(start, end)
+		current = 0

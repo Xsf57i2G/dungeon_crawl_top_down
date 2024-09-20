@@ -95,3 +95,7 @@ throw={
 3d_physics/layer_2="Mercenary"
 3d_physics/layer_3="Monster"
 3d_physics/layer_4="Item"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

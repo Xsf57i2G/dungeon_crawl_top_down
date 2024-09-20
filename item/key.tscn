@@ -7,7 +7,9 @@
 resource_name = "Material"
 cull_mode = 2
 vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.745098, 0, 1)
 metallic = 0.5
+metallic_specular = 0.0
 roughness = 0.3
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_y0kvq"]
@@ -54,5 +56,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 [node name="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("ArrayMesh_0xnak")
+
+[node name="Shadow" parent="." index="2"]
+transform = Transform3D(8, 0, 0, 0, -3.49691e-07, -8, 0, 8, -3.49691e-07, 0, -0.4, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

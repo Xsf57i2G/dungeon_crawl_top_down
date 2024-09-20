@@ -113,3 +113,6 @@ shape = SubResource("SphereShape3D_xkd7e")
 
 [node name="MeshInstance3D" parent="." index="1"]
 mesh = SubResource("ArrayMesh_dtpiw")
+
+[node name="Shadow" parent="." index="2"]
+transform = Transform3D(8, 0, 0, 0, -3.49691e-07, -8, 0, 8, -3.49691e-07, 0, -0.4, 0)

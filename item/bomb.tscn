@@ -124,8 +124,6 @@ _data = {
 
 [node name="Bomb" instance=ExtResource("1_jatkk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-mass = 20.0
-lock_rotation = false
 script = ExtResource("2_ippwu")
 
 [node name="CollisionShape3D" parent="." index="0"]
