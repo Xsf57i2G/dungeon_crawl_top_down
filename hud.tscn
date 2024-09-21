@@ -1,7 +1,90 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsmqwq87cpxwc"]
+[gd_scene load_steps=30 format=3 uid="uid://dsmqwq87cpxwc"]
 
 [ext_resource type="Script" path="res://time.gd" id="1_5wr0b"]
-[ext_resource type="Texture2D" uid="uid://e00on8ofyet7" path="res://heart.png" id="1_ytluo"]
+[ext_resource type="Texture2D" uid="uid://dd8tdgx1jyjhe" path="res://interface/heart/0001.png" id="1_iwqwg"]
+[ext_resource type="Texture2D" uid="uid://bjasdutf8bd06" path="res://interface/heart/0002.png" id="2_yw3sy"]
+[ext_resource type="Texture2D" uid="uid://crbw8xj7c6tnl" path="res://interface/heart/0011.png" id="3_508kl"]
+[ext_resource type="Texture2D" uid="uid://bpeb6lhhg4hf1" path="res://interface/heart/0012.png" id="4_8vwvs"]
+[ext_resource type="Texture2D" uid="uid://dm4qjicgpjggy" path="res://interface/heart/0013.png" id="5_qmc2h"]
+[ext_resource type="Texture2D" uid="uid://b80p5oja5qs6r" path="res://interface/heart/0014.png" id="6_o88hb"]
+[ext_resource type="Texture2D" uid="uid://c7acrwuepmthq" path="res://interface/heart/0015.png" id="7_4qinb"]
+[ext_resource type="Texture2D" uid="uid://dyo3s5wr8bp12" path="res://interface/heart/0016.png" id="8_ah31f"]
+[ext_resource type="Texture2D" uid="uid://cwb7tfdu5hym5" path="res://interface/heart/0017.png" id="9_txeux"]
+[ext_resource type="Texture2D" uid="uid://xpqe28ncm6kt" path="res://interface/heart/0018.png" id="10_5a70g"]
+[ext_resource type="Texture2D" uid="uid://b8vf4eb8ijug4" path="res://interface/heart/0019.png" id="11_ps7rr"]
+[ext_resource type="Texture2D" uid="uid://chdenl88jb0j1" path="res://interface/heart/0020.png" id="12_vfxji"]
+[ext_resource type="Texture2D" uid="uid://dd4bd7oe1yd5u" path="res://interface/heart/0003.png" id="13_3htbk"]
+[ext_resource type="Texture2D" uid="uid://dhgcys45fpswq" path="res://interface/heart/0021.png" id="14_r4i76"]
+[ext_resource type="Texture2D" uid="uid://c4s3jjag4msns" path="res://interface/heart/0022.png" id="15_x7htl"]
+[ext_resource type="Texture2D" uid="uid://bhrir84c8l3pu" path="res://interface/heart/0023.png" id="16_u1dju"]
+[ext_resource type="Texture2D" uid="uid://hy1cfm77qp2l" path="res://interface/heart/0024.png" id="17_hfbya"]
+[ext_resource type="Texture2D" uid="uid://bevuxdx2knddd" path="res://interface/heart/0004.png" id="18_4dnw6"]
+[ext_resource type="Texture2D" uid="uid://btxumyg47s653" path="res://interface/heart/0005.png" id="19_f88as"]
+[ext_resource type="Texture2D" uid="uid://c31d3lkxlgiib" path="res://interface/heart/0006.png" id="20_6vvfi"]
+[ext_resource type="Texture2D" uid="uid://c7kbwjhmiluld" path="res://interface/heart/0007.png" id="21_udj8b"]
+[ext_resource type="Texture2D" uid="uid://dbbxwn12xuen5" path="res://interface/heart/0008.png" id="22_ykemm"]
+[ext_resource type="Texture2D" uid="uid://ccmh5fu5av15w" path="res://interface/heart/0009.png" id="23_afhgb"]
+[ext_resource type="Texture2D" uid="uid://c4jgrauwo6xbn" path="res://interface/heart/0010.png" id="24_sfmsu"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_vpcog"]
+frames = 24
+speed_scale = 60.0
+frame_0/texture = ExtResource("1_iwqwg")
+frame_1/texture = ExtResource("2_yw3sy")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("13_3htbk")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("18_4dnw6")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("19_f88as")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("20_6vvfi")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("21_udj8b")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("22_ykemm")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("23_afhgb")
+frame_8/duration = 1.0
+frame_9/texture = ExtResource("24_sfmsu")
+frame_9/duration = 1.0
+frame_10/texture = ExtResource("3_508kl")
+frame_10/duration = 1.0
+frame_11/texture = ExtResource("4_8vwvs")
+frame_11/duration = 1.0
+frame_12/texture = ExtResource("5_qmc2h")
+frame_12/duration = 1.0
+frame_13/texture = ExtResource("6_o88hb")
+frame_13/duration = 1.0
+frame_14/texture = ExtResource("7_4qinb")
+frame_14/duration = 1.0
+frame_15/texture = ExtResource("8_ah31f")
+frame_15/duration = 1.0
+frame_16/texture = ExtResource("9_txeux")
+frame_16/duration = 1.0
+frame_17/texture = ExtResource("10_5a70g")
+frame_17/duration = 1.0
+frame_18/texture = ExtResource("11_ps7rr")
+frame_18/duration = 1.0
+frame_19/texture = ExtResource("12_vfxji")
+frame_19/duration = 1.0
+frame_20/texture = ExtResource("14_r4i76")
+frame_20/duration = 1.0
+frame_21/texture = ExtResource("15_x7htl")
+frame_21/duration = 1.0
+frame_22/texture = ExtResource("16_u1dju")
+frame_22/duration = 1.0
+frame_23/texture = ExtResource("17_hfbya")
+frame_23/duration = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ix4b1"]
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_856ny"]
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xqpkw"]
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -13,8 +96,8 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-offset_right = 52.0
-offset_bottom = 87.0
+offset_right = 84.0
+offset_bottom = 84.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -25,22 +108,15 @@ layout_mode = 2
 
 [node name="Heart" type="TextureRect" parent="MarginContainer/VSplitContainer"]
 layout_mode = 2
-texture = ExtResource("1_ytluo")
-
-[node name="Health" type="Label" parent="MarginContainer/VSplitContainer"]
-layout_mode = 2
-text = "3
-"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = SubResource("AnimatedTexture_vpcog")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -84.0
-offset_bottom = 119.0
+offset_left = -54.0
+offset_bottom = 82.0
 grow_horizontal = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -52,14 +128,8 @@ layout_mode = 2
 
 [node name="Heart" type="TextureRect" parent="MarginContainer2/VSplitContainer"]
 layout_mode = 2
-texture = ExtResource("1_ytluo")
+texture = SubResource("AnimatedTexture_vpcog")
 flip_h = true
-
-[node name="Health" type="Label" parent="MarginContainer2/VSplitContainer"]
-layout_mode = 2
-text = "3"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 1
@@ -71,8 +141,10 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "0"
+label_settings = SubResource("LabelSettings_ix4b1")
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 script = ExtResource("1_5wr0b")
 
 [node name="Timer" type="Timer" parent="Time"]
@@ -87,6 +159,7 @@ offset_right = -284.0
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "0"
+label_settings = SubResource("LabelSettings_856ny")
 vertical_alignment = 1
 
 [node name="Score2" type="Label" parent="."]
@@ -98,5 +171,8 @@ offset_left = 322.0
 offset_right = 332.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "PRESS START"
+text = "Press Start"
+label_settings = SubResource("LabelSettings_xqpkw")
+horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true

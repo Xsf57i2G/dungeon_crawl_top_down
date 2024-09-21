@@ -4,19 +4,12 @@ extends Character
 @onready var target = closest("Mercenary")
 
 var astar = AStar3D.new()
-var path = []
-var current = 0
 
-func _process(_delta):
-	if path.size() > 0:
-		var next = path[current]
-		if position.distance_to(next) < 1.0:
-			current += 1
-			if current >= path.size():
-				path = []
-				current = 0
-		else:
-			move(next)
+func _ready():
+	if target:
+		var path = find_path(global_position, target)
+		if path:
+			move_along_path(path)
 
 func closest(group):
 	var characters = get_tree().get_nodes_in_group(group)
@@ -30,14 +23,20 @@ func closest(group):
 			closest_distance = distance
 
 	if closest_character and closest_character is Character:
-		return closest_character
+		return closest_character.global_position
+	return null
 
-func traverse():
-	pass
+func find_path(start, end):
+	var start_id = astar.get_closest_point(start)
+	var end_id = astar.get_closest_point(end)
+	if start_id == -1 or end_id == -1:
+		return []
+	return astar.get_point_path(start_id, end_id)
 
-func follow():
-	if target:
-		var start = astar.get_closest_point(position)
-		var end = astar.get_closest_point(target.position)
-		path = astar.get_point_path(start, end)
-		current = 0
+func move_along_path(path):
+	for point in path:
+		var at = astar.get_point_position(point)
+		var direction = (at - global_position).normalized()
+		move(direction)
+
+		await get_tree().create_timer(1.0).timeout

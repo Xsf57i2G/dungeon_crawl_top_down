@@ -36,6 +36,9 @@ func _physics_process(delta):
 	move_and_slide()
 
 func aim():
+	if dead:
+		return
+
 	$MeshInstance3D.look_at($Camera3D.aim())
 	$MeshInstance3D.rotation.x = 0
 	$MeshInstance3D.rotation.z = 0

@@ -8,6 +8,7 @@ signal died
 @export var damage = 1
 @export var health = 3
 
+var dead = false
 var gib = preload("res://item/gib.tscn")
 var items = []
 
@@ -17,6 +18,7 @@ func hit(n):
 		die()
 
 func die():
+	dead = true
 	died.emit()
 	drop()
 
@@ -24,6 +26,9 @@ func die():
 	add_child(g)
 
 func move(direction):
+	if dead:
+		return
+
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 
