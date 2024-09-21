@@ -16,10 +16,10 @@ func open():
 	get_parent().add_child(item)
 	item.position = position + Vector3.UP
 
-	queue_free()
-
 	if item is Bomb:
 		item.explode()
+
+	queue_free()
 
 func unlock():
 	open()
