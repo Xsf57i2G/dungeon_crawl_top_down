@@ -13,6 +13,7 @@ cull_mode = 2
 vertex_color_use_as_albedo = true
 metallic = 0.5
 roughness = 0.5
+emission = Color(1, 0, 0, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_yof2m"]
 _surfaces = [{
@@ -51,7 +52,7 @@ shadow_mesh = SubResource("ArrayMesh_yof2m")
 
 [sub_resource type="Animation" id="Animation_ggjcx"]
 resource_name = "Grow"
-length = 2.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -59,10 +60,10 @@ tracks/0/path = NodePath("MeshInstance3D:mesh:surface_0/material:emission_enable
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.591749, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.591749, 0.8, 1, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false, true, true]
+"values": [false, true, false, true, false, true, false, true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -71,10 +72,10 @@ tracks/1/path = NodePath("MeshInstance3D:mesh:surface_0/material:emission")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(1.5),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 0, 0, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -83,7 +84,7 @@ tracks/2/path = NodePath("MeshInstance3D:scale")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 2),
+"times": PackedFloat32Array(0, 0.5, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(1.5, 1.5, 1.5), Vector3(1.8, 1.8, 1.8), Vector3(2.2, 2.2, 2.2)]
@@ -118,8 +119,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1yr2h"]
 _data = {
-"Grow": SubResource("Animation_ggjcx"),
-"RESET": SubResource("Animation_4wycl")
+&"RESET": SubResource("Animation_4wycl"),
+&"Grow": SubResource("Animation_ggjcx")
 }
 
 [node name="Bomb" instance=ExtResource("1_jatkk")]
@@ -136,11 +137,12 @@ cast_shadow = 0
 mesh = SubResource("ArrayMesh_rnro4")
 
 [node name="Timer" type="Timer" parent="." index="2"]
+wait_time = 1.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
-"": SubResource("AnimationLibrary_1yr2h")
+&"": SubResource("AnimationLibrary_1yr2h")
 }
 
 [node name="Fire" parent="." index="6" instance=ExtResource("3_xy6e0")]

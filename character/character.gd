@@ -69,7 +69,7 @@ func swap():
 		var item = hand.get_child(0)
 		item.global_transform.origin = back.global_transform.origin
 		item.reparent(back)
-	else:
+	elif back.get_child_count() > 0:
 		var item = back.get_child(0)
 		item.global_transform.origin = hand.global_transform.origin
 		item.reparent(hand)
