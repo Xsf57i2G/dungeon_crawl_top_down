@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc0vo5on6q6yo"]
+
+[ext_resource type="PackedScene" uid="uid://c0qykmt4w8gx5" path="res://item/consumable.tscn" id="1_pvtew"]
+[ext_resource type="ArrayMesh" uid="uid://det1xpu6p16gg" path="res://item/coin.res" id="2_m5smd"]
+
+[node name="Coin" instance=ExtResource("1_pvtew")]
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = ExtResource("2_m5smd")

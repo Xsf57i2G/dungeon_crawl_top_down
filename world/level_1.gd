@@ -11,7 +11,7 @@ var structures = {
 }
 var items = {
 	preload("res://item/bomb.tscn"): 0.001,
-	preload("res://item/key.tscn"): 0.001,
+	preload("res://item/key.tscn"): 0.0001,
 	preload("res://item/chest.tscn"): 0.001,
 	preload("res://item/torch.tscn"): 0.005,
 	preload("res://item/potion.tscn"): 0.001,
@@ -29,7 +29,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		for body in $Mercenary/Torso/Inventory.get_overlapping_bodies():
+		for body in $Mercenary/MeshInstance3D/Inventory.get_overlapping_bodies():
 			if body is Ladder:
 				decent()
 

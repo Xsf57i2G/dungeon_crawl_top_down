@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://uybe8sd3pdwr"]
+[gd_scene load_steps=5 format=3 uid="uid://uybe8sd3pdwr"]
 
 [ext_resource type="PackedScene" uid="uid://ddui4sd3fw402" path="res://character/monster.tscn" id="1_r636f"]
 [ext_resource type="Script" path="res://character/reaper.gd" id="2_mvwk6"]
 [ext_resource type="ArrayMesh" uid="uid://cmh5adfhcgiu0" path="res://character/mercenary.res" id="3_i1a6r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_33xqe"]
+size = Vector3(0.8, 1.5, 0.8)
 
 [node name="Reaper" instance=ExtResource("1_r636f")]
 script = ExtResource("2_mvwk6")
@@ -10,9 +13,13 @@ speed = 2.0
 damage = 10
 health = 16
 
-[node name="Torso" parent="." index="1"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+[node name="Torso_Inventory#CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_33xqe")
+
+[node name="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 mesh = ExtResource("3_i1a6r")
 
-[node name="Shadow" parent="." index="3"]
+[node name="Shadow" parent="." index="2"]
 transform = Transform3D(15, 0, 0, 0, -6.55671e-07, -15, 0, 15, -6.55671e-07, 0, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwvka5i8nqve"]
+[gd_scene load_steps=7 format=3 uid="uid://bwvka5i8nqve"]
 
 [ext_resource type="PackedScene" uid="uid://cfra4br278mk1" path="res://character/character.tscn" id="1_stl4w"]
 [ext_resource type="Script" path="res://character/mercenary.gd" id="2_r7haa"]
@@ -6,37 +6,30 @@
 [ext_resource type="ArrayMesh" uid="uid://cmh5adfhcgiu0" path="res://character/mercenary.res" id="3_hmgk6"]
 [ext_resource type="AudioStream" uid="uid://cankdqjaci4pi" path="res://character/error.wav" id="4_peapc"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_w6ics"]
-radius = 2.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q10k4"]
-albedo_color = Color(0, 0, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_idnha"]
-material = SubResource("StandardMaterial3D_q10k4")
+[sub_resource type="SphereShape3D" id="SphereShape3D_kqafi"]
+radius = 1.0
 
 [node name="Mercenary" groups=["Mercenary"] instance=ExtResource("1_stl4w")]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("2_r7haa")
 
-[node name="Torso" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="MeshInstance3D" parent="." index="1"]
 mesh = ExtResource("3_hmgk6")
 
-[node name="Inventory" parent="Torso" index="0"]
-collision_mask = 15
+[node name="Inventory" parent="MeshInstance3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+collision_mask = 8
 
-[node name="CollisionShape3D" parent="Torso/Inventory" index="0"]
-shape = SubResource("SphereShape3D_w6ics")
+[node name="CollisionShape3D" parent="MeshInstance3D/Inventory" index="0"]
+shape = SubResource("SphereShape3D_kqafi")
 
-[node name="RayCast3D" type="RayCast3D" parent="Torso" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-target_position = Vector3(0, 0, -64)
+[node name="Hand" parent="MeshInstance3D/Inventory" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="Legs" parent="." index="2"]
-visible = false
-mesh = SubResource("BoxMesh_idnha")
+[node name="Back" parent="MeshInstance3D/Inventory" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
 [node name="Timer" parent="Step" index="0"]
 one_shot = true
