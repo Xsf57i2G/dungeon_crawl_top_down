@@ -28,12 +28,6 @@ func _ready():
 
 	generate()
 
-func _input(event):
-	if event.is_action_pressed("interact"):
-		for body in $Mercenary/MeshInstance3D/Inventory.get_overlapping_bodies():
-			if body is Ladder:
-				decent()
-
 func generate():
 	var voxel_positions = {}
 	var id = 0
@@ -76,13 +70,13 @@ func generate():
 					item.position = Vector3(x, 1, z)
 					add_child(item)
 
+	var ladder = preload("res://world/ladder.tscn").instantiate()
+	add_child(ladder)
+
 func spawn(what, where):
 	var w = what.instantiate()
 	w.position = where
 	add_child(w)
-
-func decent():
-	get_tree().reload_current_scene()
 
 func _on_mercenary_dropped(item):
 	item.reparent(self)

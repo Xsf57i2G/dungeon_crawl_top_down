@@ -36,7 +36,7 @@ func throw():
 	if hands.get_child_count() > 0:
 		var item = hands.get_child(0)
 		if item is Item:
-			var impulse = (torso.global_transform.basis * Vector3.FORWARD * 20) + (Vector3.UP * 5)
+			var impulse = (torso.global_transform.basis * Vector3.FORWARD * 10) + (Vector3.UP * 10)
 			item.apply_impulse(impulse, Vector3.FORWARD)
 			item.reparent(get_parent())
 			drop()
@@ -69,7 +69,7 @@ func swap():
 		var item = hand.get_child(0)
 		item.global_transform.origin = back.global_transform.origin
 		item.reparent(back)
-	elif back.get_child_count() > 0:
+	else:
 		var item = back.get_child(0)
 		item.global_transform.origin = hand.global_transform.origin
 		item.reparent(hand)

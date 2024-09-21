@@ -1,3 +1,4 @@
+class_name Mercenary
 extends Character
 
 func _input(event):
@@ -13,12 +14,7 @@ func _physics_process(delta):
 		move(Vector3.ZERO)
 
 	if Input.is_action_just_pressed("use"):
-		var collider = $MeshInstance3D/RayCast3D.get_collider()
-		if collider:
-			if collider.has_method("hit"):
-				collider.hit(10)
-
-		var hands = $MeshInstance3D/Inventory/Hands
+		var hands = $MeshInstance3D/Inventory/Hand
 		if hands.get_child_count() > 0:
 			var item = hands.get_child(0)
 			if item.has_method("use"):
@@ -35,11 +31,7 @@ func _physics_process(delta):
 		swap()
 
 	if Input.is_action_just_pressed("interact"):
-		var hands = $MeshInstance3D/Inventory/Hand
-		if hands.get_child_count() > 0:
-			drop()
-		else:
-			pickup()
+		pickup()
 
 	move_and_slide()
 

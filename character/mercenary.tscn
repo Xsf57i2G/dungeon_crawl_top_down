@@ -29,7 +29,7 @@ shape = SubResource("SphereShape3D_kqafi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="Back" parent="MeshInstance3D/Inventory" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
 
 [node name="Timer" parent="Step" index="0"]
 one_shot = true

@@ -13,7 +13,7 @@ config_version=5
 config/name="Dungeon Crawl Top Down"
 config/tags=PackedStringArray("3d", "roguelike")
 run/main_scene="res://game.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
@@ -25,6 +25,7 @@ window/vsync/vsync_mode=0
 
 [filesystem]
 
+import/fbx2gltf/enabled=false
 import/blender/enabled=false
 
 [global_group]
@@ -88,6 +89,10 @@ throw={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":71,"key_label":0,"unicode":103,"location":0,"echo":false,"script":null)
 ]
 }
+
+[input_devices]
+
+pointing/emulate_mouse_from_touch=false
 
 [layer_names]
 
