@@ -7,24 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://0uudipouqipi" path="res://item/key.tscn" id="5_8ee25"]
 [ext_resource type="PackedScene" uid="uid://1i2ivhttko7d" path="res://item/chest.tscn" id="6_ffsdm"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cdjbb"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_piqll"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_a0kdv"]
-sky_material = SubResource("ProceduralSkyMaterial_cdjbb")
+[sub_resource type="Sky" id="Sky_qvmyy"]
+sky_material = SubResource("ProceduralSkyMaterial_piqll")
 
-[sub_resource type="Environment" id="Environment_m1h5u"]
-sky = SubResource("Sky_a0kdv")
-tonemap_mode = 1
-sdfgi_read_sky_light = false
-sdfgi_y_scale = 0
+[sub_resource type="Environment" id="Environment_gtt7s"]
+background_mode = 2
+sky = SubResource("Sky_qvmyy")
 glow_enabled = true
 glow_normalized = true
-glow_bloom = 1.0
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 1.0
-fog_depth_curve = 0.5
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ct6cg"]
 noise_type = 2
@@ -55,7 +54,7 @@ data = PackedVector3Array(64, 0, 64, -64, 0, 64, 64, 0, -64, -64, 0, 64, -64, 0,
 script = ExtResource("1_5qmym")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_m1h5u")
+environment = SubResource("Environment_gtt7s")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 100.0
