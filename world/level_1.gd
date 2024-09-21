@@ -17,6 +17,7 @@ var items = {
 	preload("res://item/potion.tscn"): 0.001,
 }
 var monsters = {
+	preload("res://character/skull.tscn"): 0.1,
 	preload("res://character/goblin.tscn"): 0.01,
 	preload("res://character/zander.tscn"): 0.01,
 }

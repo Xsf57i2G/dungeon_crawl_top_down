@@ -2,11 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://cfra4br278mk1" path="res://character/character.tscn" id="1_4exsp"]
 [ext_resource type="ArrayMesh" uid="uid://cjkcyd0qwpuxb" path="res://character/skull.res" id="2_mel3s"]
-[ext_resource type="PackedScene" uid="uid://827yyutx4185" path="res://effects/fire.tscn" id="3_mepbw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w8dm8"]
 
 [node name="Skull" instance=ExtResource("1_4exsp")]
 
-[node name="MeshInstance3D" parent="." index="1"]
-mesh = ExtResource("2_mel3s")
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_w8dm8")
 
-[node name="Fire" parent="." index="5" instance=ExtResource("3_mepbw")]
+[node name="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+mesh = ExtResource("2_mel3s")

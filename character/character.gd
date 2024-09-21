@@ -36,8 +36,7 @@ func throw():
 	if hands.get_child_count() > 0:
 		var item = hands.get_child(0)
 		if item is Item:
-			item.freeze = false
-			var impulse = (torso.global_transform.basis * Vector3.FORWARD * 10) + (Vector3.UP * 5)
+			var impulse = (torso.global_transform.basis * Vector3.FORWARD * 20) + (Vector3.UP * 5)
 			item.apply_impulse(impulse, Vector3.FORWARD)
 			item.reparent(get_parent())
 			drop()
@@ -49,7 +48,7 @@ func pickup():
 		if body is Item:
 			if abs(body.position.y - position.y) < 1.0:
 				body.reparent(hands)
-				body.freeze = true
+				body.set_physics_process(true)
 				break
 
 func drop():
@@ -69,10 +68,8 @@ func swap():
 	if hand.get_child_count() > 0:
 		var item = hand.get_child(0)
 		item.global_transform.origin = back.global_transform.origin
-		item.freeze = true
 		item.reparent(back)
 	elif back.get_child_count() > 0:
 		var item = back.get_child(0)
 		item.global_transform.origin = hand.global_transform.origin
-		item.freeze = true
 		item.reparent(hand)
