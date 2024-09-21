@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ctwh6nbg6wvtv" path="res://item/boots.res" id="2_6w56s"]
 
 [node name="Boots" instance=ExtResource("1_cn8ix")]
+spin = true
 
 [node name="MeshInstance3D" parent="." index="1"]
 mesh = ExtResource("2_6w56s")

@@ -100,6 +100,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yjuuq")
 
 [node name="Potion" instance=ExtResource("1_y5m6l")]
+spin = true
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -109,4 +110,4 @@ shape = SubResource("BoxShape3D_5f5mn")
 mesh = SubResource("ArrayMesh_prty8")
 
 [node name="Shadow" parent="." index="2"]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0.1, 0)

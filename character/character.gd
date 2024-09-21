@@ -13,12 +13,17 @@ var gib = preload("res://item/gib.tscn")
 var items = []
 
 func hit(n):
+	$Hit.play()
+
 	health -= n
 	if health <= 0:
 		die()
 
 func die():
 	dead = true
+
+	$Death.play()
+
 	died.emit()
 	drop()
 

@@ -50,6 +50,33 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yof2m")
 
+[sub_resource type="Animation" id="Animation_4wycl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:surface_0/material:emission_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5, 1.5, 1.5)]
+}
+
 [sub_resource type="Animation" id="Animation_ggjcx"]
 resource_name = "Grow"
 length = 1.5
@@ -90,33 +117,6 @@ tracks/2/keys = {
 "values": [Vector3(1.5, 1.5, 1.5), Vector3(1.8, 1.8, 1.8), Vector3(2.2, 2.2, 2.2)]
 }
 
-[sub_resource type="Animation" id="Animation_4wycl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:mesh:surface_0/material:emission_enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.5, 1.5, 1.5)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1yr2h"]
 _data = {
 &"RESET": SubResource("Animation_4wycl"),
@@ -126,9 +126,10 @@ _data = {
 [node name="Bomb" instance=ExtResource("1_jatkk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 script = ExtResource("2_ippwu")
+spin = true
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49012e-08, 0)
 shape = SubResource("SphereShape3D_al66v")
 
 [node name="MeshInstance3D" parent="." index="1"]
@@ -136,18 +137,16 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.5, 0)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_rnro4")
 
-[node name="Timer" type="Timer" parent="." index="2"]
-wait_time = 1.5
-one_shot = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 &"": SubResource("AnimationLibrary_1yr2h")
 }
 
-[node name="Fire" parent="." index="6" instance=ExtResource("3_xy6e0")]
+[node name="Shimmer" parent="." index="4"]
+visible = false
+
+[node name="Fire" parent="." index="5" instance=ExtResource("3_xy6e0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

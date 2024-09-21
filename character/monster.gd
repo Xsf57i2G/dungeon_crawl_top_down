@@ -7,8 +7,10 @@ var astar = AStar3D.new()
 
 func _ready():
 	if target:
+		print("Target found")
 		var path = find_path(global_position, target)
 		if path:
+			print("Moving to target")
 			move_along_path(path)
 
 func closest(group):

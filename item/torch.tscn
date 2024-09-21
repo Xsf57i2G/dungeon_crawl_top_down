@@ -30,3 +30,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Shadow" parent="." index="3"]
 transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, -0.4, 0)
+
+[node name="Shimmer" parent="." index="4"]
+visible = false

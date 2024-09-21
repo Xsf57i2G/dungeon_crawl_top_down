@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://duh7es801m4vk"]
+[gd_scene load_steps=6 format=4 uid="uid://ch4m5kssbpuwi"]
 
-[ext_resource type="PackedScene" uid="uid://cfra4br278mk1" path="res://character/character.tscn" id="1_4exsp"]
+[ext_resource type="PackedScene" uid="uid://dijo1unbl6q5f" path="res://item/item.tscn" id="1_ufhqg"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_w8dm8"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_ubf1b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spvjg"]
 resource_name = "Material"
@@ -26,7 +26,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_41bqd"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_gnnkx"]
 resource_name = "skull_Cube_001"
 _surfaces = [{
 "aabb": AABB(-0.281373, -0.0778182, -0.241131, 0.562746, 0.589231, 0.600366),
@@ -45,25 +45,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i4px6")
 
-[sub_resource type="Animation" id="Animation_dj7bm"]
-resource_name = "Hit"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_q40od"]
-_data = {
-&"Hit": SubResource("Animation_dj7bm")
-}
-
-[node name="Skull" instance=ExtResource("1_4exsp")]
+[node name="Skull" instance=ExtResource("1_ufhqg")]
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("SphereShape3D_w8dm8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+shape = SubResource("SphereShape3D_ubf1b")
 
 [node name="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
-mesh = SubResource("ArrayMesh_41bqd")
+mesh = SubResource("ArrayMesh_gnnkx")
 
-[node name="AnimationPlayer" parent="." index="5"]
-libraries = {
-&"": SubResource("AnimationLibrary_q40od")
-}
+[node name="Shadow" parent="." index="2"]
+transform = Transform3D(8, 0, 0, 0, -3.49691e-07, -8, 0, 8, -3.49691e-07, 0, 1.49012e-08, 0)
+
+[node name="Shimmer" parent="." index="3"]
+visible = false

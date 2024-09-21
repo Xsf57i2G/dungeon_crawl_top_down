@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwrf5e7ax3ygb"]
+[gd_scene load_steps=11 format=3 uid="uid://bwrf5e7ax3ygb"]
 
 [ext_resource type="Script" path="res://effects/explosion.gd" id="1_t14sv"]
+[ext_resource type="AudioStream" uid="uid://jjfgk1u1edt5" path="res://effects/explosion.wav" id="2_67uup"]
 
 [sub_resource type="Gradient" id="Gradient_85pem"]
 offsets = PackedFloat32Array(0, 0.2, 0.6, 0.8, 1)
@@ -28,7 +29,7 @@ radial_segments = 6
 rings = 3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iyqrt"]
-radius = 1.0
+radius = 0.7
 
 [sub_resource type="Animation" id="Animation_psmjb"]
 length = 0.001
@@ -62,8 +63,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ynb51"]
 _data = {
-"RESET": SubResource("Animation_psmjb"),
-"Spin": SubResource("Animation_hbq06")
+&"RESET": SubResource("Animation_psmjb"),
+&"Spin": SubResource("Animation_hbq06")
 }
 
 [node name="Explosion" type="Area3D"]
@@ -86,9 +87,13 @@ omni_range = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ynb51")
+&"": SubResource("AnimationLibrary_ynb51")
 }
 autoplay = "Spin"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_67uup")
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

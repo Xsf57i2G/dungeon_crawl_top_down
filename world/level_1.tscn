@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cqfeuif3ilyqa"]
+[gd_scene load_steps=16 format=3 uid="uid://cqfeuif3ilyqa"]
 
 [ext_resource type="Script" path="res://world/level_1.gd" id="1_5qmym"]
 [ext_resource type="PackedScene" uid="uid://bwvka5i8nqve" path="res://character/mercenary.tscn" id="1_dmcut"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cr1l52ewgpigd" path="res://world/ground_n.png" id="4_02qcs"]
 [ext_resource type="PackedScene" uid="uid://0uudipouqipi" path="res://item/key.tscn" id="5_8ee25"]
 [ext_resource type="PackedScene" uid="uid://1i2ivhttko7d" path="res://item/chest.tscn" id="6_ffsdm"]
+[ext_resource type="PackedScene" uid="uid://bfvc7apcniln8" path="res://character/goblin.tscn" id="7_0u837"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_piqll"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -79,6 +80,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -3)
 
 [node name="Chest" parent="." instance=ExtResource("6_ffsdm")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2, 0.5, -3)
+
+[node name="Goblin" parent="." instance=ExtResource("7_0u837")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 1, -6)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="dropped" from="Mercenary" to="." method="_on_mercenary_dropped"]
