@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmp6ovhm0oc8p"]
+
+[ext_resource type="PackedScene" uid="uid://dijo1unbl6q5f" path="res://item/item.tscn" id="1_fqrom"]
+[ext_resource type="ArrayMesh" uid="uid://bqjixxgup2ac" path="res://item/club.res" id="2_12b7j"]
+
+[node name="Club" instance=ExtResource("1_fqrom")]
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = ExtResource("2_12b7j")

@@ -1,3 +1,4 @@
+class_name Reaper
 extends Monster
 
 func _ready():
@@ -9,4 +10,4 @@ func _process(_delta):
 		pass
 
 func _on_navigation_agent_3d_target_reached():
-	print("Target reached")
+	pass

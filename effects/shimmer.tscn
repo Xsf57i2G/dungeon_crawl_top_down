@@ -37,6 +37,7 @@ material = SubResource("StandardMaterial3D_voy6o")
 [node name="Shimmer" type="GPUParticles3D"]
 lifetime = 2.0
 randomness = 1.0
-fixed_fps = 6
+fixed_fps = 8
+interpolate = false
 process_material = SubResource("ParticleProcessMaterial_pbedw")
 draw_pass_1 = SubResource("QuadMesh_i3u3l")

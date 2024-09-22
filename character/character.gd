@@ -45,6 +45,9 @@ func throw():
 	var hands = $MeshInstance3D/Inventory/Hand
 	if hands.get_child_count() > 0:
 		var item = hands.get_child(0)
+		if item is Character:
+			item.reparent(get_parent())
+			drop()
 		if item is Item:
 			var impulse = (torso.global_transform.basis * Vector3.FORWARD * 10) + (Vector3.UP * 10)
 			item.apply_impulse(impulse, Vector3.FORWARD)
@@ -55,26 +58,28 @@ func pickup():
 	var bodies = $MeshInstance3D/Inventory.get_overlapping_bodies()
 	var hands = $MeshInstance3D/Inventory/Hand
 	for body in bodies:
+		if body is Character:
+			var forward_self = global_transform.basis.z
+			var forward_body = body.global_transform.basis.z
+			if forward_self.dot(forward_body) > 0.5 and abs(body.position.y - position.y) < 1.0:
+				body.reparent(hands)
+				break
 		if body is Item:
 			if abs(body.position.y - position.y) < 1.0:
 				body.reparent(hands)
-				body.set_physics_process(true)
-				break
+
 
 func drop():
 	var hands = $MeshInstance3D/Inventory/Hand
 	var back = $MeshInstance3D/Inventory/Back
-
 	if hands.get_child_count() > 0:
 		dropped.emit(hands.get_child(0))
-
 	if back.get_child_count() > 0:
 		dropped.emit(back.get_child(0))
 
 func swap():
 	var hand = $MeshInstance3D/Inventory/Hand
 	var back = $MeshInstance3D/Inventory/Back
-
 	if hand.get_child_count() > 0:
 		var item = hand.get_child(0)
 		item.global_transform.origin = back.global_transform.origin

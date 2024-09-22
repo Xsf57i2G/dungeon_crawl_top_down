@@ -10,6 +10,7 @@ var items = {
 }
 
 func open():
+	print("Chest opened")
 	$AnimationPlayer.play("Open")
 
 	var item = items.keys()[randi() % items.size()].instantiate()
@@ -24,7 +25,3 @@ func open():
 
 func unlock():
 	open()
-
-func _on_body_entered(body):
-	if body.has_method("unlock"):
-		open()

@@ -18,8 +18,6 @@ var items = {
 	preload("res://item/skull.tscn"): 0.001,
 }
 var monsters = {
-	preload("res://character/goblin.tscn"): 0.01,
-	preload("res://character/zander.tscn"): 0.01,
 }
 
 func _ready():
@@ -80,6 +78,3 @@ func spawn(what, where):
 
 func _on_mercenary_dropped(item):
 	item.reparent(self)
-
-func _on_timer_timeout():
-	spawn(preload("res://character/reaper.tscn"), Vector3.UP)

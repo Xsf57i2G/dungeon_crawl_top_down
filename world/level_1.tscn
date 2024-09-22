@@ -57,13 +57,8 @@ script = ExtResource("1_5qmym")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gtt7s")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 100.0
-one_shot = true
-autostart = true
-
 [node name="Mercenary" parent="." instance=ExtResource("1_dmcut")]
-collision_mask = 5
+collision_mask = 1
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
@@ -82,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -3)
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2, 0.5, -3)
 
 [node name="Goblin" parent="." instance=ExtResource("7_0u837")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 1, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+collision_mask = 7
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="dropped" from="Mercenary" to="." method="_on_mercenary_dropped"]

@@ -1,10 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsmqwq87cpxwc"]
+[gd_scene load_steps=23 format=3 uid="uid://dsmqwq87cpxwc"]
 
 [ext_resource type="Script" path="res://time.gd" id="1_5wr0b"]
 [ext_resource type="Texture2D" uid="uid://b8fy5d2k1mqvb" path="res://interface/heart/0001.png" id="1_iwqwg"]
 [ext_resource type="Texture2D" uid="uid://0gfbqeigy5tx" path="res://interface/heart/0002.png" id="2_yw3sy"]
+[ext_resource type="Texture2D" uid="uid://dh6asnatlfy7q" path="res://interface/gem/0001.png" id="10_dx245"]
+[ext_resource type="Texture2D" uid="uid://ba1yqp0gaplov" path="res://interface/gem/0002.png" id="11_8v3c3"]
+[ext_resource type="Texture2D" uid="uid://bnvj6b42865h0" path="res://interface/gem/0003.png" id="12_wifr4"]
 [ext_resource type="Texture2D" uid="uid://dlyuy18gyf7ye" path="res://interface/heart/0003.png" id="13_3htbk"]
+[ext_resource type="Texture2D" uid="uid://cyk0suff4vdj2" path="res://interface/gem/0004.png" id="13_xyyum"]
+[ext_resource type="Texture2D" uid="uid://dwyn8jvuh68cx" path="res://interface/gem/0005.png" id="14_s58aq"]
+[ext_resource type="Texture2D" uid="uid://qreofpewl41o" path="res://interface/gem/0006.png" id="15_4k5wj"]
+[ext_resource type="Texture2D" uid="uid://bvubxvb76j56s" path="res://interface/gem/0007.png" id="16_lneid"]
+[ext_resource type="Texture2D" uid="uid://iq4a5mm8bd8q" path="res://interface/gem/0008.png" id="17_a6j7r"]
+[ext_resource type="Texture2D" uid="uid://ddlm4vuyubv1" path="res://interface/gem/0009.png" id="17_c3eha"]
 [ext_resource type="Texture2D" uid="uid://dms4nts3vk6qc" path="res://interface/heart/0004.png" id="18_4dnw6"]
+[ext_resource type="Texture2D" uid="uid://bdfv8xpjskwfe" path="res://interface/gem/0010.png" id="18_v0e3a"]
 [ext_resource type="Texture2D" uid="uid://dmxqqub2p07oj" path="res://interface/heart/0005.png" id="19_f88as"]
 [ext_resource type="Texture2D" uid="uid://bwvhlyst4j13k" path="res://interface/heart/0006.png" id="20_6vvfi"]
 [ext_resource type="Texture2D" uid="uid://drfav3sbf688n" path="res://interface/heart/0007.png" id="21_udj8b"]
@@ -29,13 +39,30 @@ frame_6/duration = 1.0
 frame_7/texture = ExtResource("22_ykemm")
 frame_7/duration = 1.0
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ipwia"]
+frames = 10
+speed_scale = 4.0
+frame_0/texture = ExtResource("10_dx245")
+frame_1/texture = ExtResource("11_8v3c3")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("12_wifr4")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("13_xyyum")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("14_s58aq")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("15_4k5wj")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("16_lneid")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("17_a6j7r")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("17_c3eha")
+frame_8/duration = 1.0
+frame_9/texture = ExtResource("18_v0e3a")
+frame_9/duration = 1.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_ix4b1"]
-shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_856ny"]
-shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_xqpkw"]
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Control"]
@@ -49,7 +76,7 @@ grow_vertical = 2
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 offset_right = 84.0
-offset_bottom = 84.0
+offset_bottom = 128.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -62,13 +89,19 @@ layout_mode = 2
 layout_mode = 2
 texture = SubResource("AnimatedTexture_vpcog")
 
+[node name="Gem" type="TextureRect" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_ipwia")
+
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -54.0
-offset_bottom = 82.0
+offset_left = -84.0
+offset_bottom = 128.0
 grow_horizontal = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -81,7 +114,12 @@ layout_mode = 2
 [node name="Heart" type="TextureRect" parent="MarginContainer2/VSplitContainer"]
 layout_mode = 2
 texture = SubResource("AnimatedTexture_vpcog")
-flip_h = true
+
+[node name="Gem" type="TextureRect" parent="MarginContainer2/VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_ipwia")
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 1
@@ -100,31 +138,3 @@ uppercase = true
 script = ExtResource("1_5wr0b")
 
 [node name="Timer" type="Timer" parent="Time"]
-
-[node name="Score" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -294.0
-offset_right = -284.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_856ny")
-vertical_alignment = 1
-
-[node name="Score2" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 322.0
-offset_right = 332.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "Press Start"
-label_settings = SubResource("LabelSettings_xqpkw")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true

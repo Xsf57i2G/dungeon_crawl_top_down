@@ -1,14 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://uybe8sd3pdwr"]
+[gd_scene load_steps=7 format=3 uid="uid://uybe8sd3pdwr"]
 
 [ext_resource type="PackedScene" uid="uid://ddui4sd3fw402" path="res://character/monster.tscn" id="1_r636f"]
 [ext_resource type="Script" path="res://character/reaper.gd" id="2_mvwk6"]
-[ext_resource type="ArrayMesh" uid="uid://cmh5adfhcgiu0" path="res://character/mercenary.res" id="3_i1a6r"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_33xqe"]
-size = Vector3(0.8, 1.5, 0.8)
+[sub_resource type="Animation" id="Animation_dj7bm"]
+resource_name = "Hit"
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_74138"]
-size = Vector3(0.8, 1.5, 0.8)
+[sub_resource type="Animation" id="Animation_b6m7i"]
+resource_name = "Run"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q40od"]
+_data = {
+&"Hit": SubResource("Animation_dj7bm"),
+&"Run": SubResource("Animation_b6m7i")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6si7"]
 
 [node name="Reaper" instance=ExtResource("1_r636f")]
 script = ExtResource("2_mvwk6")
@@ -16,16 +23,22 @@ speed = 2.0
 damage = 10
 health = 16
 
-[node name="Torso_Inventory#CollisionShape3D2" type="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_33xqe")
-
-[node name="Torso_Inventory#CollisionShape3D" parent="." index="1"]
-shape = SubResource("BoxShape3D_74138")
-
-[node name="MeshInstance3D" parent="." index="2"]
+[node name="Skeleton" parent="." index="1"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-mesh = ExtResource("3_i1a6r")
+motion_scale = 0.975917
 
-[node name="Shadow" parent="." index="3"]
+[node name="Inventory" parent="Skeleton/MeshInstance3D" index="0"]
+collision_mask = 9
+
+[node name="Shadow" parent="." index="2"]
 transform = Transform3D(15, 0, 0, 0, -6.55671e-07, -15, 0, 15, -6.55671e-07, 0, 0, 0)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="7"]
+libraries = {
+&"": SubResource("AnimationLibrary_q40od")
+}
+
+[node name="AnimationPlayer" parent="." index="9"]
+libraries = {
+&"": SubResource("AnimationLibrary_x6si7")
+}

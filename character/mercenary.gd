@@ -5,7 +5,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		aim()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -19,10 +19,6 @@ func _physics_process(delta):
 			var item = hands.get_child(0)
 			if item.has_method("use"):
 				item.use()
-
-	if Input.is_action_just_pressed("jump"):
-		if not is_on_floor():
-			velocity += get_gravity() * delta
 
 	if Input.is_action_just_pressed("throw"):
 		throw()

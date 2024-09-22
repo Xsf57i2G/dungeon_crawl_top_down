@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfra4br278mk1"]
+[gd_scene load_steps=14 format=3 uid="uid://cfra4br278mk1"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_ymcd0"]
 [ext_resource type="PackedScene" uid="uid://by7wi8brogbv6" path="res://effects/shadow.tscn" id="2_agwyg"]
+[ext_resource type="ArrayMesh" uid="uid://cmh5adfhcgiu0" path="res://character/mercenary.res" id="2_bo124"]
 [ext_resource type="AudioStream" uid="uid://kpuuje5kqfo8" path="res://character/death.wav" id="3_vcjtr"]
 [ext_resource type="AudioStream" uid="uid://dtcy7mtmtpl23" path="res://character/step.wav" id="4_uwghg"]
 [ext_resource type="AudioStream" uid="uid://bkf07ydofijtq" path="res://character/scream_1.wav" id="5_wpoyh"]
@@ -11,11 +12,86 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u7n2r"]
 radius = 0.4
+height = 1.5
 
-[sub_resource type="BoxMesh" id="BoxMesh_aqxwf"]
-size = Vector3(0.8, 0.8, 0.8)
+[sub_resource type="Skin" id="Skin_njdag"]
+resource_name = "Skin"
+bind_count = 24
+bind/0/name = &"Root"
+bind/0/bone = -1
+bind/0/pose = Transform3D(1, -2.4869e-14, 5.68434e-14, -3.55271e-14, 1, -4.09782e-08, -2.27374e-13, -3.72529e-08, 1, -1.13537e-08, -0.623128, -0.0348444)
+bind/1/name = &"Hips"
+bind/1/bone = -1
+bind/1/pose = Transform3D(1, 2.09548e-09, 0, 3.31784e-09, 1, -4.47035e-08, 0, -3.72529e-08, 1, -2.09548e-08, -0.975917, -0.0568206)
+bind/2/name = &"Neck"
+bind/2/bone = -1
+bind/2/pose = Transform3D(1, -1.62572e-09, -1.68802e-09, 2.15005e-09, 1, -4.28408e-08, -9.16771e-10, -4.09782e-08, 1, 0.00374442, -1.20918, -0.0480607)
+bind/3/name = &"Head"
+bind/3/bone = -1
+bind/3/pose = Transform3D(1, 1.10905e-09, -2.09499e-09, -1.87745e-09, 1, -5.96046e-08, -5.1449e-10, -2.98023e-08, 1, -1.86181e-08, -1.43897, -0.0525788)
+bind/4/name = &"LeftShoulder"
+bind/4/bone = -1
+bind/4/pose = Transform3D(-1.74533e-08, 4.11452e-08, 1, 1, -3.72529e-08, -9.11481e-08, 5.21541e-08, 1, -3.72529e-08, -0.0480608, 0.00374447, -1.20918)
+bind/5/name = &"LeftUpperArm"
+bind/5/bone = -1
+bind/5/pose = Transform3D(8.9407e-08, -1.19209e-07, -1, 1, 0, -1.78814e-07, -8.9407e-08, -1, -2.98023e-08, 0.048061, 0.30512, 1.19949)
+bind/6/name = &"LeftLowerArm"
+bind/6/bone = -1
+bind/6/pose = Transform3D(-8.9407e-08, -1, -2.98023e-08, 1, -5.96046e-08, -1.49012e-07, -1.19209e-07, 1.19209e-07, 1, 0.895716, 0.564616, -0.0345734)
+bind/7/name = &"LeftHand"
+bind/7/bone = -1
+bind/7/pose = Transform3D(8.9407e-08, -1.86265e-07, -1, 1, -8.9407e-08, -2.08616e-07, -1.49012e-07, -1, -3.72529e-08, -0.00377199, 0.792906, 0.672038)
+bind/8/name = &"RightShoulder"
+bind/8/bone = -1
+bind/8/pose = Transform3D(-1.6535e-08, 2.88234e-07, -1, -1, 1.15484e-07, 2.21533e-07, -7.07805e-08, 1, 2.83122e-07, 0.0480604, 0.0037443, -1.20918)
+bind/9/name = &"RightUpperArm"
+bind/9/bone = -1
+bind/9/pose = Transform3D(0, -3.57628e-07, 1, -1, 1.19209e-07, 2.08616e-07, 5.96046e-08, -1, -2.68221e-07, -0.0480602, 0.30512, 1.19949)
+bind/10/name = &"RightLowerArm"
+bind/10/bone = -1
+bind/10/pose = Transform3D(-1.19209e-07, 1, 3.57628e-07, -1, 8.9407e-08, 1.19209e-07, -2.98023e-08, -3.57628e-07, 1, -0.895716, 0.564616, -0.0345726)
+bind/11/name = &"RightHand"
+bind/11/bone = -1
+bind/11/pose = Transform3D(-5.96046e-08, -4.39584e-07, 1, -1, -1.49012e-08, 5.96046e-08, 8.9407e-08, -1, -3.50177e-07, 0.00377294, 0.792906, 0.672038)
+bind/12/name = &"Pelvis_L"
+bind/12/bone = -1
+bind/12/pose = Transform3D(-0.0511084, -0.488656, -0.870979, -0.994575, 0.104022, 2.2554e-07, 0.0906008, 0.866253, -0.491321, 0.334844, -0.064819, -0.522667)
+bind/13/name = &"Thigh_L"
+bind/13/bone = -1
+bind/13/pose = Transform3D(-0.988747, -0.086161, 0.122292, 0.0645232, -0.983155, -0.171005, 0.134966, -0.16119, 0.977651, -0.0854485, 0.641628, 0.0872773)
+bind/14/name = &"Leg_L"
+bind/14/bone = -1
+bind/14/pose = Transform3D(-0.999229, -0.0309934, 0.0241116, 0.0368694, -0.95181, 0.304464, 0.0135133, 0.305118, 0.952219, -0.107289, 0.337422, -0.0882892)
+bind/15/name = &"Pelvis_R"
+bind/15/bone = -1
+bind/15/pose = Transform3D(-0.0511079, 0.488656, 0.870979, 0.994575, 0.104022, -4.01061e-07, -0.0906012, 0.866254, -0.491321, -0.334844, -0.064819, -0.522667)
+bind/16/name = &"Thigh_R"
+bind/16/bone = -1
+bind/16/pose = Transform3D(-0.988747, 0.086161, -0.122291, -0.0645232, -0.983155, -0.171005, -0.134965, -0.16119, 0.977651, 0.0854485, 0.641628, 0.0872773)
+bind/17/name = &"Leg_R"
+bind/17/bone = -1
+bind/17/pose = Transform3D(-0.999229, 0.0309934, -0.0241109, -0.036869, -0.95181, 0.304464, -0.0135126, 0.305118, 0.952218, 0.107289, 0.337421, -0.0882892)
+bind/18/name = &"Knee_L"
+bind/18/bone = -1
+bind/18/pose = Transform3D(-0.975775, -0.218775, 6.94341e-07, -7.02235e-07, -4.16776e-08, -1, 0.218775, -0.975775, -1.12964e-07, -0.0401556, -0.304452, 0.362337)
+bind/19/name = &"Knee_R"
+bind/19/bone = -1
+bind/19/pose = Transform3D(-0.975775, 0.218775, -5.84456e-08, 5.05521e-08, -4.16776e-08, -1, -0.218775, -0.975775, 2.96084e-08, 0.0401556, -0.304452, 0.362337)
+bind/20/name = &"Heel_L"
+bind/20/bone = -1
+bind/20/pose = Transform3D(-1, 0, 1.24905e-07, 1.24905e-07, 0, 1, 0, 1, 0, -0.1072, -0.0768545, -0.0542595)
+bind/21/name = &"Foot_L"
+bind/21/bone = -1
+bind/21/pose = Transform3D(-1, -1.14247e-06, 4.93227e-07, -1.57257e-07, -0.277161, -0.960824, 1.23441e-06, -0.960823, 0.277161, -0.1072, 0.0888822, 0.0308329)
+bind/22/name = &"Heel_R"
+bind/22/bone = -1
+bind/22/pose = Transform3D(-1, 0, 5.26778e-07, 5.26778e-07, 0, 1, 0, 1, 0, 0.1072, -0.0768545, -0.0542595)
+bind/23/name = &"Foot_R"
+bind/23/bone = -1
+bind/23/pose = Transform3D(-1, 1.14247e-06, 1.58456e-07, -4.68895e-07, -0.277161, -0.960824, -1.05379e-06, -0.960823, 0.277161, 0.1072, 0.0888822, 0.0308329)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f2801"]
+size = Vector3(2, 2, 2)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bj0ih"]
 streams_count = 4
@@ -24,35 +100,32 @@ stream_1/stream = ExtResource("6_quhaf")
 stream_2/stream = ExtResource("7_3dlx8")
 stream_3/stream = ExtResource("8_asdp6")
 
-[sub_resource type="Animation" id="Animation_dj7bm"]
-resource_name = "Hit"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_q40od"]
-_data = {
-&"Hit": SubResource("Animation_dj7bm")
-}
-
 [node name="Character" type="CharacterBody3D"]
 axis_lock_linear_y = true
 axis_lock_angular_y = true
 script = ExtResource("1_ymcd0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CapsuleShape3D_u7n2r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-cast_shadow = 0
-mesh = SubResource("BoxMesh_aqxwf")
+mesh = ExtResource("2_bo124")
+skin = SubResource("Skin_njdag")
+skeleton = NodePath("")
 
 [node name="Inventory" type="Area3D" parent="MeshInstance3D"]
+collision_mask = 13
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Inventory"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_f2801")
 
 [node name="Hand" type="Marker3D" parent="MeshInstance3D/Inventory"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.6)
 
 [node name="Back" type="Marker3D" parent="MeshInstance3D/Inventory"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.7)
 
 [node name="Shadow" parent="." instance=ExtResource("2_agwyg")]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
@@ -69,6 +142,3 @@ stream = ExtResource("4_uwghg")
 stream = SubResource("AudioStreamRandomizer_bj0ih")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_q40od")
-}

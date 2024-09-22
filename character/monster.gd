@@ -5,12 +5,12 @@ extends Character
 
 var astar = AStar3D.new()
 
-func _ready():
+func _process(_delta):
+	target = closest("Mercenary")
+	print(target)
 	if target:
-		print("Target found")
 		var path = find_path(global_position, target)
 		if path:
-			print("Moving to target")
 			move_along_path(path)
 
 func closest(group):
