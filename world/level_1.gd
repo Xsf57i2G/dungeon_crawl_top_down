@@ -5,9 +5,10 @@ var noise = FastNoiseLite.new()
 var width = 64
 var depth = 64
 var structures = {
-	preload("res://world/ladder.tscn"): 1.0,
+	preload("res://world/spikes.tscn"): 1.0,
 	preload("res://world/voxel.tscn"): 1.0,
-	preload("res://world/stalactite.tscn"): 0.001,
+	preload("res://world/ladder.tscn"): 1.0,
+	preload("res://world/stalactite.tscn"): 0.01,
 }
 var items = {
 	preload("res://item/bomb.tscn"): 0.001,

@@ -68,6 +68,9 @@ func pickup():
 			if abs(body.position.y - position.y) < 1.0:
 				body.reparent(hands)
 
+func jump():
+	if dead:
+		return
 
 func drop():
 	var hands = $MeshInstance3D/Inventory/Hand

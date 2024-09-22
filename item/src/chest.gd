@@ -10,7 +10,6 @@ var items = {
 }
 
 func open():
-	print("Chest opened")
 	$AnimationPlayer.play("Open")
 
 	var item = items.keys()[randi() % items.size()].instantiate()

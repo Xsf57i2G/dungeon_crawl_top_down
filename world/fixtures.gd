@@ -1,0 +1,2 @@
+class_name Fixture
+extends StaticBody3D

@@ -90,8 +90,8 @@ bind/23/name = &"Foot_R"
 bind/23/bone = -1
 bind/23/pose = Transform3D(-1, 1.14247e-06, 1.58456e-07, -4.68895e-07, -0.277161, -0.960824, -1.05379e-06, -0.960823, 0.277161, 0.1072, 0.0888822, 0.0308329)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_f2801"]
-size = Vector3(2, 2, 2)
+[sub_resource type="SphereShape3D" id="SphereShape3D_1j838"]
+radius = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bj0ih"]
 streams_count = 4
@@ -118,14 +118,14 @@ skeleton = NodePath("")
 collision_mask = 13
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Inventory"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_f2801")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_1j838")
 
 [node name="Hand" type="Marker3D" parent="MeshInstance3D/Inventory"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.6)
 
 [node name="Back" type="Marker3D" parent="MeshInstance3D/Inventory"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.6)
 
 [node name="Shadow" parent="." instance=ExtResource("2_agwyg")]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)

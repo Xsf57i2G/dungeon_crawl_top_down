@@ -1,5 +1,5 @@
-class_name Consumable
-extends Item
+class_name Gem
+extends Consumable
 
 func use():
 	queue_free()
