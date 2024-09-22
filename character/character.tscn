@@ -12,7 +12,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u7n2r"]
 radius = 0.4
-height = 1.5
+height = 1.6
 
 [sub_resource type="Skin" id="Skin_njdag"]
 resource_name = "Skin"
