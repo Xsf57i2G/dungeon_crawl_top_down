@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://uybe8sd3pdwr"]
 
 [ext_resource type="PackedScene" uid="uid://ddui4sd3fw402" path="res://character/monster.tscn" id="1_r636f"]
-[ext_resource type="Script" path="res://character/reaper.gd" id="2_mvwk6"]
+[ext_resource type="Script" path="res://character/src/reaper.gd" id="2_mvwk6"]
 
 [sub_resource type="Animation" id="Animation_dj7bm"]
 resource_name = "Hit"

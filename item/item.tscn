@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://by7wi8brogbv6" path="res://effects/shadow.tscn" id="3_spb82"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a86g8"]
-rough = true
+bounce = 0.2
 absorbent = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oc77y"]

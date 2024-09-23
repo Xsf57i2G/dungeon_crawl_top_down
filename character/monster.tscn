@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddui4sd3fw402"]
 
 [ext_resource type="PackedScene" uid="uid://cfra4br278mk1" path="res://character/character.tscn" id="1_ybdlb"]
-[ext_resource type="Script" path="res://character/monster.gd" id="2_p73oo"]
+[ext_resource type="Script" path="res://character/src/monster.gd" id="2_p73oo"]
 
 [node name="Monster" instance=ExtResource("1_ybdlb")]
 collision_layer = 4

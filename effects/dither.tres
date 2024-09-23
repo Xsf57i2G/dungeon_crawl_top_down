@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://sm27nm1cjv2q"]
+
+[ext_resource type="Shader" path="res://effects/dither.gdshader" id="1_2on1c"]
+[ext_resource type="Texture2D" uid="uid://7kkkwisax1u" path="res://effects/dither.jpg" id="2_hpc0s"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2on1c")
+shader_parameter/DitherMap = ExtResource("2_hpc0s")
+shader_parameter/DitherStrength = 0.1
+shader_parameter/ColorDepth = 3.0

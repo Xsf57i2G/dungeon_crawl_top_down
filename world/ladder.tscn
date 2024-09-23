@@ -52,3 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Shadow" parent="." index="2"]
 transform = Transform3D(20, 0, 0, 0, -8.74228e-07, -20, 0, 20, -8.74228e-07, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

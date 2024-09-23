@@ -95,6 +95,7 @@ script = ExtResource("1_aoah6")
 light_color = Color(1, 0.501961, 0, 1)
 light_specular = 0.0
 shadow_blur = 0.0
+distance_fade_enabled = true
 script = ExtResource("1_bdm2c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

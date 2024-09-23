@@ -34,6 +34,11 @@ func move(direction):
 	if dead:
 		return
 
+	if direction:
+		$AnimationPlayer.play("Character/Run")
+	else:
+		$AnimationPlayer.stop()
+
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 
@@ -41,8 +46,8 @@ func heal(n):
 	health += n
 
 func throw():
-	var torso = $MeshInstance3D
-	var hands = $MeshInstance3D/Inventory/Hand
+	var torso = $Armature/Skeleton3D/MeshInstance3D
+	var hands = $Armature/Skeleton3D/MeshInstance3D/Inventory/Hand
 	if hands.get_child_count() > 0:
 		var item = hands.get_child(0)
 		if item is Character:
@@ -55,8 +60,8 @@ func throw():
 			drop()
 
 func pickup():
-	var bodies = $MeshInstance3D/Inventory.get_overlapping_bodies()
-	var hands = $MeshInstance3D/Inventory/Hand
+	var bodies = $Armature/Skeleton3D/MeshInstance3D/Inventory.get_overlapping_bodies()
+	var hands = $Armature/Skeleton3D/MeshInstance3D/Inventory/Hand
 	for body in bodies:
 		if body is Character:
 			var forward_self = global_transform.basis.z
@@ -73,16 +78,16 @@ func jump():
 		return
 
 func drop():
-	var hands = $MeshInstance3D/Inventory/Hand
-	var back = $MeshInstance3D/Inventory/Back
+	var hands = $Armature/Skeleton3D/MeshInstance3D/Inventory/Hand
+	var back = $Armature/Skeleton3D/MeshInstance3D/Inventory/Back
 	if hands.get_child_count() > 0:
 		dropped.emit(hands.get_child(0))
 	if back.get_child_count() > 0:
 		dropped.emit(back.get_child(0))
 
 func swap():
-	var hand = $MeshInstance3D/Inventory/Hand
-	var back = $MeshInstance3D/Inventory/Back
+	var hand = $Armature/Skeleton3D/MeshInstance3D/Inventory/Hand
+	var back = $Armature/Skeleton3D/MeshInstance3D/Inventory/Back
 	if hand.get_child_count() > 0:
 		var item = hand.get_child(0)
 		item.global_transform.origin = back.global_transform.origin

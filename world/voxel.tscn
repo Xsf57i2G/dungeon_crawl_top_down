@@ -1,62 +1,31 @@
 [gd_scene load_steps=9 format=4 uid="uid://b7yr18inm5rha"]
 
 [ext_resource type="Script" path="res://world/voxel.gd" id="1_xy14a"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v7qw"]
-resource_local_to_scene = true
-resource_name = "Material"
-vertex_color_use_as_albedo = true
-roughness = 0.5
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_e4sf2"]
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AAAGAAQAAAACAAYAAwAGAAIAAwAHAAYABwAEAAYABwAFAAQABQADAAEABQAHAAMAAQACAAAAAQADAAIABQAAAAQABQABAAAA"),
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("/////wAAAAD//wAAAAAAAP///////wAA//8AAP//AAAAAP//AAAAAAAAAAAAAAAAAAD/////AAAAAAAA//8AAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_jl6ji"]
-resource_local_to_scene = true
-resource_name = "voxel_Cube"
-_surfaces = [{
-"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
-"attribute_data": PackedByteArray("//////+f/3///////5//f///////n/9/AAAA//9f/38AAAD//1//fwAAAP//X/9///////+f/z///////5//P///////n/8/AAAA//9f/z8AAAD//1//PwAAAP//X/8///////+f/7///////9//f///////n/+/AAAA//9f/78AAAD//x//fwAAAP//X/+///////+fAAD//////9//P///////n///AAAA//9fAAAAAAD//x//PwAAAP//X///"),
-"format": 34896613407,
-"index_count": 36,
-"index_data": PackedByteArray("AQATAA0AAQAHABMACQASAAYACQAVABIAFwAOABQAFwARAA4AEAAKAAQAEAAWAAoABQAIAAIABQALAAgADwAAAAwADwADAAAA"),
-"material": SubResource("StandardMaterial3D_7v7qw"),
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("/////wAA////////AAD///////8AAFTV//8AAAAA/////wAAAAD/v///AAAAAFTV/////////7///////////////////1TV//8AAP///7///wAA////v///AAD//1TVAAD//wAA//8AAP//AAD//wAA//8AAFTVAAAAAAAA//8AAAAAAAD/vwAAAAAAAFTVAAD//////78AAP///////wAA/////1TVAAAAAP///78AAAAA////vwAAAAD//1TV/7//v/9//7+qKqoq/7//vwAA/3+qKqoq//////9//7+qKqoq/////wAA/3+qKqoq/7//v/9//79U1VTV/7//vwAA/39U1VTV//////9//79U1VTV/////wAA/39U1VTV")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_e4sf2")
+[ext_resource type="Shader" path="res://world/voxel.gdshader" id="2_kx1lv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ljo6f"]
 
-[sub_resource type="Animation" id="Animation_d5nxm"]
-resource_name = "Hit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:mesh:surface_0/material:shading_mode")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 0, 1, 0, 1, 0]
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwt16"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_kx1lv")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qmfwh"]
+resource_local_to_scene = true
+resource_name = "voxel_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("AAAA//9fAAAAAAD//x//PwAAAP//X/////////+fAAD//////9//P///////n///AAAA//9f/78AAAD//x//fwAAAP//X/+///////+f/7///////9//f///////n/+/AAAA//9f/z8AAAD//1//PwAAAP//X/8///////+f/z///////5//P///////n/8/AAAA//9f/38AAAD//1//fwAAAP//X/9///////+f/3///////5//f///////n/9/"),
+"format": 34896613407,
+"index_count": 36,
+"index_data": PackedByteArray("AgALAAUAAgAIAAsABgAVAAkABgASABUAFAARABcAFAAOABEADAADAA8ADAAAAAMABwANABMABwABAA0AFgAEAAoAFgAQAAQA"),
+"material": SubResource("ShaderMaterial_kwt16"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///78AAAAA////vwAAAAD//1TVAAD//////78AAP///////wAA/////1TVAAAAAAAA//8AAAAAAAD/vwAAAAAAAFTVAAD//wAA//8AAP//AAD//wAA//8AAFTV//8AAP///7///wAA////v///AAD//1TV/////////7///////////////////1TV//8AAAAA/////wAAAAD/v///AAAAAFTV/////wAA////////AAD///////8AAFTV/////wAA/39U1VTV//////9//79U1VTV/7//vwAA/39U1VTV/7//v/9//79U1VTV/////wAA/3+qKqoq//////9//7+qKqoq/7//vwAA/3+qKqoq/7//v/9//7+qKqoq")
+}]
 
 [sub_resource type="Animation" id="Animation_s4i4v"]
 length = 0.001
@@ -73,25 +42,41 @@ tracks/0/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_d5nxm"]
+resource_name = "Hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:surface_0/material:shading_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 1, 0, 1, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c0vqw"]
 _data = {
-"Hit": SubResource("Animation_d5nxm"),
-"RESET": SubResource("Animation_s4i4v")
+&"RESET": SubResource("Animation_s4i4v"),
+&"Hit": SubResource("Animation_d5nxm")
 }
 
 [node name="Voxel" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_xy14a")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("ArrayMesh_jl6ji")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ljo6f")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_qmfwh")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_c0vqw")
+&"": SubResource("AnimationLibrary_c0vqw")
 }
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

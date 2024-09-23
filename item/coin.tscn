@@ -9,4 +9,4 @@
 mesh = ExtResource("2_m5smd")
 
 [node name="Shadow" parent="." index="2"]
-transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, -0.1, 0)
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0)

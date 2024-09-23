@@ -63,7 +63,7 @@ shape = SubResource("SphereShape3D_w8dm8")
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
 mesh = SubResource("ArrayMesh_41bqd")
 
-[node name="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" parent="." index="6"]
 libraries = {
 &"": SubResource("AnimationLibrary_q40od")
 }
