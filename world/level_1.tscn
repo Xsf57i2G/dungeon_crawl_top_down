@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqfeuif3ilyqa"]
+[gd_scene load_steps=16 format=3 uid="uid://cqfeuif3ilyqa"]
 
 [ext_resource type="Script" path="res://world/level_1.gd" id="1_5qmym"]
 [ext_resource type="Texture2D" uid="uid://xubxoy5ee68g" path="res://world/ground.png" id="3_wlqye"]
 [ext_resource type="Texture2D" uid="uid://cr1l52ewgpigd" path="res://world/ground_n.png" id="4_02qcs"]
 [ext_resource type="PackedScene" uid="uid://cd1nowj7ql24m" path="res://world/spikes.tscn" id="5_h6uh2"]
 [ext_resource type="PackedScene" uid="uid://ds7eoymvgwxcl" path="res://character/demon.tscn" id="5_j1ywm"]
+[ext_resource type="PackedScene" uid="uid://0uudipouqipi" path="res://item/key.tscn" id="6_r3te7"]
+[ext_resource type="PackedScene" uid="uid://1i2ivhttko7d" path="res://item/chest.tscn" id="7_ntj8f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_piqll"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -68,3 +70,9 @@ shape = SubResource("ConcavePolygonShape3D_kmadi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -3)
 
 [node name="Demon" parent="." instance=ExtResource("5_j1ywm")]
+
+[node name="Key" parent="." instance=ExtResource("6_r3te7")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -2, 1, -2)
+
+[node name="Chest" parent="." instance=ExtResource("7_ntj8f")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3, 0.5, -3)

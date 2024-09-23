@@ -37,12 +37,6 @@ bones/20/scale = Vector3(1, 1, 1)
 [node name="Inventory" parent="Armature/Skeleton3D/MeshInstance3D" index="0"]
 collision_mask = 12
 
-[node name="Hand" parent="Armature/Skeleton3D/MeshInstance3D/Inventory" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
-
-[node name="Back" parent="Armature/Skeleton3D/MeshInstance3D/Inventory" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.2)
-
 [node name="Camera3D" type="Camera3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 16, 16)
 projection = 1

@@ -11,7 +11,7 @@ func _physics_process(delta):
 	if direction:
 		move(direction)
 
-		$Armature/Skeleton3D/MeshInstance3D.look_at(global_transform.origin + direction)
+		$Armature/Skeleton3D/MeshInstance3D.look_at(position + direction)
 	else:
 		move(Vector3.ZERO)
 

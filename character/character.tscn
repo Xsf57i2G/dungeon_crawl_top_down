@@ -287,5 +287,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_kajld")
 
 [node name="Hand" type="Marker3D" parent="Armature/Skeleton3D/MeshInstance3D/Inventory"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.8)
 
 [node name="Back" type="Marker3D" parent="Armature/Skeleton3D/MeshInstance3D/Inventory"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.6)

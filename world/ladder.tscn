@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://bjrwnvm8ujd1n"]
+[gd_scene load_steps=7 format=4 uid="uid://bjrwnvm8ujd1n"]
 
 [ext_resource type="PackedScene" uid="uid://i3iy6jlim87u" path="res://world/fixtures.tscn" id="1_2gar2"]
+[ext_resource type="Script" path="res://world/ladder.gd" id="2_jsj5f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwwfw"]
 resource_name = "Material"
@@ -42,7 +43,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u6tvi")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3usvt"]
+size = Vector3(2, 2, 2)
+
 [node name="Ladder" instance=ExtResource("1_2gar2")]
+collision_layer = 0
+script = ExtResource("2_jsj5f")
 
 [node name="MeshInstance3D" parent="." index="0"]
 mesh = SubResource("ArrayMesh_jq5c7")
@@ -53,5 +59,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="Shadow" parent="." index="2"]
 transform = Transform3D(20, 0, 0, 0, -8.74228e-07, -20, 0, 20, -8.74228e-07, 0, 0, 0)
 
+[node name="Area3D" parent="." index="3"]
+collision_mask = 2
+
 [node name="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_3usvt")
