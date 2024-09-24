@@ -8,34 +8,16 @@
 collision_layer = 2
 script = ExtResource("2_1m8wi")
 
-[node name="AnimationPlayer" parent="." index="5"]
-speed_scale = 3.0
-
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(-0.00580847, -0.00283712, 0.0157034, 0.999856)
-bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.0818897, -0.00100779, -0.012892, 0.996558)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(-0.0285299, 0.0857984, 0.0657955, 0.993728)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-0.556378, 0.42616, 0.561781, 0.439583)
-bones/7/scale = Vector3(1, 1, 1)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(-0.0285299, -0.0857985, -0.0657956, 0.993728)
-bones/10/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(-0.226484, -0.444293, -0.407641, 0.764943)
-bones/11/scale = Vector3(1, 1, 1)
-bones/12/scale = Vector3(1, 1, 1)
-bones/13/scale = Vector3(1, 1, 1)
-bones/14/rotation = Quaternion(-0.231274, 0.438663, 0.410607, 0.765173)
-bones/14/scale = Vector3(1, 1, 1)
-bones/15/scale = Vector3(1, 1, 1)
-bones/18/scale = Vector3(1, 1, 1)
-bones/20/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(0.739571, 0.652881, 0.122946, 0.108007)
+bones/15/rotation = Quaternion(-0.52893, 0.655431, -0.441768, 0.309006)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="0"]
+bone_name = "Foot_L"
+bone_idx = 19
 
 [node name="Inventory" parent="Armature/Skeleton3D/MeshInstance3D" index="0"]
-collision_mask = 12
+collision_mask = 9
 
 [node name="Camera3D" type="Camera3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 16, 16)

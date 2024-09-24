@@ -10,6 +10,7 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_kx1lv")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/emission = null
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qmfwh"]
 resource_local_to_scene = true
@@ -32,14 +33,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:mesh:surface_0/material:shading_mode")
+tracks/0/path = NodePath("MeshInstance3D:mesh:surface_0/material:shader_parameter/emission")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
+"update": 0,
+"values": [null]
 }
 
 [sub_resource type="Animation" id="Animation_d5nxm"]
@@ -47,14 +48,14 @@ resource_name = "Hit"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:mesh:surface_0/material:shading_mode")
-tracks/0/interp = 1
+tracks/0/path = NodePath("MeshInstance3D:mesh:surface_0/material:shader_parameter/emission")
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"times": PackedFloat32Array(0, 0.2, 0.40188, 0.599166, 0.803759, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 0, 1, 0, 1, 0]
+"values": [Color(1, 1, 1, 1), null, Color(1, 1, 1, 1), null, Color(1, 1, 1, 1), null]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c0vqw"]

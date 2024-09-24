@@ -3,15 +3,14 @@ extends Character
 
 @onready var target = closest("Mercenary")
 
-var astar = AStar3D.new()
+var astar = AStarGrid2D.new()
 
 func _process(_delta):
 	target = closest("Mercenary")
-	print(target)
-	if target:
-		var path = find_path(global_position, target)
-		if path:
-			move_along_path(path)
+
+	astar.size = Vector2i(32, 32)
+	astar.cell_size = Vector2i(32, 32)
+	astar.update()
 
 func closest(group):
 	var characters = get_tree().get_nodes_in_group(group)
@@ -26,19 +25,3 @@ func closest(group):
 
 	if closest_character and closest_character is Character:
 		return closest_character.global_position
-	return null
-
-func find_path(start, end):
-	var start_id = astar.get_closest_point(start)
-	var end_id = astar.get_closest_point(end)
-	if start_id == -1 or end_id == -1:
-		return []
-	return astar.get_point_path(start_id, end_id)
-
-func move_along_path(path):
-	for point in path:
-		var at = astar.get_point_position(point)
-		var direction = (at - global_position).normalized()
-		move(direction)
-
-		await get_tree().create_timer(1.0).timeout

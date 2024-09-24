@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dsmqwq87cpxwc"]
+[gd_scene load_steps=22 format=3 uid="uid://dsmqwq87cpxwc"]
 
 [ext_resource type="Script" path="res://time.gd" id="1_5wr0b"]
 [ext_resource type="Texture2D" uid="uid://b8fy5d2k1mqvb" path="res://interface/heart/0001.png" id="1_iwqwg"]
@@ -12,9 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://qreofpewl41o" path="res://interface/gem/0006.png" id="15_4k5wj"]
 [ext_resource type="Texture2D" uid="uid://bvubxvb76j56s" path="res://interface/gem/0007.png" id="16_lneid"]
 [ext_resource type="Texture2D" uid="uid://iq4a5mm8bd8q" path="res://interface/gem/0008.png" id="17_a6j7r"]
-[ext_resource type="Texture2D" uid="uid://ddlm4vuyubv1" path="res://interface/gem/0009.png" id="17_c3eha"]
 [ext_resource type="Texture2D" uid="uid://dms4nts3vk6qc" path="res://interface/heart/0004.png" id="18_4dnw6"]
-[ext_resource type="Texture2D" uid="uid://bdfv8xpjskwfe" path="res://interface/gem/0010.png" id="18_v0e3a"]
 [ext_resource type="Texture2D" uid="uid://dmxqqub2p07oj" path="res://interface/heart/0005.png" id="19_f88as"]
 [ext_resource type="Texture2D" uid="uid://bwvhlyst4j13k" path="res://interface/heart/0006.png" id="20_6vvfi"]
 [ext_resource type="Texture2D" uid="uid://drfav3sbf688n" path="res://interface/heart/0007.png" id="21_udj8b"]
@@ -40,8 +38,8 @@ frame_7/texture = ExtResource("22_ykemm")
 frame_7/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_ipwia"]
-frames = 10
-speed_scale = 4.0
+frames = 8
+speed_scale = 5.0
 frame_0/texture = ExtResource("10_dx245")
 frame_1/texture = ExtResource("11_8v3c3")
 frame_1/duration = 1.0
@@ -57,12 +55,12 @@ frame_6/texture = ExtResource("16_lneid")
 frame_6/duration = 1.0
 frame_7/texture = ExtResource("17_a6j7r")
 frame_7/duration = 1.0
-frame_8/texture = ExtResource("17_c3eha")
-frame_8/duration = 1.0
-frame_9/texture = ExtResource("18_v0e3a")
-frame_9/duration = 1.0
+
+[sub_resource type="SystemFont" id="SystemFont_yabqa"]
+font_names = PackedStringArray("ProggyCleanTT")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ix4b1"]
+font = SubResource("SystemFont_yabqa")
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Control"]
@@ -75,14 +73,14 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-offset_right = 84.0
-offset_bottom = 128.0
+offset_right = 128.0
+offset_bottom = 84.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
+[node name="VSplitContainer" type="HSplitContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="Heart" type="TextureRect" parent="MarginContainer/VSplitContainer"]
@@ -95,40 +93,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AnimatedTexture_ipwia")
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -84.0
-offset_bottom = 128.0
-grow_horizontal = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer2"]
-layout_mode = 2
-
-[node name="Heart" type="TextureRect" parent="MarginContainer2/VSplitContainer"]
-layout_mode = 2
-texture = SubResource("AnimatedTexture_vpcog")
-
-[node name="Gem" type="TextureRect" parent="MarginContainer2/VSplitContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = SubResource("AnimatedTexture_ipwia")
-
 [node name="Time" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
+offset_left = -3.5
+offset_right = 3.5
+offset_bottom = 14.0
 grow_horizontal = 2
 text = "0"
 label_settings = SubResource("LabelSettings_ix4b1")

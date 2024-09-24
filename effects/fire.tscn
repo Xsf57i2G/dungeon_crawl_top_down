@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://827yyutx4185"]
+[gd_scene load_steps=12 format=3 uid="uid://827yyutx4185"]
 
 [ext_resource type="Script" path="res://effects/fire.gd" id="1_aoah6"]
 [ext_resource type="Script" path="res://effects/flicker.gd" id="1_bdm2c"]
@@ -57,30 +57,6 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_tlnet"]
 material = SubResource("StandardMaterial3D_ur6if")
 
-[sub_resource type="Gradient" id="Gradient_2jctb"]
-offsets = PackedFloat32Array(0.2, 0.6)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-metadata/_snap_enabled = true
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_me1y6"]
-noise_type = 2
-fractal_type = 0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3388j"]
-seamless = true
-color_ramp = SubResource("Gradient_2jctb")
-noise = SubResource("FastNoiseLite_me1y6")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4otl"]
-transparency = 1
-albedo_color = Color(1, 0.501961, 0, 1)
-albedo_texture = SubResource("NoiseTexture2D_3388j")
-
-[sub_resource type="SphereMesh" id="SphereMesh_438e6"]
-material = SubResource("StandardMaterial3D_s4otl")
-radial_segments = 4
-rings = 1
-
 [node name="Fire" type="GPUParticles3D"]
 cast_shadow = 0
 amount = 15
@@ -97,7 +73,3 @@ light_specular = 0.0
 shadow_blur = 0.0
 distance_fade_enabled = true
 script = ExtResource("1_bdm2c")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("SphereMesh_438e6")

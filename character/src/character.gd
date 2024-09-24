@@ -12,6 +12,10 @@ var dead = false
 var gib = preload("res://item/gib.tscn")
 var items = []
 
+func _process(_delta):
+	if dead:
+		return
+
 func hit(n):
 	$Hit.play()
 
@@ -35,7 +39,7 @@ func move(direction):
 		return
 
 	if direction:
-		$AnimationPlayer.play("Character/Run")
+		$AnimationPlayer.play("Run")
 	else:
 		$AnimationPlayer.stop()
 
@@ -54,14 +58,17 @@ func throw():
 			item.reparent(get_parent())
 			drop()
 		if item is Item:
-			var impulse = (torso.global_transform.basis * Vector3.FORWARD * 10) + (Vector3.UP * 10)
+			var impulse = (torso.global_transform.basis * Vector3.FORWARD * 4) + (Vector3.UP * 4)
 			item.apply_impulse(impulse, Vector3.FORWARD)
 			item.reparent(get_parent())
 			drop()
 
 func pickup():
-	var bodies = $Armature/Skeleton3D/MeshInstance3D/Inventory.get_overlapping_bodies()
 	var hands = $Armature/Skeleton3D/MeshInstance3D/Inventory/Hand
+	if hands.get_child_count() > 0:
+		return # Exit if there's already an item in hand
+
+	var bodies = $Armature/Skeleton3D/MeshInstance3D/Inventory.get_overlapping_bodies()
 	for body in bodies:
 		if body is Character:
 			var forward_self = global_transform.basis.z
@@ -88,11 +95,11 @@ func drop():
 func swap():
 	var hand = $Armature/Skeleton3D/MeshInstance3D/Inventory/Hand
 	var back = $Armature/Skeleton3D/MeshInstance3D/Inventory/Back
+
 	if hand.get_child_count() > 0:
 		var item = hand.get_child(0)
 		item.global_transform.origin = back.global_transform.origin
 		item.reparent(back)
 	elif back.get_child_count() > 0:
-		var item = back.get_child(0)
-		item.global_transform.origin = hand.global_transform.origin
-		item.reparent(hand)
+		back.get_child(0).global_transform.origin = hand.global_transform.origin
+		back.get_child(0).reparent(hand)

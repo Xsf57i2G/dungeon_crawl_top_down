@@ -11,3 +11,6 @@ func _physics_process(delta):
 	else:
 		if spin:
 			rotate_object_local(Vector3.UP, delta)
+
+		if position.y < 0.0:
+			position.y = 0.0
