@@ -8,6 +8,7 @@ signal died
 @export var damage = 1
 @export var health = 3
 
+var unconscious = false
 var dead = false
 var gib = preload("res://item/gib.tscn")
 var items = []

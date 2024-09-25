@@ -1,26 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds7eoymvgwxcl"]
+[gd_scene load_steps=5 format=3 uid="uid://x8ifm6gqjwvl"]
 
 [ext_resource type="PackedScene" uid="uid://cfra4br278mk1" path="res://character/character.tscn" id="1_777as"]
 [ext_resource type="Script" path="res://character/src/demon.gd" id="2_1m8wi"]
 [ext_resource type="Script" path="res://character/src/camera.gd" id="3_f72vf"]
+[ext_resource type="PackedScene" uid="uid://clw5cob55rnyc" path="res://character/skull.tscn" id="4_jfmso"]
 
 [node name="Demon" instance=ExtResource("1_777as")]
 collision_layer = 2
 script = ExtResource("2_1m8wi")
 
-[node name="Skeleton3D" parent="Armature" index="0"]
-bones/12/rotation = Quaternion(0.739571, 0.652881, 0.122946, 0.108007)
-bones/15/rotation = Quaternion(-0.52893, 0.655431, -0.441768, 0.309006)
+[node name="Hand" parent="Armature/Skeleton3D/MeshInstance3D/Inventory" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -0.8)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="0"]
-bone_name = "Foot_L"
-bone_idx = 19
-
-[node name="Inventory" parent="Armature/Skeleton3D/MeshInstance3D" index="0"]
-collision_mask = 9
+[node name="Back" parent="Armature/Skeleton3D/MeshInstance3D/Inventory" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0.6)
 
 [node name="Camera3D" type="Camera3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 16, 16)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
 projection = 1
-size = 12.0
+size = 15.0
 script = ExtResource("3_f72vf")
+
+[node name="Skull" parent="." index="8" instance=ExtResource("4_jfmso")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.8, 2.3, 0.8)

@@ -3,14 +3,18 @@
 [ext_resource type="Script" path="res://world/stalactite.gd" id="1_35dh8"]
 [ext_resource type="PackedScene" uid="uid://by7wi8brogbv6" path="res://effects/shadow.tscn" id="2_8y54a"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwl38"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1gpy"]
+resource_name = "Material"
+vertex_color_use_as_albedo = true
+roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_wqygy"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_bt7vn"]
 _surfaces = [{
 "aabb": AABB(-0.380423, -0.689383, -0.4, 0.760846, 1.243, 0.8),
 "format": 34896613377,
 "index_count": 96,
-"index_data": PackedByteArray("CwADAAoAAwACAAAAAwALAAIAAAAHAAUABwABAAYABwAAAAEADQAEAAwABAADAAAABAANAAMADwAFAA4ABQAEAAAABQAPAAQAAQAJAAYAAgALAAgAAwANAAoABAAPAAwABQAHAA4AEAALAAoAEAAIAAsABgAIABAABgAJAAgAEQAKAA0AEQAQAAoABwAQABEABwAGABAADwANAAwADwARAA0ADgARAA8ADgAHABEACQACAAgAAgABAAAAAgAJAAEA"),
+"index_data": PackedByteArray("CwADAAoAEAALAAoAAwALAAIAEAAIAAsAAgALAAgACQACAAgABgAIABAABgAJAAgAAgAJAAEAAQAJAAYAAwACAAAAAgABAAAABwABAAYABwAGABAABwAAAAEABwAQABEAEQAQAAoADgAHABEAAwANAAoAEQAKAA0ABAADAAAABAANAAMAAAAHAAUABQAEAAAABQAHAA4ADQAEAAwABQAPAAQABAAPAAwADwAFAA4ADwANAAwADgARAA8ADwARAA0A"),
+"name": "Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 18,
@@ -18,68 +22,29 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_h8unk"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_k37jd"]
 resource_name = "stalactite_Icosphere"
 _surfaces = [{
 "aabb": AABB(-0.380423, -0.689383, -0.4, 0.760846, 1.243, 0.8),
-"attribute_data": PackedByteArray("iy7//6KL//8WXf//uej//y26///RRa/X0UWv19FFr9dFF6/XRRev1///r9dz0a/Xc9Gv13PRr9fooq/X6KKv1+iir9dcdK/XXHSv11x0r9d0UYjDdFGIw3RRiMO5aIjDuWiIw7loiMPoIojD6CKIw+giiMMuOojDLjqIwy46iMMW3YjDFt2IwxbdiMNc9IjDoguIw1z0iMOKrojDiq6Iw4quiMPQxYjD0MWIw9DFiMP/f4jD/3+Iw/9/iMNFl4jDRZeIw0WXiMMzbojDvIKIww=="),
-"format": 34896613399,
+"attribute_data": PackedByteArray("AAAA/4su//8AAAD/oov//wAAAP8WXf//AAAA/7no//8AAAD/Lbr////////RRa/X/////9FFr9f/////0UWv1/////9FF6/X/////0UXr9f///////+v1/////9z0a/X/////3PRr9f/////c9Gv1//////ooq/X/////+iir9f/////6KKv1/////9cdK/X/////1x0r9f/////XHSv1/////90UYjD/////3RRiMP/////dFGIw/////+5aIjD/////7loiMP/////uWiIw//////oIojD/////+giiMP/////6CKIw/////8uOojD/////y46iMP/////LjqIw/////8W3YjD/////xbdiMP/////Ft2Iw/////9c9IjD/////6ILiMP/////XPSIw/////+KrojD/////4quiMP/////iq6Iw//////QxYjD/////9DFiMP/////0MWIw///////f4jD//////9/iMP//////3+Iw/////9Fl4jD/////0WXiMP/////RZeIw/////8zbojD/////7yCiMM="),
+"format": 34896613407,
 "index_count": 96,
-"index_data": PackedByteArray("JQALACEACwAKAAMACwAlAAoAAgAZABMAGQAHABYAGQACAAcAKgAQACgAEAAMAAQAEAAqAAwAMAARAC0AEQAOAAEAEQAwAA4ABgAfABUACQAkABwADQArACIADwAxACcAEgAYAC4AMgAjACAAMgAaACMAFAAaADIAFAAdABoAMwAgACkAMwAyACAAFwAyADMAFwAUADIALwApACYALwAzACkALAAzAC8ALAAXADMAHgAIABsACAAFAAAACAAeAAUA"),
-"material": SubResource("StandardMaterial3D_jwl38"),
+"index_data": PackedByteArray("JQALACEACwAlAAoACwAKAAMAAgAZABMAGQACAAcAGQAHABYAKgAQACgAEAAqAAwAEAAMAAQAMAARAC0AEQAwAA4AEQAOAAEABgAfABUACQAkABwADQArACIADwAxACcAEgAYAC4AMgAjACAAMgAaACMAFAAaADIAFAAdABoAFwAUADIAMwAyACAAFwAyADMALAAXADMAMwAgACkALAAzAC8ALwAzACkALwApACYAHgAIABsACAAeAAUACAAFAAAA"),
+"material": SubResource("StandardMaterial3D_m1gpy"),
+"name": "Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 52,
 "vertex_data": PackedByteArray("/38AAP9/t5H/fwAA/39Y8/9/AAD/f1jC/38AAP9/Laj/fwAA/38R2mLhe8tKw7eRYuF7y0rDjaZi4XvLSsPLxMxae8vh7LeRzFp7y+HsS43MWnvL4ewtqJ8He8v/fy2onwd7y/9/EdqfB3vL/38TwMxae8sdE1jzzFp7yx0TNfPMWnvLHRMR2mLhe8u0PFjzYuF7y7Q8o9li4XvLtDyXw/////+Np/+//////42njab/////jafrwP////9xWP+//////3FYo9n/////cVgwwf9///////+//3//////t5H/f/////9LjRrP//+M5/+/Gs///4znt5Eaz///jOeNpgAA//+Np/+/AAD//42nLagAAP//jacTwOQw//+M5/+/5DD//4znS43kMP//jOctqOQw//9yGP+/5DD//3IYNfPkMP//chgR2gAA//9xWP+/AAD//3FYEdoAAP//cVgTwBrP//9yGP+/Gs///3IYWPMaz///chij2f9///8AAP+//3///wAAWPP/f///AAA18/9////jsP+//3///xtP/7/MRWtDYH0tEyF6ix06WKblF2jt98xFa0MndtwOaIT9I8xFakOnYPDkOlim5TpYpuUXaO33knXI+mB9LRO+eST/F2jt92B9LRNJfQcIcT4JK////38ndtwOEXHcHf///39JfQcIJnPKHf///3/MRWpDp2Dw5P///3/MRWpDJ3bcDv///386WKblknXI+v///3+nYPDkOlim5f///3++eST/F2jt9////38XaO33knXI+v///39gfS0TSX0HCP///39gfS0Tvnkk/////3////9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_wqygy")
+shadow_mesh = SubResource("ArrayMesh_bt7vn")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2l5bd"]
 data = PackedVector3Array(-0.2351, 0.5536, 0.3236, -0.3578, 0.2986, 0, -0.3804, 0.5536, 0.1236, -0.3578, 0.2986, 0, -0.1106, 0.2986, 0.3403, 0, -0.6894, 0, -0.3578, 0.2986, 0, -0.2351, 0.5536, 0.3236, -0.1106, 0.2986, 0.3403, 0, -0.6894, 0, 0.3804, 0.5536, -0.1236, 0.2894, 0.2986, -0.2103, 0.3804, 0.5536, -0.1236, 0.2894, 0.2986, 0.2103, 0.3804, 0.5536, 0.1236, 0.3804, 0.5536, -0.1236, 0, -0.6894, 0, 0.2894, 0.2986, 0.2103, -0.3804, 0.5536, -0.1236, -0.1106, 0.2986, -0.3403, -0.2351, 0.5536, -0.3236, -0.1106, 0.2986, -0.3403, -0.3578, 0.2986, 0, 0, -0.6894, 0, -0.1106, 0.2986, -0.3403, -0.3804, 0.5536, -0.1236, -0.3578, 0.2986, 0, 0, 0.5536, -0.4, 0.2894, 0.2986, -0.2103, 0.2351, 0.5536, -0.3236, 0.2894, 0.2986, -0.2103, -0.1106, 0.2986, -0.3403, 0, -0.6894, 0, 0.2894, 0.2986, -0.2103, 0, 0.5536, -0.4, -0.1106, 0.2986, -0.3403, 0.2894, 0.2986, 0.2103, 0.2351, 0.5536, 0.3236, 0.3804, 0.5536, 0.1236, -0.1106, 0.2986, 0.3403, -0.2351, 0.5536, 0.3236, 0, 0.5536, 0.4, -0.3578, 0.2986, 0, -0.3804, 0.5536, -0.1236, -0.3804, 0.5536, 0.1236, -0.1106, 0.2986, -0.3403, 0, 0.5536, -0.4, -0.2351, 0.5536, -0.3236, 0.2894, 0.2986, -0.2103, 0.3804, 0.5536, -0.1236, 0.2351, 0.5536, -0.3236, 0, 0.5536, 0.1528, -0.2351, 0.5536, 0.3236, -0.3804, 0.5536, 0.1236, 0, 0.5536, 0.1528, 0, 0.5536, 0.4, -0.2351, 0.5536, 0.3236, 0.3804, 0.5536, 0.1236, 0, 0.5536, 0.4, 0, 0.5536, 0.1528, 0.3804, 0.5536, 0.1236, 0.2351, 0.5536, 0.3236, 0, 0.5536, 0.4, 0, 0.5536, -0.1528, -0.3804, 0.5536, 0.1236, -0.3804, 0.5536, -0.1236, 0, 0.5536, -0.1528, 0, 0.5536, 0.1528, -0.3804, 0.5536, 0.1236, 0.3804, 0.5536, -0.1236, 0, 0.5536, 0.1528, 0, 0.5536, -0.1528, 0.3804, 0.5536, -0.1236, 0.3804, 0.5536, 0.1236, 0, 0.5536, 0.1528, 0, 0.5536, -0.4, -0.3804, 0.5536, -0.1236, -0.2351, 0.5536, -0.3236, 0, 0.5536, -0.4, 0, 0.5536, -0.1528, -0.3804, 0.5536, -0.1236, 0.2351, 0.5536, -0.3236, 0, 0.5536, -0.1528, 0, 0.5536, -0.4, 0.2351, 0.5536, -0.3236, 0.3804, 0.5536, -0.1236, 0, 0.5536, -0.1528, 0.2351, 0.5536, 0.3236, -0.1106, 0.2986, 0.3403, 0, 0.5536, 0.4, -0.1106, 0.2986, 0.3403, 0.2894, 0.2986, 0.2103, 0, -0.6894, 0, -0.1106, 0.2986, 0.3403, 0.2351, 0.5536, 0.3236, 0.2894, 0.2986, 0.2103)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_es01y"]
 size = Vector3(0.1, 0.1, 0.1)
-
-[sub_resource type="Animation" id="Animation_5eqp4"]
-resource_name = "Fall"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -3, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -3, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
 
 [sub_resource type="Animation" id="Animation_hulof"]
 length = 0.001
@@ -119,39 +84,105 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.113342, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5eqp4"]
+resource_name = "Fall"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.366667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 4, 0), Vector3(0, 4, 0), Vector3(0, -3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 4, 0), Vector3(0, 4, 0), Vector3(0, -3, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.366667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [false, true, true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.113342, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jdw8a"]
 _data = {
-"Fall": SubResource("Animation_5eqp4"),
-"RESET": SubResource("Animation_hulof")
+&"RESET": SubResource("Animation_hulof"),
+&"Fall": SubResource("Animation_5eqp4")
 }
 
 [node name="Stalactite" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 collision_layer = 0
-collision_mask = 7
+collision_mask = 6
 script = ExtResource("1_35dh8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.993584, -0.113099, 0, 0.113099, 0.993584, 0, 0, 0)
 visible = false
-mesh = SubResource("ArrayMesh_h8unk")
+mesh = SubResource("ArrayMesh_k37jd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_2l5bd")
 
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -2.4, 0)
+collision_mask = 14
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_es01y")
+
 [node name="Shadow" parent="." instance=ExtResource("2_8y54a")]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -3, 0)
-modulate = Color(0, 0, 0, 0.501961)
-
-[node name="Area3D" type="Area3D" parent="Shadow"]
-collision_mask = 5
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Shadow/Area3D"]
-shape = SubResource("BoxShape3D_es01y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_jdw8a")
+&"": SubResource("AnimationLibrary_jdw8a")
 }
 
-[connection signal="body_entered" from="Shadow/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

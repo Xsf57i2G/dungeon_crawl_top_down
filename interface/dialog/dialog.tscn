@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://g547cnnf10fx"]
+
+[ext_resource type="Script" path="res://interface/dialog/dialog.gd" id="1_pil26"]
+
+[node name="Dialog" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pil26")

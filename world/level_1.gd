@@ -1,10 +1,9 @@
-@tool
 extends Node3D
 
 var astar = AStar3D.new()
 var noise = FastNoiseLite.new()
-var width = 32
-var depth = 32
+var width = 64
+var depth = 64
 var structures = {
 	preload("res://world/spikes.tscn"): 1.0,
 	preload("res://world/voxel.tscn"): 1.0,
@@ -67,7 +66,7 @@ func generate():
 		ladder_x = randi_range(-width, width - 1)
 		ladder_z = randi_range(-depth, depth - 1)
 	var ladder = preload("res://world/ladder.tscn").instantiate()
-	ladder.position = Vector3(ladder_x, 1, ladder_z)
+	ladder.position = Vector3(ladder_x, 0, ladder_z)
 	add_child(ladder)
 	astar.add_point(id, ladder.position)
 	var ladder_id = id

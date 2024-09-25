@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=4 uid="uid://cgf76tixaiu4f"]
+
+[ext_resource type="PackedScene" uid="uid://c0qykmt4w8gx5" path="res://item/consumable.tscn" id="1_a1pyv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iajvk"]
+radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rbye"]
+albedo_color = Color(0.745098, 1, 1, 1)
+roughness = 0.0
+clearcoat_roughness = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kvxpm"]
+_surfaces = [{
+"aabb": AABB(-0.173205, 0, -0.2, 0.34641, 0.260617, 0.4),
+"format": 34359742465,
+"index_count": 66,
+"index_data": PackedByteArray("AAADAAEAAwAKAAEAAwAIAAoABQAIAAMAAAAFAAMACgAIAAYABQAGAAgAAAAHAAUABwAGAAUAAAABAAsABwAEAAYACgAGAAQAAAAJAAcAAAALAAkACQAEAAcACwACAAkACQACAAQAAQAMAAsAAQAKAAwACwAMAAIADAAKAAQADAAEAAIA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 13,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAACAAAAAAMrMTD7MzEy+F7fGvYhvhT7idGU9q1wxPsrMTD7MzMy9AAAAAIhvhT7idOU9q1wxPsrMTD7MzMw9F7fGPYhvhT7idGU9AAAAAMrMTD7MzEw+F7fGPYhvhT7idGW9q1wxvsrMTD7MzMw9AAAAAIhvhT7idOW9q1wxvsrMTD7MzMy9F7fGvYhvhT7idGW9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gqhwt"]
+resource_name = "diamond_Cylinder"
+_surfaces = [{
+"aabb": AABB(-0.173205, 0, -0.2, 0.34641, 0.260617, 0.4),
+"attribute_data": PackedByteArray("qqoqPwAAgD8AAIA/AACAP1VVVT8AAIA//v//PgAAgD+lqio+AACAP6iqqj4AAIA/AACAPwAAAAAAAIA/AAAAAAAAwLMAAAAAAADAswAAAACoqqo+AAAAAKiqqj4AAAAAqKqqPgAAAABVVVU/AAAAAFVVVT8AAAAAVVVVPwAAAABVVVU/AAAAAP7//z4AAAAA/v//PgAAAAD+//8+AAAAAKqqKj8AAAAAqqoqPwAAAACqqio/AAAAAKqqKj8AAAAAqqoqPwAAAACqqio/AAAAAKqqKj8AAAAA/v//PgAAAAD+//8+AAAAAP7//z4AAAAA/v//PgAAAABVVVU/AAAAAFVVVT8AAAAAVVVVPwAAAACoqqo+AAAAAKiqqj4AAAAAqKqqPgAAAACoqqo+AAAAAAAAgD8AAAAAAADAswAAAAAAAIA/AAAAAAAAwLMAAAAApaoqPgAAAAClqio+AAAAAKWqKj4AAAAApaoqPgAAAAClqio+AAAAAKWqKj4AAAAApaoqPgAAAAA="),
+"format": 34359742487,
+"index_count": 66,
+"index_data": PackedByteArray("AQAOAAcAAgAXABAAAAAcABUAAwAjAB4ABQAtACUABAAJACsALAAMACQALAAwAAwAGwAZABQAGwASABkACAAvACoACAApAC8ADQAoAAYADQAgACgAIgATAB0AIgALABMAFgAhAA8AFgAaACEAJgAYABEAJgAfABgALgAnABEALgARAAoA"),
+"material": SubResource("StandardMaterial3D_0rbye"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 49,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAMrMTD7MzEy+AAAAAMrMTD7MzEy+AAAAAMrMTD7MzEy+AAAAAMrMTD7MzEy+F7fGvYhvhT7idGU9F7fGvYhvhT7idGU9F7fGvYhvhT7idGU9q1wxPsrMTD7MzMy9q1wxPsrMTD7MzMy9q1wxPsrMTD7MzMy9q1wxPsrMTD7MzMy9AAAAAIhvhT7idOU9AAAAAIhvhT7idOU9AAAAAIhvhT7idOU9q1wxPsrMTD7MzMw9q1wxPsrMTD7MzMw9q1wxPsrMTD7MzMw9q1wxPsrMTD7MzMw9F7fGPYhvhT7idGU9F7fGPYhvhT7idGU9F7fGPYhvhT7idGU9AAAAAMrMTD7MzEw+AAAAAMrMTD7MzEw+AAAAAMrMTD7MzEw+AAAAAMrMTD7MzEw+F7fGPYhvhT7idGW9F7fGPYhvhT7idGW9F7fGPYhvhT7idGW9q1wxvsrMTD7MzMw9q1wxvsrMTD7MzMw9q1wxvsrMTD7MzMw9q1wxvsrMTD7MzMw9AAAAAIhvhT7idOW9AAAAAIhvhT7idOW9AAAAAIhvhT7idOW9AAAAAIhvhT7idOW9q1wxvsrMTD7MzMy9q1wxvsrMTD7MzMy9q1wxvsrMTD7MzMy9q1wxvsrMTD7MzMy9F7fGvYhvhT7idGW9F7fGvYhvhT7idGW9F7fGvYhvhT7idGW9q5xVTv7/bNdVzqwcAACSqJbEl0T/////U2NVTiXR/7+pMawc2S7/v2g7l0T/f/+/qcKY5////79VzqwcAACSqFU9mOf///+/qTGsHNku/7//f///////v5lnVb3///8/RkdGx////7+pwpjn////v1XOrBwAAJKouLhGx////7+WxJdE//////9///////+/ZZhVvf///z+ZZ1W9////P2WYVb3///8/q5xVTv7/bNe4uEbH////v5bEl0T//////3///////79lmFW9////P7i4Rsf///+/ZZhVvf///z+rnFVO/v9s15lnVb3///8/U2NVTiXR/7//f///////v6nCmOf///+/uLhGx////7+ZZ1W9////P1NjVU4l0f+/RkdGx////79oO5dE/3//v/9///////+//3///////7+pwpjn////v1U9mOf///+/VT2Y5////7+pMawc2S7/v0ZHRsf///+/aDuXRP9//7//f///////v1U9mOf///+/RkdGx////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kvxpm")
+
+[node name="Diamond" instance=ExtResource("1_a1pyv")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("SphereShape3D_iajvk")
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("ArrayMesh_gqhwt")

@@ -1,10 +1,6 @@
 class_name Demon
 extends Character
 
-func _input(event):
-	if event is InputEventMouseMotion:
-		aim()
-
 func _physics_process(delta):
 	if dead:
 		return
@@ -27,7 +23,6 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
-			print("jump")
 			velocity += get_gravity() * delta
 
 	if Input.is_action_just_pressed("throw"):
@@ -43,6 +38,9 @@ func _physics_process(delta):
 		speed = 10
 	else:
 		speed = 5
+
+	if not direction:
+		aim()
 
 	move_and_slide()
 

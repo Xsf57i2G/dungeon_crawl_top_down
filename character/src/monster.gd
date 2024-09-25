@@ -8,10 +8,6 @@ var astar = AStarGrid2D.new()
 func _process(_delta):
 	target = closest("Mercenary")
 
-	astar.size = Vector2i(32, 32)
-	astar.cell_size = Vector2i(32, 32)
-	astar.update()
-
 func closest(group):
 	var characters = get_tree().get_nodes_in_group(group)
 	var closest_character = null

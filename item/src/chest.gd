@@ -7,6 +7,7 @@ var items = {
 	preload("res://item/potion.tscn"): 0.1,
 	preload("res://item/coin.tscn"): 0.1,
 	preload("res://item/gem.tscn"): 0.1,
+	preload("res://item/diamond.tscn"): 0.1,
 }
 
 func open():

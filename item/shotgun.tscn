@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmd7sfcope81n"]
+
+[ext_resource type="PackedScene" uid="uid://dijo1unbl6q5f" path="res://item/item.tscn" id="1_xeop6"]
+[ext_resource type="ArrayMesh" path="res://item/shotgun.res" id="2_lmsja"]
+
+[node name="Shotgun" instance=ExtResource("1_xeop6")]
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = ExtResource("2_lmsja")

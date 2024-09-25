@@ -5,6 +5,9 @@ extends RigidBody3D
 
 var hp = 3
 
+func _ready():
+	rotation.y = randi_range(0, 360)
+
 func _physics_process(delta):
 	if get_parent().name == "Hand" or get_parent().name == "Back":
 		global_transform = get_parent().global_transform
