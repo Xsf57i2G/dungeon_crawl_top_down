@@ -20,7 +20,7 @@
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_vpcog"]
 frames = 8
-speed_scale = 8.0
+speed_scale = 10.0
 frame_0/texture = ExtResource("1_iwqwg")
 frame_1/texture = ExtResource("2_yw3sy")
 frame_1/duration = 1.0
@@ -72,9 +72,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 1
-offset_right = 128.0
-offset_bottom = 84.0
+offset_right = 240.0
+offset_bottom = 224.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -82,12 +83,17 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VSplitContainer" type="HSplitContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Heart" type="TextureRect" parent="MarginContainer/VSplitContainer"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 texture = SubResource("AnimatedTexture_vpcog")
 
 [node name="Gem" type="TextureRect" parent="MarginContainer/VSplitContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

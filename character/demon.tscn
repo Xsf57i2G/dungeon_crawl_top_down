@@ -1,13 +1,72 @@
-[gd_scene load_steps=5 format=3 uid="uid://x8ifm6gqjwvl"]
+[gd_scene load_steps=8 format=3 uid="uid://x8ifm6gqjwvl"]
 
 [ext_resource type="PackedScene" uid="uid://cfra4br278mk1" path="res://character/character.tscn" id="1_777as"]
 [ext_resource type="Script" path="res://character/src/demon.gd" id="2_1m8wi"]
 [ext_resource type="Script" path="res://character/src/camera.gd" id="3_f72vf"]
 [ext_resource type="PackedScene" uid="uid://clw5cob55rnyc" path="res://character/skull.tscn" id="4_jfmso"]
 
+[sub_resource type="Animation" id="Animation_4ajju"]
+resource_name = "Bob"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.3, 1), Vector3(0, 2, 1), Vector3(0, 2.3, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h75gl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, -0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_obwce"]
+_data = {
+&"RESET": SubResource("Animation_h75gl"),
+&"Bob": SubResource("Animation_4ajju")
+}
+
 [node name="Demon" instance=ExtResource("1_777as")]
 collision_layer = 2
 script = ExtResource("2_1m8wi")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0.000506134, 0.921807, 0.0428682)
+bones/0/rotation = Quaternion(-0.00535826, 0.999807, 0.0187114, -0.00281709)
+bones/3/rotation = Quaternion(-0.581732, -0.388497, -0.44466, 0.559406)
+bones/4/rotation = Quaternion(-0.417143, 0.0814781, 0.382095, 0.820583)
+bones/5/rotation = Quaternion(-0.48133, -0.182968, -0.488916, 0.704134)
+bones/7/position = Vector3(-0.00876298, 0.423767, 0.00134473)
+bones/7/rotation = Quaternion(-0.393123, 0.575854, 0.565454, 0.440576)
+bones/8/rotation = Quaternion(-0.555299, 0.510388, 0.11586, 0.646316)
+bones/9/rotation = Quaternion(-0.329869, -0.0640626, 0.605399, 0.721509)
+bones/12/rotation = Quaternion(0.697441, 0.711033, -0.0623406, -0.0642045)
+bones/13/rotation = Quaternion(0.46478, -0.00396105, -0.175005, 0.86795)
+bones/15/rotation = Quaternion(-0.457436, 0.600516, -0.496396, 0.428631)
+bones/16/rotation = Quaternion(0.563424, 0.0215549, 0.144015, 0.813233)
+bones/17/rotation = Quaternion(0.878341, 0.0891835, -0.00470222, -0.469619)
+bones/18/position = Vector3(-0.142144, 0.175425, -0.276393)
+bones/18/rotation = Quaternion(0.0427648, 0.726199, 0.684653, 0.0453599)
+bones/19/rotation = Quaternion(0.967144, -5.21636e-09, -0.121293, -0.223429)
+bones/20/position = Vector3(0.142144, 0.411695, 0.583141)
+bones/20/rotation = Quaternion(-0.00440222, 0.995564, 0.0704781, -0.062185)
+bones/21/rotation = Quaternion(0.967144, 5.72095e-09, 0.121293, -0.223429)
 
 [node name="Hand" parent="Armature/Skeleton3D/MeshInstance3D/Inventory" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -0.8)
@@ -18,8 +77,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0.6)
 [node name="Camera3D" type="Camera3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
 projection = 1
-size = 15.0
+size = 10.0
 script = ExtResource("3_f72vf")
 
 [node name="Skull" parent="." index="8" instance=ExtResource("4_jfmso")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.8, 2.3, 0.8)
+transform = Transform3D(-0.7, 0, 6.11959e-08, 0, 0.7, 0, -6.11959e-08, 0, -0.7, 0, 1, -0.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skull" index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_obwce")
+}
+autoplay = "Bob"

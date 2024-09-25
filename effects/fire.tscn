@@ -63,6 +63,7 @@ amount = 15
 lifetime = 2.0
 randomness = 1.0
 fixed_fps = 5
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_v5whg")
 draw_pass_1 = SubResource("QuadMesh_tlnet")
 script = ExtResource("1_aoah6")
