@@ -9,3 +9,6 @@ func over():
 
 	var s = game_over
 	get_tree().change_scene_to_packed(s)
+
+func _on_demon_collected(amount):
+	score += amount

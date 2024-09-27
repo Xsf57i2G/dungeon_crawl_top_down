@@ -1,14 +1,11 @@
 [gd_scene load_steps=18 format=3 uid="uid://cqfeuif3ilyqa"]
 
 [ext_resource type="Script" path="res://world/level_1.gd" id="1_5qmym"]
-[ext_resource type="Texture2D" uid="uid://xubxoy5ee68g" path="res://world/ground.png" id="3_wlqye"]
-[ext_resource type="Texture2D" uid="uid://cr1l52ewgpigd" path="res://world/ground_n.png" id="4_02qcs"]
-[ext_resource type="PackedScene" uid="uid://cd1nowj7ql24m" path="res://world/spikes.tscn" id="5_h6uh2"]
-[ext_resource type="PackedScene" uid="uid://x8ifm6gqjwvl" path="res://character/demon.tscn" id="5_j1ywm"]
-[ext_resource type="PackedScene" uid="uid://0uudipouqipi" path="res://item/key.tscn" id="6_r3te7"]
-[ext_resource type="PackedScene" uid="uid://1i2ivhttko7d" path="res://item/chest.tscn" id="7_ntj8f"]
-[ext_resource type="PackedScene" uid="uid://bfvc7apcniln8" path="res://character/goblin.tscn" id="8_3xbkf"]
-[ext_resource type="PackedScene" uid="uid://c6l0m1uh7ylgj" path="res://world/stalactite.tscn" id="9_qa8y1"]
+[ext_resource type="PackedScene" uid="uid://c6l0m1uh7ylgj" path="res://world/stalactite.tscn" id="3_a2xh8"]
+[ext_resource type="PackedScene" uid="uid://cd1nowj7ql24m" path="res://world/spikes.tscn" id="4_jbt6t"]
+[ext_resource type="PackedScene" uid="uid://buwoxsiax72l2" path="res://character/demon.tscn" id="5_j1ywm"]
+[ext_resource type="PackedScene" uid="uid://1i2ivhttko7d" path="res://item/chest.tscn" id="5_ykivo"]
+[ext_resource type="PackedScene" uid="uid://0uudipouqipi" path="res://item/key.tscn" id="6_eequx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_piqll"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -28,26 +25,47 @@ fog_mode = 1
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ct6cg"]
-noise_type = 2
-frequency = 0.005
+[sub_resource type="Gradient" id="Gradient_spmqm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qvnqv"]
+frequency = 0.4
 fractal_type = 0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i5iqx"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_75jmf"]
+width = 8
+height = 8
+in_3d_space = true
+generate_mipmaps = false
 seamless = true
-noise = SubResource("FastNoiseLite_ct6cg")
+color_ramp = SubResource("Gradient_spmqm")
+noise = SubResource("FastNoiseLite_qvnqv")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxopv"]
-albedo_texture = ExtResource("3_wlqye")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ohmf2"]
+frequency = 0.4
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ssuy2"]
+width = 8
+height = 8
+in_3d_space = true
+seamless_blend_skirt = 0.3
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_ohmf2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sroa6"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.611765, 0.486275, 0.2, 1)
+albedo_texture = SubResource("NoiseTexture2D_75jmf")
 normal_enabled = true
-normal_texture = ExtResource("4_02qcs")
-detail_mask = SubResource("NoiseTexture2D_i5iqx")
-detail_blend_mode = 3
+normal_texture = SubResource("NoiseTexture2D_ssuy2")
 uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_53khd"]
-material = SubResource("StandardMaterial3D_cxopv")
-size = Vector2(128, 128)
+material = SubResource("StandardMaterial3D_sroa6")
+size = Vector2(64, 64)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kmadi"]
 data = PackedVector3Array(64, 0, 64, -64, 0, 64, 64, 0, -64, -64, 0, 64, -64, 0, -64, 64, 0, -64)
@@ -59,7 +77,6 @@ script = ExtResource("1_5qmym")
 environment = SubResource("Environment_gtt7s")
 
 [node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("PlaneMesh_53khd")
@@ -68,19 +85,16 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConcavePolygonShape3D_kmadi")
 
-[node name="Spikes" parent="." instance=ExtResource("5_h6uh2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -3)
-
-[node name="Key" parent="." instance=ExtResource("6_r3te7")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -2, 0.5, -3)
-
-[node name="Chest" parent="." instance=ExtResource("7_ntj8f")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3, 0.5, -3)
-
-[node name="Goblin" parent="." instance=ExtResource("8_3xbkf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-
-[node name="Stalactite" parent="." instance=ExtResource("9_qa8y1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2)
-
 [node name="Demon" parent="." instance=ExtResource("5_j1ywm")]
+
+[node name="Stalactite" parent="." instance=ExtResource("3_a2xh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -3)
+
+[node name="Spikes" parent="." instance=ExtResource("4_jbt6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -2)
+
+[node name="Chest" parent="." instance=ExtResource("5_ykivo")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2, 0.5, -2)
+
+[node name="Key" parent="." instance=ExtResource("6_eequx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -2)

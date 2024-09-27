@@ -1,1 +1,4 @@
-extends MeshInstance3D
+extends Node3D
+
+func _process(_delta):
+	pass

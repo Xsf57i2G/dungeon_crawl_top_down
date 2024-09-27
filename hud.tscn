@@ -58,6 +58,7 @@ frame_7/duration = 1.0
 
 [sub_resource type="SystemFont" id="SystemFont_yabqa"]
 font_names = PackedStringArray("ProggyCleanTT")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ix4b1"]
 font = SubResource("SystemFont_yabqa")
@@ -92,12 +93,20 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 texture = SubResource("AnimatedTexture_vpcog")
 
-[node name="Gem" type="TextureRect" parent="MarginContainer/VSplitContainer"]
+[node name="VSplitContainer" type="HSplitContainer" parent="MarginContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Gem" type="TextureRect" parent="MarginContainer/VSplitContainer/VSplitContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AnimatedTexture_ipwia")
+
+[node name="Score" type="Label" parent="MarginContainer/VSplitContainer/VSplitContainer"]
+layout_mode = 2
+text = "0"
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 1

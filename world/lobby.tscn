@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp43epo7yss2f"]
+[gd_scene load_steps=8 format=3 uid="uid://bp43epo7yss2f"]
+
+[ext_resource type="PackedScene" uid="uid://buwoxsiax72l2" path="res://character/demon.tscn" id="1_x063s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_381q6"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -24,6 +26,8 @@ size = Vector2(128, 128)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u3jea"]
 data = PackedVector3Array(64, 0, 64, -64, 0, 64, 64, 0, -64, -64, 0, 64, -64, 0, -64, 64, 0, -64)
 
+[sub_resource type="BoxMesh" id="BoxMesh_y4w4e"]
+
 [node name="Lobby" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -38,3 +42,12 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConcavePolygonShape3D_u3jea")
+
+[node name="Demon" parent="." instance=ExtResource("1_x063s")]
+
+[node name="Fireplace" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.2)
+mesh = SubResource("BoxMesh_y4w4e")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Fireplace"]
+light_color = Color(2, 0.8, 0, 1)
