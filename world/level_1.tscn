@@ -1,11 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqfeuif3ilyqa"]
+[gd_scene load_steps=14 format=3 uid="uid://cqfeuif3ilyqa"]
 
 [ext_resource type="Script" path="res://world/level_1.gd" id="1_5qmym"]
-[ext_resource type="PackedScene" uid="uid://c6l0m1uh7ylgj" path="res://world/stalactite.tscn" id="3_a2xh8"]
-[ext_resource type="PackedScene" uid="uid://cd1nowj7ql24m" path="res://world/spikes.tscn" id="4_jbt6t"]
 [ext_resource type="PackedScene" uid="uid://buwoxsiax72l2" path="res://character/demon.tscn" id="5_j1ywm"]
-[ext_resource type="PackedScene" uid="uid://1i2ivhttko7d" path="res://item/chest.tscn" id="5_ykivo"]
-[ext_resource type="PackedScene" uid="uid://0uudipouqipi" path="res://item/key.tscn" id="6_eequx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_piqll"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -62,6 +58,7 @@ albedo_texture = SubResource("NoiseTexture2D_75jmf")
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_ssuy2")
 uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_53khd"]
 material = SubResource("StandardMaterial3D_sroa6")
@@ -86,15 +83,3 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_kmadi")
 
 [node name="Demon" parent="." instance=ExtResource("5_j1ywm")]
-
-[node name="Stalactite" parent="." instance=ExtResource("3_a2xh8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -3)
-
-[node name="Spikes" parent="." instance=ExtResource("4_jbt6t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -2)
-
-[node name="Chest" parent="." instance=ExtResource("5_ykivo")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2, 0.5, -2)
-
-[node name="Key" parent="." instance=ExtResource("6_eequx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -2)

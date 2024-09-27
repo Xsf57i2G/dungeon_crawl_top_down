@@ -48,7 +48,7 @@ func generate():
 		for z in range(-depth, depth):
 			if randf() < 0.01:
 				var stalactite = structures.keys()[4].instantiate()
-				stalactite.position = Vector3(x, 0, z)
+				stalactite.position = Vector3(x, 0.5, z)
 				add_child(stalactite)
 
 func _on_mercenary_dropped(item):

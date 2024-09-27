@@ -40,6 +40,7 @@ albedo_texture = SubResource("NoiseTexture2D_sie2l")
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_ijsp6")
 uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_dki8x"]
 resource_local_to_scene = true
