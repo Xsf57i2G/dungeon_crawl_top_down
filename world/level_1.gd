@@ -40,16 +40,16 @@ func generate():
 
 	for x in range(-width, width):
 		for z in range(-depth, depth):
-			for i in items.keys():
-				if randf() < items[i]:
-					var item = i.instantiate()
-					item.position = Vector3(x, 1, z)
-					add_child(item)
-
-func spawn(what, where):
-	var w = what.instantiate()
-	w.position = where
-	add_child(w)
+			if randf() < 0.01:
+				var spike = structures.keys()[2].instantiate()
+				spike.position = Vector3(x, -1, z)
+				add_child(spike)
+	for x in range(-width, width):
+		for z in range(-depth, depth):
+			if randf() < 0.01:
+				var stalactite = structures.keys()[4].instantiate()
+				stalactite.position = Vector3(x, 0, z)
+				add_child(stalactite)
 
 func _on_mercenary_dropped(item):
 	item.reparent(self)

@@ -3,10 +3,6 @@ extends StaticBody3D
 
 var health = 3
 var items = {
-	preload("res://item/gem.tscn"): 0.01,
-	preload("res://item/coin.tscn"): 0.01,
-	preload("res://item/bomb.tscn"): 0.01,
-	preload("res://item/diamond.tscn"): 0.01,
 }
 
 func _ready():

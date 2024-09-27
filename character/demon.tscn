@@ -42,7 +42,7 @@ transform = Transform3D(0.989953, 0.0994224, 0.100544, -0.0750594, 0.972102, -0.
 autoplay = "Idle"
 
 [node name="Camera3D" type="Camera3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 1.33401, 14.7341, 15.2552)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
 projection = 1
 size = 10.0
 script = ExtResource("3_f72vf")
