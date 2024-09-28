@@ -10,27 +10,28 @@
 collision_layer = 2
 script = ExtResource("2_1m8wi")
 
+[node name="Hit" parent="." index="4"]
+pitch_scale = 0.8
+
 [node name="Skeleton3D" parent="Model/Armature" index="1"]
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.00999398, -0.0167564, -0.816853, 0.576516)
-bones/2/rotation = Quaternion(-0.0804411, 0.011787, -0.500127, 0.862127)
-bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.0178728, -0.00763127, 0.185408, 0.982469)
-bones/4/rotation = Quaternion(-0.0174367, 0.0064719, -0.0327916, 0.999289)
-bones/4/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(0.00999398, 0.0167564, 0.816853, 0.576516)
-bones/7/rotation = Quaternion(-0.0804411, -0.011787, 0.500127, 0.862127)
-bones/8/rotation = Quaternion(0.0178728, 0.00763127, -0.185408, 0.982469)
-bones/9/rotation = Quaternion(-0.0174367, -0.0064719, 0.0327916, 0.999289)
-bones/10/position = Vector3(0, 0.721376, 0)
-bones/11/rotation = Quaternion(-0.706746, 0.0424061, 0.0422969, 0.704927)
-bones/12/rotation = Quaternion(0.0372392, 2.85554e-05, -0.120241, 0.992046)
-bones/12/scale = Vector3(1, 1, 1)
-bones/13/rotation = Quaternion(-0.000885818, -0.000999884, 0.660555, 0.750776)
-bones/14/position = Vector3(0, 0.721376, 0)
-bones/15/rotation = Quaternion(-0.706746, -0.0424061, -0.0422969, 0.704927)
-bones/16/rotation = Quaternion(0.0372392, -2.85554e-05, 0.120241, 0.992046)
+bones/1/rotation = Quaternion(-0.135852, 0.086334, -0.805539, 0.570261)
+bones/2/rotation = Quaternion(-0.313093, 0.153957, -0.496755, 0.794673)
+bones/3/rotation = Quaternion(-0.481817, -0.237345, -0.157773, 0.82863)
+bones/4/rotation = Quaternion(-0.0590808, 0.320613, 0.348525, 0.878776)
+bones/5/rotation = Quaternion(0.00551398, 0, 0, 0.999985)
+bones/6/rotation = Quaternion(-0.135852, -0.086334, 0.805539, 0.570261)
+bones/7/rotation = Quaternion(-0.313093, -0.153957, 0.496755, 0.794673)
+bones/8/rotation = Quaternion(-0.481817, 0.237345, 0.157773, 0.82863)
+bones/9/rotation = Quaternion(-0.0590808, -0.320613, -0.348525, 0.878776)
+bones/11/rotation = Quaternion(-0.685117, -0.105627, -0.126046, 0.709627)
+bones/12/rotation = Quaternion(0.00314493, -0.005114, -0.00210745, 0.99998)
+bones/13/rotation = Quaternion(-0.000885818, -0.000999883, 0.660555, 0.750776)
+bones/15/rotation = Quaternion(-0.687073, 0.123006, 0.108772, 0.707792)
+bones/16/rotation = Quaternion(0.000342157, -0.0122828, 0.00282427, 0.999921)
 bones/17/rotation = Quaternion(-0.000885818, 0.000999884, -0.660555, 0.750776)
+bones/18/rotation = Quaternion(0.727572, 0.119103, 0.621259, 0.265501)
+bones/19/rotation = Quaternion(-0.0154397, 0.57121, -0.170032, -0.802851)
 
 [node name="Hand" parent="Model/Armature/Skeleton3D/Body/Inventory" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.8)
@@ -50,14 +51,10 @@ script = ExtResource("3_f72vf")
 [node name="Skull" parent="." index="7" instance=ExtResource("4_jfmso")]
 transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 1, 2, 1.1)
 
-[node name="Icosphere" parent="Skull" index="0"]
-transform = Transform3D(0.991634, 0.00502439, 0.12898, 0.00414881, 0.997485, -0.0707543, -0.129011, 0.0706975, 0.98912, 0, 0, 0)
-
 [node name="Swing" type="Timer" parent="." index="8"]
 
 [node name="Dust" parent="." index="9" instance=ExtResource("5_40md3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.5)
-emitting = false
 
 [editable path="Model"]
 [editable path="Skull"]

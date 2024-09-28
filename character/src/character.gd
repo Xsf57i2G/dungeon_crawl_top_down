@@ -10,7 +10,6 @@ signal died
 
 var unconscious = false
 var dead = false
-var gib = preload("res://item/gib.tscn")
 var items = []
 
 func _process(_delta):
@@ -25,15 +24,15 @@ func hit(n):
 		die()
 
 func die():
+	if dead:
+		return
+
 	dead = true
 
 	$Death.play()
 
 	died.emit()
 	drop()
-
-	var g = gib.instantiate()
-	add_child(g)
 
 func move(direction):
 	if dead:

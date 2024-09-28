@@ -1,6 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bp43epo7yss2f"]
 
 [ext_resource type="PackedScene" uid="uid://buwoxsiax72l2" path="res://character/demon.tscn" id="1_x063s"]
+[ext_resource type="PackedScene" uid="uid://c8m7pqavfmrj2" path="res://world/computer.tscn" id="2_5plsm"]
+[ext_resource type="PackedScene" uid="uid://e25x5r3xv7mp" path="res://ground.tscn" id="3_0kliw"]
+[ext_resource type="PackedScene" uid="uid://dts4ac2crmvk0" path="res://character/babe.tscn" id="4_yae21"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_381q6"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -20,34 +23,22 @@ fog_mode = 1
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 1.0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_5dcax"]
-size = Vector2(128, 128)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u3jea"]
-data = PackedVector3Array(64, 0, 64, -64, 0, 64, 64, 0, -64, -64, 0, 64, -64, 0, -64, 64, 0, -64)
-
-[sub_resource type="BoxMesh" id="BoxMesh_y4w4e"]
-
 [node name="Lobby" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pdm3s")
 
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = SubResource("PlaneMesh_5dcax")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("ConcavePolygonShape3D_u3jea")
-
 [node name="Demon" parent="." instance=ExtResource("1_x063s")]
 
-[node name="Fireplace" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.2)
-mesh = SubResource("BoxMesh_y4w4e")
+[node name="Computer" parent="." instance=ExtResource("2_5plsm")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 3, 0, 4)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Fireplace"]
-light_color = Color(2, 0.8, 0, 1)
+[node name="Ground" parent="." instance=ExtResource("3_0kliw")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.932324, 0.19056, -0.307342, 0, 0.849893, 0.526956, 0.361625, 0.491293, -0.792375, 0, 3, -2.8)
+current = true
+fov = 45.0
+
+[node name="Babe" parent="." instance=ExtResource("4_yae21")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 2, 0, 0)

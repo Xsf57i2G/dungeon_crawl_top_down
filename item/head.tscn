@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://60hjpoh8ys16"]
+
+[ext_resource type="PackedScene" uid="uid://dijo1unbl6q5f" path="res://item/item.tscn" id="1_x2mfo"]
+[ext_resource type="ArrayMesh" uid="uid://tqsjjm0e2i6w" path="res://item/head.res" id="2_ojxnt"]
+
+[node name="Head" instance=ExtResource("1_x2mfo")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+visible = false
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = ExtResource("2_ojxnt")
+
+[node name="Shadow" parent="." index="2"]
+visible = false
+
+[node name="Step" parent="." index="4"]
+visible = false

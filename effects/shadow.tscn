@@ -16,6 +16,6 @@ metadata/_snap_enabled = true
 metadata/_snap_count = 6
 
 [node name="Shadow" type="Sprite3D"]
-transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0)
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 3.86536e-05, 0, 0.00134233)
 modulate = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_xg430")

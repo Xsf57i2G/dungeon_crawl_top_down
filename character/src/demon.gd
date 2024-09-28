@@ -4,9 +4,12 @@ extends Character
 signal collected(amount)
 
 var combo = 0
-var acceleration = 5.0
-var friction = 5.0
-var max_speed = 10.0
+var acceleration = 1.0
+var friction = 32.0
+var gibs = [
+	preload("res://item/gib.tscn"),
+	preload("res://item/body.tscn"),
+]
 
 func _ready():
 	$Model/AnimationPlayer.play("Run1")
@@ -21,6 +24,13 @@ func _physics_process(delta):
 		$Skull.look_at($Skull.global_position + -direction)
 		$Model/Armature/Skeleton3D/Body.look_at(position + direction)
 
+		if Input.is_action_pressed("sprint"):
+			$Model/AnimationPlayer.play("Run2")
+			$Model/AnimationPlayer.speed_scale = 4
+		else:
+			$Model/AnimationPlayer.play("Run1")
+			$Model/AnimationPlayer.speed_scale = 3.5
+
 		move(direction)
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
@@ -30,16 +40,12 @@ func _physics_process(delta):
 
 	if $Model/Armature/Skeleton3D/Body/Inventory/Hand.get_child_count() > 0:
 		$Model/AnimationPlayer.play("Carry")
-	else:
-		if Input.is_action_just_pressed("sprint"):
-			speed *= 1.5
-			$Model/AnimationPlayer.play("Run2")
-			$Model/AnimationPlayer.speed_scale = 4
-		elif Input.is_action_just_released("sprint"):
-			speed = 5.0
-			$Dust.emitting = true
-			$Model/AnimationPlayer.play("Run1")
-			$Model/AnimationPlayer.speed_scale = 3.5
+
+	if Input.is_action_just_pressed("sprint"):
+		speed *= 1.5
+	elif Input.is_action_just_released("sprint"):
+		speed = 5.0
+		$Dust.emitting = true
 
 	var hands = $Model/Armature/Skeleton3D/Body/Inventory/Hand
 	if hands.get_child_count() > 0:
@@ -60,6 +66,17 @@ func _physics_process(delta):
 		pickup()
 
 	move_and_slide()
+
+func die():
+	if dead:
+		return
+
+	super()
+
+	for gib in gibs:
+		var g = gib.instantiate()
+		g.global_position = global_position
+		get_parent().add_child(g)
 
 func punch():
 	if dead:

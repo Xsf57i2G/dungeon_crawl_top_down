@@ -10,4 +10,9 @@ script = ExtResource("2_wtvsy")
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
-[node name="Bomb" parent="Armature/Skeleton3D/MeshInstance3D/Inventory/Back" index="0" instance=ExtResource("3_tkdo8")]
+[node name="Back" parent="Model/Armature/Skeleton3D/Body/Inventory" index="1"]
+transform = Transform3D(0.989953, 0.0994224, 0.100544, -0.0750594, 0.972102, -0.222226, -0.119833, 0.212446, 0.969797, 0, 0.5, 0.7)
+
+[node name="Bomb" parent="Model/Armature/Skeleton3D/Body/Inventory/Back" index="0" instance=ExtResource("3_tkdo8")]
+
+[editable path="Model"]

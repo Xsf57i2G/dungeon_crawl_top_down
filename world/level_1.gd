@@ -21,6 +21,11 @@ var items = {
 }
 var monsters = {
 }
+var allies = {
+	preload("res://character/babe.tscn"): 0.2,
+}
+
+var babe_spawned = false
 
 func _ready():
 	noise.seed = randi()
@@ -32,11 +37,18 @@ func generate():
 	for x in range(-width, width):
 		for z in range(-depth, depth):
 			var n = noise.get_noise_2d(x, z)
-			if n > 0.01 and (abs(x) >= 6 or abs(z) >= 6):
+			if n > 0.01 and (abs(x) >= 4 or abs(z) >= 4):
 				var voxel = structures.keys()[0].instantiate()
 				voxel.scale = Vector3(1, n + 1, 1)
 				voxel.position = Vector3(x, (n + 1) / 2, z)
 				add_child(voxel)
+	for x in range(-width, width):
+		for z in range(-depth, depth):
+			if not babe_spawned and randf() < 0.01:
+				var babe = allies.keys()[0].instantiate()
+				babe.position = Vector3(x, 0, z)
+				add_child(babe)
+				babe_spawned = true
 
 	for x in range(-width, width):
 		for z in range(-depth, depth):
@@ -50,6 +62,13 @@ func generate():
 				var stalactite = structures.keys()[4].instantiate()
 				stalactite.position = Vector3(x, 0.5, z)
 				add_child(stalactite)
+	for x in range(-width, width):
+		for z in range(-depth, depth):
+			if randf() < 0.01:
+				# spawn in random items
+				var item = items.keys()[randi() % items.size()].instantiate()
+				item.position = Vector3(x, 0.5, z)
+				add_child(item)
 
 func _on_mercenary_dropped(item):
 	item.reparent(self)

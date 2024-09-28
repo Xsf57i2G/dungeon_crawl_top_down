@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpwajj4sxo2yd"]
+
+[ext_resource type="PackedScene" uid="uid://cmy1fjbb7a0ir" path="res://item/gib.tscn" id="1_cramm"]
+[ext_resource type="ArrayMesh" uid="uid://dyy858roc2y0l" path="res://item/body.res" id="2_eivuh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7yd7i"]
+rough = true
+bounce = 1.0
+absorbent = true
+
+[node name="Gib" instance=ExtResource("1_cramm")]
+physics_material_override = SubResource("PhysicsMaterial_7yd7i")
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = ExtResource("2_eivuh")

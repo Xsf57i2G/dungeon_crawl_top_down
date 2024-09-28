@@ -24,6 +24,7 @@ stream_2/stream = ExtResource("7_3dlx8")
 stream_3/stream = ExtResource("8_asdp6")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ka62g"]
+radius = 1.0
 
 [node name="Character" type="CharacterBody3D"]
 axis_lock_linear_y = true
@@ -62,14 +63,12 @@ bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(0.121148, -0.268165, -0.545644, 0.784655)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(-0.683181, 0.0730286, 0.0217172, 0.726264)
-bones/3/scale = Vector3(1, 1, 1)
 bones/4/rotation = Quaternion(-0.0174367, 0.0064719, -0.0327915, 0.999289)
 bones/4/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(-0.087019, -0.0488932, 0.812685, 0.57409)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(-0.0641685, -0.118309, 0.550445, 0.823951)
 bones/8/rotation = Quaternion(-0.658904, -0.0247225, 0.0729242, 0.748275)
-bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(-0.0174367, -0.0064719, 0.0327915, 0.999289)
 bones/10/position = Vector3(-1.97171e-21, 0.721376, -1.42109e-14)
 bones/11/rotation = Quaternion(-0.693584, 0.143196, 0.160876, 0.687427)
@@ -92,7 +91,7 @@ collision_mask = 8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 
 [node name="Back" type="Marker3D" parent="Model/Armature/Skeleton3D/Body/Inventory"]
-transform = Transform3D(0.989953, 0.0994224, 0.100544, -0.0750594, 0.972102, -0.222226, -0.119833, 0.212446, 0.969797, 0, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.6)
 
 [node name="Feet" type="Marker3D" parent="Model/Armature/Skeleton3D/Body/Inventory"]
 

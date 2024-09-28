@@ -12,3 +12,5 @@ script = ExtResource("2_p73oo")
 
 [node name="Eyes" type="RayCast3D" parent="." index="5"]
 target_position = Vector3(0, 0, -16)
+
+[editable path="Model"]
