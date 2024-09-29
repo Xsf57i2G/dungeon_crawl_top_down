@@ -2,12 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://d3qwq6s6raniw" path="res://effects/shimmer.png" id="1_6jxpm"]
 
-[sub_resource type="Curve" id="Curve_plmgs"]
-_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_njalk"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_tdbuq"]
-curve = SubResource("Curve_plmgs")
+[sub_resource type="CurveTexture" id="CurveTexture_l61pr"]
+width = 64
+curve = SubResource("Curve_njalk")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pbedw"]
 lifetime_randomness = 1.0
@@ -15,8 +16,7 @@ emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3(0, 0.5, 0)
 scale_min = 0.1
-scale_max = 0.5
-scale_curve = SubResource("CurveTexture_tdbuq")
+scale_curve = SubResource("CurveTexture_l61pr")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_voy6o"]
 transparency = 1
@@ -30,10 +30,10 @@ disable_receive_shadows = true
 shadow_to_opacity = true
 billboard_mode = 1
 billboard_keep_scale = true
+proximity_fade_enabled = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_i3u3l"]
 material = SubResource("StandardMaterial3D_voy6o")
-size = Vector2(0.5, 0.5)
 
 [node name="Shimmer" type="GPUParticles3D"]
 lifetime = 2.0

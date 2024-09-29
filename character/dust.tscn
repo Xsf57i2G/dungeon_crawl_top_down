@@ -1,12 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://bkypndbjxjy75"]
 
-[sub_resource type="Curve" id="Curve_wtu0h"]
-_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+[sub_resource type="Curve" id="Curve_nbopv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
-metadata/_snap_enabled = true
 
 [sub_resource type="CurveTexture" id="CurveTexture_m0po8"]
-curve = SubResource("Curve_wtu0h")
+curve = SubResource("Curve_nbopv")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2s0nb"]
 angle_min = 1.07288e-05
@@ -14,7 +13,6 @@ angle_max = 360.0
 direction = Vector3(0, 1, 0)
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_m0po8")
-scale_over_velocity_max = 1.0
 
 [sub_resource type="Gradient" id="Gradient_foj13"]
 colors = PackedColorArray(1, 1, 1, 0.501961, 1, 1, 1, 0)
@@ -40,10 +38,13 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_m6g8s"]
 material = SubResource("StandardMaterial3D_yidx8")
+size = Vector2(3, 3)
 
 [node name="Dust" type="GPUParticles3D"]
+emitting = false
 amount = 16
 lifetime = 3.0
+one_shot = true
 speed_scale = 2.0
 randomness = 0.5
 fixed_fps = 8

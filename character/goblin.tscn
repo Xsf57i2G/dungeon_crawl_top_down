@@ -1,56 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfvc7apcniln8"]
+[gd_scene load_steps=3 format=3 uid="uid://cjx6ftbwvmfs5"]
 
-[ext_resource type="PackedScene" uid="uid://ddui4sd3fw402" path="res://character/monster.tscn" id="1_rs6ca"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ka62g"]
-radius = 1.0
+[ext_resource type="PackedScene" uid="uid://b1y4mxel56i3e" path="res://character/monster.tscn" id="1_rs6ca"]
+[ext_resource type="Script" path="res://character/src/monster.gd" id="2_o1cxb"]
 
 [node name="Goblin" instance=ExtResource("1_rs6ca")]
 axis_lock_linear_y = false
 axis_lock_angular_y = false
+script = ExtResource("2_o1cxb")
 
-[node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
-
-[node name="Shadow" parent="." index="1"]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
-
-[node name="Skeleton3D" parent="Model/Armature" index="1"]
-bones/0/scale = Vector3(1.09963, 1.09963, 1.09963)
-bones/1/rotation = Quaternion(0.106847, -0.082186, -0.8098, 0.571011)
-bones/2/rotation = Quaternion(0.121148, -0.268165, -0.545644, 0.784655)
-bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(-0.683181, 0.0730286, 0.0217172, 0.726264)
-bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-0.0174367, 0.0064719, -0.0327915, 0.999289)
-bones/6/rotation = Quaternion(-0.087019, -0.0488932, 0.812685, 0.57409)
-bones/7/rotation = Quaternion(-0.0641685, -0.118309, 0.550445, 0.823951)
-bones/8/rotation = Quaternion(-0.658904, -0.0247225, 0.0729242, 0.748275)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(-0.0174367, -0.0064719, 0.0327915, 0.999289)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/position = Vector3(-1.97171e-21, 0.721376, -1.42109e-14)
-bones/11/rotation = Quaternion(-0.693584, 0.143196, 0.160876, 0.687427)
-bones/12/rotation = Quaternion(0.0357003, -0.000651498, -0.115301, 0.992689)
-bones/12/scale = Vector3(1, 1, 1)
-bones/13/rotation = Quaternion(-0.00143918, -0.00144283, 0.670443, 0.741958)
-bones/14/position = Vector3(1.97171e-21, 0.721376, -1.42109e-14)
-bones/15/rotation = Quaternion(-0.717621, 0.0347804, 0.0421101, 0.694289)
-bones/16/rotation = Quaternion(0.0232759, -0.0316359, 0.63391, 0.772409)
-bones/17/rotation = Quaternion(-0.00190828, 0.0018261, -0.678666, 0.734442)
-
-[node name="Inventory" parent="Model/Armature/Skeleton3D/Body" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.899251, 0)
-
-[node name="CollisionShape3D" parent="Model/Armature/Skeleton3D/Body/Inventory" index="0"]
-shape = SubResource("SphereShape3D_ka62g")
-
-[node name="Hand" parent="Model/Armature/Skeleton3D/Body/Inventory" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -1)
-
-[node name="Feet" type="Marker3D" parent="Model/Armature/Skeleton3D/Body/Inventory" index="2"]
-
-[node name="Back" parent="Model/Armature/Skeleton3D/Body/Inventory" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.7)
+[node name="Area3D" parent="." index="6"]
+collision_mask = 3
 
 [editable path="Model"]

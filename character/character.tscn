@@ -83,10 +83,6 @@ bones/15/scale = Vector3(1, 1, 1)
 bones/16/rotation = Quaternion(0.0331596, -0.000324546, 0.114606, 0.992857)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/rotation = Quaternion(-0.000885939, 0.000999822, -0.660555, 0.750776)
-bones/18/position = Vector3(0.137151, 0.454279, 0.226608)
-bones/18/rotation = Quaternion(0.62818, 0.319669, 0.634971, 0.31625)
-bones/19/position = Vector3(-0.137151, 0.25396, -0.672754)
-bones/19/rotation = Quaternion(-0.30252, 0.64177, 0.305791, -0.634905)
 
 [node name="Inventory" type="Area3D" parent="Model/Armature/Skeleton3D/Body" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

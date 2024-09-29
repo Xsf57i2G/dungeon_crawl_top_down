@@ -65,6 +65,7 @@ font = SubResource("SystemFont_yabqa")
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

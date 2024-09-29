@@ -1,5 +1,5 @@
 class_name Babe
-extends CharacterBody3D
+extends RigidBody3D
 
 var carried = false
 var picked = false

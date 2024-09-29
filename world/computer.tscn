@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://c8m7pqavfmrj2"]
+[gd_scene load_steps=7 format=4 uid="uid://c8m7pqavfmrj2"]
 
 [ext_resource type="PackedScene" uid="uid://i3iy6jlim87u" path="res://world/fixtures.tscn" id="1_52pws"]
 [ext_resource type="Material" uid="uid://csrs6c0hmufkq" path="res://world/dirt.tres" id="2_2njjc"]
+[ext_resource type="ArrayMesh" uid="uid://b3ofec7ex4kqa" path="res://world/computer.res" id="3_7o4va"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxx6q"]
 resource_name = "Computer"
@@ -72,6 +73,7 @@ skeleton = NodePath("")
 
 [node name="MeshInstance3D" parent="." index="1"]
 visible = false
+mesh = ExtResource("3_7o4va")
 
 [node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

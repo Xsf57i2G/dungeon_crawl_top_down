@@ -7,8 +7,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_siva4"]
 radius = 0.3
 
-[node name="Babe" type="CharacterBody3D"]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+[node name="Babe" type="RigidBody3D"]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("2_yxmev")

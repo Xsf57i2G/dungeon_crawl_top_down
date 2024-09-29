@@ -45,21 +45,24 @@ func heal(n):
 	health += n
 
 func pickup():
-	var hands = $Model/Armature/Skeleton3D/Body/Inventory/Hand
-
 	$Model/AnimationPlayer.play("Carry")
 
+	var hands = $Model/Armature/Skeleton3D/Body/Inventory/Hand
+
 	for body in $Model/Armature/Skeleton3D/Body/Inventory.get_overlapping_bodies():
-		if body is Babe:
-			if not body.carried:
+		if abs(body.position.y - position.y) < 1.0:
+			if body is Babe:
+				if not body.carried:
+					body.reparent(hands)
+					body.look_at(position + global_transform.basis.z)
+					body.carried = true
+					body.set_identity()
+					break
+			if body is Item:
 				body.reparent(hands)
 				body.look_at(position + global_transform.basis.z)
-				body.carried = true
 				body.set_identity()
 				break
-		if body is Item:
-			if abs(body.position.y - position.y) < 1.0:
-				body.reparent(hands)
 
 func drop():
 	var hands = $Model/Armature/Skeleton3D/Body/Inventory/Hand

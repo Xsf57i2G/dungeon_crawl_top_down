@@ -1,17 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://827yyutx4185"]
+[gd_scene load_steps=19 format=4 uid="uid://827yyutx4185"]
 
 [ext_resource type="Script" path="res://effects/fire.gd" id="1_aoah6"]
 [ext_resource type="Script" path="res://effects/flicker.gd" id="1_bdm2c"]
+[ext_resource type="Shader" path="res://effects/fire.gdshader" id="3_620xs"]
 
-[sub_resource type="Curve" id="Curve_t5g5c"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+[sub_resource type="Gradient" id="Gradient_nkncd"]
+offsets = PackedFloat32Array(0, 0.1, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.501961, 0, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wcf1j"]
+gradient = SubResource("Gradient_nkncd")
+
+[sub_resource type="Curve" id="Curve_kfb4b"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_d8xcs"]
-curve = SubResource("Curve_t5g5c")
+[sub_resource type="CurveTexture" id="CurveTexture_abi0j"]
+curve = SubResource("Curve_kfb4b")
 
 [sub_resource type="Curve" id="Curve_jrapt"]
-_data = [Vector2(0, 1), 0.0, -1.6, 0, 1, Vector2(0.5, 0.2), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.4, 0.0, 1, 0]
+_data = [Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 1.4, 0.0, 0, 0]
 point_count = 3
 metadata/_snap_enabled = true
 
@@ -20,42 +29,92 @@ curve = SubResource("Curve_jrapt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v5whg"]
 direction = Vector3(0, 1, 0)
-spread = 15.0
+spread = 10.0
 initial_velocity_min = 1.0
 initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.8
-scale_max = 1.2
 scale_curve = SubResource("CurveTexture_enu2a")
-emission_curve = SubResource("CurveTexture_d8xcs")
+color = Color(1, 0.501961, 0, 1)
+color_ramp = SubResource("GradientTexture1D_wcf1j")
+emission_curve = SubResource("CurveTexture_abi0j")
 
-[sub_resource type="Gradient" id="Gradient_dfiha"]
+[sub_resource type="Gradient" id="Gradient_tc8rd"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-metadata/_snap_enabled = true
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bqtk5"]
-gradient = SubResource("Gradient_dfiha")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yf0ev"]
+gradient = SubResource("Gradient_tc8rd")
 width = 8
 height = 8
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.9, 0.1)
+fill_to = Vector2(0.8, 0.2)
 metadata/_snap_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur6if"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e615x"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
-albedo_color = Color(1, 0.501961, 0, 1)
-albedo_texture = SubResource("GradientTexture2D_bqtk5")
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_yf0ev")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="QuadMesh" id="QuadMesh_tlnet"]
-material = SubResource("StandardMaterial3D_ur6if")
+[sub_resource type="QuadMesh" id="QuadMesh_6d8gh"]
+material = SubResource("StandardMaterial3D_e615x")
+
+[sub_resource type="Gradient" id="Gradient_6hss2"]
+offsets = PackedFloat32Array(0, 0.5, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0, 1, 1, 0.25098, 0, 1, 1, 0.25098, 0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_03tno"]
+gradient = SubResource("Gradient_6hss2")
+fill_from = Vector2(0, 0.5)
+fill_to = Vector2(0.6, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_usog4"]
+resource_name = "Material"
+render_priority = 0
+shader = ExtResource("3_620xs")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = SubResource("GradientTexture2D_03tno")
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.5
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/noise_amplitude = null
+shader_parameter/noise_frequency = null
+shader_parameter/time = null
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_73t3v"]
+resource_name = "flame_Cube"
+_blend_shape_names = PackedStringArray("Flicker", "Key 2", "Key 3")
+_surfaces = [{
+"aabb": AABB(-0.239595, -0.3712, -0.239595, 0.47919, 0.759133, 0.47919),
+"attribute_data": PackedByteArray("AADAPgAAgD4AAMA+AAAAPwAAwD4AAEA/AADAPgAAgD8AACA/AAAAAAAAID8AAIA+AAAgPwAAAD8AACA/AABAPwAAAD8AAAA/AAAAPwAAAAAAAAA/AACAPwAAAD8AAIA+AAAAPwAAQD8="),
+"blend_shapes": PackedByteArray("AAAAAGn7kr4AAACAAAAAAGn7kr4AAACAAAAAAGn7kr4AAACAAAAAAGn7kr4AAACAA5adO8YPfj5qc948A5adO8YPfj5qc948A5adO8YPfj5qc948A5adO8YPfj5qc948cVh1PkyHhjxihNu9cVh1vqsCAD1ihNs9cVh1vqsCAD1ihNs9YoTbPXYm/rxxWHU+YoTbvZNUeb1xWHW+LIBdAzymJMEsgF0DKf/3rCyAXQNEArqTLIBdA0IqdsAEgtj45f+nrgSC2Pg3BP7rBILY+CssxL8Egtj4qKTWvS32iq80U2T1ci7qizyXEeZyLuqLhJde5VGlhXg0qsTu/gl8JGZa7OkAAAAA7Q2+vgAAAIAAAAAA7Q2+vgAAAIAAAAAA7Q2+vgAAAIAAAAAA7Q2+vgAAAIAddic9dElnPlV0Gb0ddic9dElnPlV0Gb0ddic9dElnPlV0Gb0ddic9dElnPlV0Gb3eDT8+q5wgu36ENb46CU6+iT6+O0xcYD46CU6+iT6+O0xcYD7unz8+2Ru1PAXZJD6qxj2+Z2ICunmtO77mgpMCosWjwOaCkwJ7/gbf5oKTAh4BI5/mgpMCgkRLv4SXQfUF8yachJdB9XcBIJ+El0H1F0Z3xoSXQfXzxA7A6fzowKpQSfM3SKaKz50H6zdIpor8n4XoLr3BiyK6wvU6CDLEEndw8AAAAADtDb6+AAAAgAAAAADtDb6+AAAAgAAAAADtDb6+AAAAgAAAAADtDb6+AAAAgAAAAAAhn8Y+AAAAgAAAAAAhn8Y+AAAAgAAAAAAhn8Y+AAAAgAAAAAAhn8Y+AAAAgO0NPj4AAAAA7Q0+vu0NPr4AAAAA7Q0+Pu0NPr4AAAAA7Q0+Pu0NPj4AAAAA7Q0+Pu0NPr4AAAAA7Q0+vv9/AAD/v/+//38AAP///9//fwAAAAD/3/9/AAD/P/+//3///////9//f///AAD/3/9/////P/+//3////+//789/58/IVmL9mBAPn88kzrsYEA+f+eSkOyevz5/3aYD9sEAnz+0azrs"),
+"format": 34359742487,
+"index_count": 24,
+"index_data": PackedByteArray("CwAJAAQAAAAJAAsAAQALAAgACAALAAUAAgAIAAwADAAIAAYACgAMAAcAAwAMAAoA"),
+"material": SubResource("ShaderMaterial_usog4"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 13,
+"vertex_data": PackedByteArray("AAAAAO0Nvr4AAACAAAAAAO0Nvr4AAACAAAAAAO0Nvr4AAACAAAAAAO0Nvr4AAACAAAAAAO0Nvj4AAACAAAAAAO0Nvj4AAACAAAAAAO0Nvj4AAACAAAAAAO0Nvj4AAACA7Q0+PgAAAADtDT6+7Q0+vgAAAADtDT4+7Q0+vgAAAADtDT4+7Q0+PgAAAADtDT4+7Q0+vgAAAADtDT6+/38AAP+//7//fwAA////3/9/AAAAAP/f/38AAP8//7//f///////3/9///8AAP/f/3////8//7//f////7//v////79OWBL2/z//f9iTJuz/P/9/2JMm7P+//3+wpxL2AAD/vyZsJuw=")
+}]
+blend_shape_mode = 0
 
 [node name="Fire" type="GPUParticles3D"]
 cast_shadow = 0
@@ -65,7 +124,7 @@ randomness = 1.0
 fixed_fps = 4
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_v5whg")
-draw_pass_1 = SubResource("QuadMesh_tlnet")
+draw_pass_1 = SubResource("QuadMesh_6d8gh")
 script = ExtResource("1_aoah6")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -74,3 +133,12 @@ light_specular = 0.0
 shadow_blur = 0.0
 distance_fade_enabled = true
 script = ExtResource("1_bdm2c")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("ArrayMesh_73t3v")
+skeleton = NodePath("")
+blend_shapes/Flicker = 0.0
+"blend_shapes/Key 2" = 0.0
+"blend_shapes/Key 3" = 1.0

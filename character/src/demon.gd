@@ -5,7 +5,7 @@ signal collected(amount)
 
 var combo = 0
 var acceleration = 1.0
-var friction = 32.0
+var friction = 16.0
 var gibs = [
 	preload("res://item/gib.tscn"),
 	preload("res://item/body.tscn"),
@@ -25,34 +25,31 @@ func _physics_process(delta):
 		$Model/Armature/Skeleton3D/Body.look_at(position + direction)
 
 		if Input.is_action_pressed("sprint"):
+			speed = 7.0
 			$Model/AnimationPlayer.play("Run2")
 			$Model/AnimationPlayer.speed_scale = 4
 		else:
+			speed = 5.0
 			$Model/AnimationPlayer.play("Run1")
 			$Model/AnimationPlayer.speed_scale = 3.5
 
 		move(direction)
 	else:
+		if velocity.length() > 0:
+			$Model/AnimationPlayer.play("Skid")
+			$Dust.emitting = true
+		else:
+			$Model/AnimationPlayer.play("Idle")
+
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 		velocity.z = move_toward(velocity.z, 0, friction * delta)
-		$Dust.emitting = false
-		$Model/AnimationPlayer.play("Idle")
-
-	if Input.is_action_just_pressed("sprint"):
-		speed *= 1.5
-		$Dust.emitting = true
-	elif Input.is_action_just_released("sprint"):
-		speed = 5.0
-		$Dust.emitting = true
 
 	var hands = $Model/Armature/Skeleton3D/Body/Inventory/Hand
 	if hands.get_child_count() > 0:
+		$Model/AnimationPlayer.play("Carry")
 		var item = hands.get_child(0)
 		if item.has_method("use"):
 			item.use()
-	else:
-		if Input.is_action_just_pressed("use"):
-			punch()
 
 	if is_on_wall():
 		if abs(direction.x) < 0.1 or abs(direction.z) < 0.1:
@@ -65,6 +62,9 @@ func _physics_process(delta):
 		swap()
 
 	if Input.is_action_just_pressed("interact"):
+		var timer = $Model/Armature/Skeleton3D/Body/Inventory/Timer
+		if timer.is_stopped():
+			timer.start()
 		pickup()
 
 	move_and_slide()
@@ -89,7 +89,6 @@ func punch():
 
 func throw():
 	$Model/AnimationPlayer.stop()
-	$Model/AnimationPlayer.play("Kick")
 
 	var torso = $Model/Armature/Skeleton3D/Body
 	var hands = $Model/Armature/Skeleton3D/Body/Inventory/Hand
