@@ -38,11 +38,9 @@ func _physics_process(delta):
 		$Dust.emitting = false
 		$Model/AnimationPlayer.play("Idle")
 
-	if $Model/Armature/Skeleton3D/Body/Inventory/Hand.get_child_count() > 0:
-		$Model/AnimationPlayer.play("Carry")
-
 	if Input.is_action_just_pressed("sprint"):
 		speed *= 1.5
+		$Dust.emitting = true
 	elif Input.is_action_just_released("sprint"):
 		speed = 5.0
 		$Dust.emitting = true
@@ -55,6 +53,10 @@ func _physics_process(delta):
 	else:
 		if Input.is_action_just_pressed("use"):
 			punch()
+
+	if is_on_wall():
+		if abs(direction.x) < 0.1 or abs(direction.z) < 0.1:
+			$Model/AnimationPlayer.play("Squish")
 
 	if Input.is_action_just_pressed("throw"):
 		throw()

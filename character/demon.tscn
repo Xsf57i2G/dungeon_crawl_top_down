@@ -6,41 +6,23 @@
 [ext_resource type="PackedScene" uid="uid://clw5cob55rnyc" path="res://character/skull.tscn" id="4_jfmso"]
 [ext_resource type="PackedScene" uid="uid://bkypndbjxjy75" path="res://character/dust.tscn" id="5_40md3"]
 
-[node name="Demon" instance=ExtResource("1_777as")]
+[node name="Demon" groups=["Demon"] instance=ExtResource("1_777as")]
 collision_layer = 2
+axis_lock_linear_y = false
+axis_lock_angular_y = false
 script = ExtResource("2_1m8wi")
 
-[node name="Hit" parent="." index="4"]
-pitch_scale = 0.8
+[node name="Hand" parent="Model/Armature/Skeleton3D/Body/Inventory" index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.3, -0.8)
 
-[node name="Skeleton3D" parent="Model/Armature" index="1"]
-bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(-0.135852, 0.086334, -0.805539, 0.570261)
-bones/2/rotation = Quaternion(-0.313093, 0.153957, -0.496755, 0.794673)
-bones/3/rotation = Quaternion(-0.481817, -0.237345, -0.157773, 0.82863)
-bones/4/rotation = Quaternion(-0.0590808, 0.320613, 0.348525, 0.878776)
-bones/5/rotation = Quaternion(0.00551398, 0, 0, 0.999985)
-bones/6/rotation = Quaternion(-0.135852, -0.086334, 0.805539, 0.570261)
-bones/7/rotation = Quaternion(-0.313093, -0.153957, 0.496755, 0.794673)
-bones/8/rotation = Quaternion(-0.481817, 0.237345, 0.157773, 0.82863)
-bones/9/rotation = Quaternion(-0.0590808, -0.320613, -0.348525, 0.878776)
-bones/11/rotation = Quaternion(-0.685117, -0.105627, -0.126046, 0.709627)
-bones/12/rotation = Quaternion(0.00314493, -0.005114, -0.00210745, 0.99998)
-bones/13/rotation = Quaternion(-0.000885818, -0.000999883, 0.660555, 0.750776)
-bones/15/rotation = Quaternion(-0.687073, 0.123006, 0.108772, 0.707792)
-bones/16/rotation = Quaternion(0.000342157, -0.0122828, 0.00282427, 0.999921)
-bones/17/rotation = Quaternion(-0.000885818, 0.000999884, -0.660555, 0.750776)
-bones/18/rotation = Quaternion(0.727572, 0.119103, 0.621259, 0.265501)
-bones/19/rotation = Quaternion(-0.0154397, 0.57121, -0.170032, -0.802851)
-
-[node name="Hand" parent="Model/Armature/Skeleton3D/Body/Inventory" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.8)
-
-[node name="Back" parent="Model/Armature/Skeleton3D/Body/Inventory" index="1"]
-transform = Transform3D(0.989953, 0.0994224, 0.100544, -0.0750594, 0.972102, -0.222226, -0.119833, 0.212446, 0.969797, 0, 0.6, 0.7)
+[node name="Back" parent="Model/Armature/Skeleton3D/Body/Inventory" index="2"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.6, 0.4)
 
 [node name="AnimationPlayer" parent="Model" index="1"]
 autoplay = "Idle"
+
+[node name="Hit" parent="." index="5"]
+pitch_scale = 0.8
 
 [node name="Camera3D" type="Camera3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)

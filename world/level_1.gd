@@ -22,7 +22,7 @@ var items = {
 var monsters = {
 }
 var allies = {
-	preload("res://character/babe.tscn"): 0.2,
+	preload("res://character/babe.tscn"): 1.0,
 }
 
 var babe_spawned = false
@@ -49,7 +49,6 @@ func generate():
 				babe.position = Vector3(x, 0, z)
 				add_child(babe)
 				babe_spawned = true
-
 	for x in range(-width, width):
 		for z in range(-depth, depth):
 			if randf() < 0.01:
@@ -65,7 +64,6 @@ func generate():
 	for x in range(-width, width):
 		for z in range(-depth, depth):
 			if randf() < 0.01:
-				# spawn in random items
 				var item = items.keys()[randi() % items.size()].instantiate()
 				item.position = Vector3(x, 0.5, z)
 				add_child(item)
