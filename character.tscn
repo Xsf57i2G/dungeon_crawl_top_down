@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfra4br278mk1"]
+
+[ext_resource type="Script" path="res://character/src/character.gd" id="1_m3l35"]
+[ext_resource type="AudioStream" uid="uid://dtcy7mtmtpl23" path="res://character/sfx/step.wav" id="3_rmajo"]
+[ext_resource type="AudioStream" uid="uid://bkf07ydofijtq" path="res://character/sfx/scream_1.wav" id="4_bdwms"]
+[ext_resource type="AudioStream" uid="uid://bwr2c71vmsihn" path="res://character/sfx/scream_2.wav" id="5_m8ikg"]
+[ext_resource type="AudioStream" uid="uid://del0t4cxd0va6" path="res://character/sfx/scream_3.wav" id="6_n6i3e"]
+[ext_resource type="AudioStream" uid="uid://c4ba3geakyibg" path="res://character/sfx/scream_4.wav" id="7_1tv57"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k4n5k"]
+radius = 0.4
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dr1dp"]
+streams_count = 1
+stream_0/stream = ExtResource("3_rmajo")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bj0ih"]
+streams_count = 4
+stream_0/stream = ExtResource("4_bdwms")
+stream_1/stream = ExtResource("5_m8ikg")
+stream_2/stream = ExtResource("6_n6i3e")
+stream_3/stream = ExtResource("7_1tv57")
+
+[node name="Character" type="CharacterBody3D"]
+axis_lock_linear_y = true
+axis_lock_angular_y = true
+script = ExtResource("1_m3l35")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_k4n5k")
+
+[node name="Death" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Step" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_dr1dp")
+volume_db = -10.0
+
+[node name="Timer" type="Timer" parent="Step"]
+one_shot = true
+autostart = true
+
+[node name="Hit" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_bj0ih")

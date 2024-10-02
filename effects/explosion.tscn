@@ -1,79 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwrf5e7ax3ygb"]
+[gd_scene load_steps=7 format=3 uid="uid://bwrf5e7ax3ygb"]
 
 [ext_resource type="Script" path="res://effects/explosion.gd" id="1_t14sv"]
 [ext_resource type="AudioStream" uid="uid://jjfgk1u1edt5" path="res://effects/explosion.wav" id="2_67uup"]
-
-[sub_resource type="Gradient" id="Gradient_jpn37"]
-colors = PackedColorArray(0, 0, 0, 1, 1, 0.501961, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_r77g1"]
-gradient = SubResource("Gradient_jpn37")
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0.1)
-metadata/_snap_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hy4lc"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = SubResource("GradientTexture2D_r77g1")
-
-[sub_resource type="SphereMesh" id="SphereMesh_pqaoj"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_hy4lc")
-radius = 0.8
-radial_segments = 6
-rings = 3
+[ext_resource type="Shader" uid="uid://d16kumvana4rc" path="res://effects/cloud.tres" id="3_385pa"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iyqrt"]
-radius = 0.7
 
-[sub_resource type="Animation" id="Animation_psmjb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector3(0, 0, 0)]
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n5vq7"]
+render_priority = 0
+shader = ExtResource("3_385pa")
 
-[sub_resource type="Animation" id="Animation_hbq06"]
-resource_name = "Spin"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.261799, 0), Vector3(0, 0.785398, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ynb51"]
-_data = {
-"RESET": SubResource("Animation_psmjb"),
-"Spin": SubResource("Animation_hbq06")
-}
+[sub_resource type="SphereMesh" id="SphereMesh_yc58b"]
+material = SubResource("ShaderMaterial_n5vq7")
+radial_segments = 6
+rings = 4
 
 [node name="Explosion" type="Area3D"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-collision_mask = 7
 input_ray_pickable = false
 script = ExtResource("1_t14sv")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-cast_shadow = 0
-mesh = SubResource("SphereMesh_pqaoj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_iyqrt")
@@ -81,17 +25,13 @@ shape = SubResource("SphereShape3D_iyqrt")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(1, 0.501961, 0, 1)
 light_specular = 0.0
-omni_range = 10.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ynb51")
-}
-autoplay = "Spin"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_67uup")
 autoplay = true
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.104378, 0, 0.742701, 0, 0.75, 0, -0.742701, 0, -0.104378, 0, 0, 0)
+mesh = SubResource("SphereMesh_yc58b")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

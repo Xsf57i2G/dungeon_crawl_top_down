@@ -1,68 +1,92 @@
-[gd_scene load_steps=6 format=3 uid="uid://buwoxsiax72l2"]
+[gd_scene load_steps=10 format=3 uid="uid://buwoxsiax72l2"]
 
-[ext_resource type="PackedScene" uid="uid://cfra4br278mk1" path="res://character/character.tscn" id="1_777as"]
+[ext_resource type="PackedScene" uid="uid://cfra4br278mk1" path="res://character.tscn" id="1_777as"]
 [ext_resource type="Script" path="res://character/src/demon.gd" id="2_1m8wi"]
 [ext_resource type="Script" path="res://character/src/camera.gd" id="3_f72vf"]
 [ext_resource type="PackedScene" uid="uid://clw5cob55rnyc" path="res://character/skull.tscn" id="4_jfmso"]
 [ext_resource type="PackedScene" uid="uid://bkypndbjxjy75" path="res://character/dust.tscn" id="5_40md3"]
+[ext_resource type="AudioStream" uid="uid://cf4p248658qvr" path="res://character/oh_yeah.wav" id="7_5mpnm"]
+[ext_resource type="PackedScene" uid="uid://bbdqtapofrulf" path="res://character/Demon.glb" id="9_avkdj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r62uo"]
+radius = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_53k0n"]
+streams_count = 1
+stream_0/stream = ExtResource("7_5mpnm")
 
 [node name="Demon" groups=["Demon"] instance=ExtResource("1_777as")]
 collision_layer = 2
-axis_lock_linear_y = false
-axis_lock_angular_y = false
 script = ExtResource("2_1m8wi")
 
-[node name="Skeleton3D" parent="Model/Armature" index="1"]
-bones/1/rotation = Quaternion(0.00999393, -0.0167565, -0.816853, 0.576516)
-bones/2/rotation = Quaternion(-0.0804411, 0.0117871, -0.500127, 0.862127)
-bones/3/rotation = Quaternion(0.0178728, -0.00763125, 0.185408, 0.982469)
-bones/4/rotation = Quaternion(-0.0174367, 0.00647193, -0.0327915, 0.999289)
-bones/5/rotation = Quaternion(0, 0, 0, 1)
-bones/6/rotation = Quaternion(0.00999393, 0.0167565, 0.816853, 0.576516)
-bones/7/rotation = Quaternion(-0.0804411, -0.0117871, 0.500127, 0.862127)
-bones/8/rotation = Quaternion(0.0178728, 0.00763125, -0.185408, 0.982469)
-bones/9/rotation = Quaternion(-0.0174367, -0.00647193, 0.0327915, 0.999289)
-bones/10/position = Vector3(0, 0.721376, 0)
-bones/11/rotation = Quaternion(-0.706057, 0.0266221, 0.0255628, 0.707193)
-bones/12/rotation = Quaternion(0.0331596, 0.000324548, -0.114606, 0.992857)
-bones/13/rotation = Quaternion(-0.000885938, -0.000999822, 0.660555, 0.750776)
-bones/14/position = Vector3(0, 0.721376, 0)
-bones/15/rotation = Quaternion(-0.706057, -0.0266221, -0.0255628, 0.707193)
-bones/16/rotation = Quaternion(0.0331596, -0.000324548, 0.114606, 0.992857)
-bones/17/rotation = Quaternion(-0.000885938, 0.000999822, -0.660555, 0.750776)
-
-[node name="Timer" type="Timer" parent="Model/Armature/Skeleton3D/Body/Inventory" index="1"]
-one_shot = true
-
-[node name="Hand" parent="Model/Armature/Skeleton3D/Body/Inventory" index="2"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.2, -0.1)
-
-[node name="Back" parent="Model/Armature/Skeleton3D/Body/Inventory" index="3"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, -0.1, 0.5)
-
-[node name="AnimationPlayer" parent="Model" index="1"]
-autoplay = "Idle"
-
-[node name="Hit" parent="." index="5"]
+[node name="Hit" parent="." index="3"]
 pitch_scale = 0.8
 
-[node name="Camera3D" type="Camera3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 20)
-projection = 1
+[node name="Camera3D" type="Camera3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 8)
+fov = 45.0
 size = 10.0
 script = ExtResource("3_f72vf")
 
-[node name="Skull" parent="." index="7" instance=ExtResource("4_jfmso")]
-transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 1, 1.5, 1)
-
-[node name="Icosphere" parent="Skull" index="0"]
-"blend_shapes/Key 1" = 0.963928
-"blend_shapes/Key 2" = 0.5926
-
-[node name="Swing" type="Timer" parent="." index="8"]
-
-[node name="Dust" parent="." index="9" instance=ExtResource("5_40md3")]
+[node name="Dust" parent="." index="5" instance=ExtResource("5_40md3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.5)
 
-[editable path="Model"]
-[editable path="Skull"]
+[node name="Demon" parent="." index="6" instance=ExtResource("9_avkdj")]
+
+[node name="Belt" parent="Demon/Armature" index="0"]
+visible = false
+
+[node name="Skeleton3D" parent="Demon/Armature" index="1"]
+bones/1/rotation = Quaternion(0.00999393, -0.0167565, -0.816853, 0.576516)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.0995496, 0.0258352, -0.470462, 0.876406)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.0399044, -0.0124349, 0.152051, 0.987489)
+bones/7/rotation = Quaternion(0.00999393, 0.0167565, 0.816853, 0.576516)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.0995496, -0.0258352, 0.470462, 0.876406)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.0399044, 0.0124349, -0.152051, 0.987489)
+bones/12/rotation = Quaternion(0.515055, 0.484477, 0.515055, -0.484477)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(0.0331596, 0.000324535, -0.114606, 0.992857)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.000885986, -0.000999856, 0.660555, 0.750776)
+bones/16/rotation = Quaternion(-0.515055, 0.484477, 0.515055, 0.484477)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(0.0331596, -0.000324535, 0.114606, 0.992857)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(-0.000885986, 0.000999856, -0.660555, 0.750776)
+
+[node name="Inventory" type="Area3D" parent="Demon/Armature/Skeleton3D/Body" index="0"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Demon/Armature/Skeleton3D/Body/Inventory" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_r62uo")
+
+[node name="Back" type="Marker3D" parent="Demon/Armature/Skeleton3D/Body/Inventory" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0.3)
+
+[node name="Hand" type="Marker3D" parent="Demon/Armature/Skeleton3D/Body/Inventory" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.1)
+
+[node name="Timer" type="Timer" parent="Demon/Armature/Skeleton3D/Body/Inventory" index="3"]
+one_shot = true
+
+[node name="Shorts" parent="Demon/Armature/Skeleton3D" index="1"]
+visible = false
+
+[node name="AnimationPlayer" parent="Demon" index="1"]
+speed_scale = 4.0
+
+[node name="Skull" parent="." index="7" instance=ExtResource("4_jfmso")]
+transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 1, 1, 1)
+
+[node name="Pose" type="AudioStreamPlayer3D" parent="." index="8"]
+stream = SubResource("AudioStreamRandomizer_53k0n")
+
+[connection signal="animation_finished" from="Demon/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="Demon"]

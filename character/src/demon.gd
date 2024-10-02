@@ -1,18 +1,13 @@
 class_name Demon
 extends Character
 
-signal collected(amount)
-
-var combo = 0
+var posing = false
 var acceleration = 1.0
 var friction = 16.0
 var gibs = [
 	preload("res://item/gib.tscn"),
 	preload("res://item/body.tscn"),
 ]
-
-func _ready():
-	$Model/AnimationPlayer.play("Run1")
 
 func _physics_process(delta):
 	if dead:
@@ -22,38 +17,26 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		$Skull.look_at($Skull.global_position + -direction)
-		$Model/Armature/Skeleton3D/Body.look_at(position + direction)
+		$Demon/Armature/Skeleton3D/Body.look_at(position + direction)
 
-		if Input.is_action_pressed("sprint"):
-			speed = 7.0
-			$Model/AnimationPlayer.play("Run2")
-			$Model/AnimationPlayer.speed_scale = 4
+		if Input.is_action_just_pressed("Run"):
+			$Demon/AnimationPlayer.play("Run")
+			acceleration = 2.0
 		else:
-			speed = 5.0
-			$Model/AnimationPlayer.play("Run1")
-			$Model/AnimationPlayer.speed_scale = 3.5
+			$Demon/AnimationPlayer.play("Walk")
+			acceleration = 1.0
+
+		if is_on_wall():
+			if abs(direction.x) < 0.1 or abs(direction.z) < 0.1:
+				$Demon/AnimationPlayer.play("Squish")
 
 		move(direction)
 	else:
 		if velocity.length() > 0:
-			$Model/AnimationPlayer.play("Skid")
-			$Dust.emitting = true
-		else:
-			$Model/AnimationPlayer.play("Idle")
+			$Demon/AnimationPlayer.play("Skid")
 
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 		velocity.z = move_toward(velocity.z, 0, friction * delta)
-
-	var hands = $Model/Armature/Skeleton3D/Body/Inventory/Hand
-	if hands.get_child_count() > 0:
-		$Model/AnimationPlayer.play("Carry")
-		var item = hands.get_child(0)
-		if item.has_method("use"):
-			item.use()
-
-	if is_on_wall():
-		if abs(direction.x) < 0.1 or abs(direction.z) < 0.1:
-			$Model/AnimationPlayer.play("Squish")
 
 	if Input.is_action_just_pressed("throw"):
 		throw()
@@ -62,9 +45,6 @@ func _physics_process(delta):
 		swap()
 
 	if Input.is_action_just_pressed("interact"):
-		var timer = $Model/Armature/Skeleton3D/Body/Inventory/Timer
-		if timer.is_stopped():
-			timer.start()
 		pickup()
 
 	move_and_slide()
@@ -80,46 +60,76 @@ func die():
 		g.global_position = global_position
 		get_parent().add_child(g)
 
+func pose():
+	var poses = [
+		"Flex"
+	]
+
+	$Demon/Armature/Skeleton3D/Body.look_at(position + global_transform.basis.z)
+	$Demon/AnimationPlayer.play(poses.pick_random())
+	$Pose.play()
+
 func punch():
 	if dead:
 		return
 
-	$Model/AnimationPlayer.stop()
-	$Model/AnimationPlayer.play("Punch")
+	$Demon/AnimationPlayer.stop()
+	$Demon/AnimationPlayer.play("Punch")
+
+func pickup():
+	var hand = $Demon/Armature/Skeleton3D/Body/Inventory/Hand
+	var bodies = $Demon/Armature/Skeleton3D/Body/Inventory.get_overlapping_bodies()
+
+	for body in bodies:
+		if abs(body.position.y - position.y) < 1.0:
+			if body is Babe or Item:
+				$Demon/AnimationPlayer.play("Carry")
+				body.reparent(hand)
+				body.global_transform = hand.global_transform
+				if body.has_method("pickup"):
+					body.pickup()
+				break
+			if body is Goblin:
+				health -= 1
+				break
+			else:
+				pose()
 
 func throw():
-	$Model/AnimationPlayer.stop()
+	var hand = $Demon/Armature/Skeleton3D/Body/Inventory/Hand
 
-	var torso = $Model/Armature/Skeleton3D/Body
-	var hands = $Model/Armature/Skeleton3D/Body/Inventory/Hand
-	if hands.get_child_count() > 0:
-		var item = hands.get_child(0)
-		if item is Character:
-			item.reparent(get_parent())
-			drop()
-		if item is Item:
-			var impulse = (torso.global_transform.basis * Vector3.FORWARD * 10) + (Vector3.UP * 4)
+	if hand.get_child_count() > 0:
+		var item = hand.get_child(0)
+		if item is Item or Babe:
+			var impulse = (hand.global_transform.basis * Vector3.FORWARD * 10) + (Vector3.UP * 4)
 			item.apply_impulse(impulse, Vector3.FORWARD)
 			item.reparent(get_parent())
+			if item.has_method("throw"):
+				item.throw()
 			drop()
 
-func aim():
-	if dead:
-		return
+func drop():
+	var hands = $Demon/Armature/Skeleton3D/Body/Inventory/Hand
+	var back = $Demon/Armature/Skeleton3D/Body/Inventory/Back
+	if hands.get_child_count() > 0:
+		dropped.emit(hands.get_child(0))
+	if back.get_child_count() > 0:
+		dropped.emit(back.get_child(0))
 
-	var a = $Camera3D.aim()
-	$Model/Armature/Skeleton3D/Body.look_at(a)
+func swap():
+	var hand = $Demon/Armature/Skeleton3D/Body/Inventory/Hand
+	var back = $Demon/Armature/Skeleton3D/Body/Inventory/Back
 
-	var rotation_y = $Model/Armature/Skeleton3D/Body.rotation.y
-	var increment = deg_to_rad(45)
-	rotation_y = round(rotation_y / increment) * increment
+	if hand.get_child_count() > 0:
+		var item = hand.get_child(0)
+		item.position = back.position
+		item.reparent(back)
+		item.set_identity()
+	elif back.get_child_count() > 0:
+		var item = back.get_child(0)
+		item.position = hand.position
+		item.reparent(hand)
+		item.set_identity()
 
-	$Model/Armature/Skeleton3D/Body.rotation.y = rotation_y
-	$Model/Armature/Skeleton3D/Body.rotation.x = 0
-	$Model/Armature/Skeleton3D/Body.rotation.z = 0
-
-func _on_swing_timeout():
-	combo = 0
-
-func _on_animation_player_animation_finished(anim_name):
-	pass
+func _on_animation_player_animation_finished(_anim_name):
+	$Demon/AnimationPlayer.play("Idle")

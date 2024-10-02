@@ -1,5 +1,3 @@
-@tool
-
 extends Node3D
 
 var noise = FastNoiseLite.new()

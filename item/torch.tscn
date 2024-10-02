@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://78xnej5ntss3"]
+[gd_scene load_steps=9 format=3 uid="uid://78xnej5ntss3"]
 
 [ext_resource type="PackedScene" uid="uid://dijo1unbl6q5f" path="res://item/item.tscn" id="1_w6nmv"]
 [ext_resource type="PackedScene" uid="uid://827yyutx4185" path="res://effects/fire.tscn" id="2_0wn7j"]
@@ -7,29 +7,71 @@
 height = 1.0
 radius = 0.1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8io0"]
+albedo_color = Color(0.429568, 0.22509, 1.92523e-07, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_5m8di"]
+material = SubResource("StandardMaterial3D_a8io0")
 top_radius = 0.1
 bottom_radius = 0.1
 height = 1.0
 radial_segments = 4
 rings = 1
-cap_top = false
 cap_bottom = false
 
+[sub_resource type="Animation" id="Animation_2milj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1.5, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_578ki"]
+resource_name = "Boing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 1,
+"values": [Vector3(1.2, 1, 1.2), Vector3(0.8, 1.2, 0.8), Vector3(1.2, 1, 1.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_glrcb"]
+_data = {
+&"RESET": SubResource("Animation_2milj"),
+&"Boing": SubResource("Animation_578ki")
+}
+
 [node name="Torch" instance=ExtResource("1_w6nmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 collision_mask = 1
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("CylinderShape3D_k8813")
 
 [node name="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0.1, 0)
+cast_shadow = 0
 mesh = SubResource("CylinderMesh_5m8di")
 
-[node name="Shadow" parent="." index="2"]
-transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, -0.4, 0)
-
-[node name="Shimmer" parent="." index="3"]
-visible = false
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_glrcb")
+}
 
 [node name="Fire" parent="." index="5" instance=ExtResource("2_0wn7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqfeuif3ilyqa"]
+[gd_scene load_steps=10 format=3 uid="uid://cqfeuif3ilyqa"]
 
 [ext_resource type="Script" path="res://world/level_1.gd" id="1_5qmym"]
 [ext_resource type="PackedScene" uid="uid://e25x5r3xv7mp" path="res://ground.tscn" id="2_p3vng"]
-[ext_resource type="PackedScene" uid="uid://cjx6ftbwvmfs5" path="res://character/goblin.tscn" id="4_vdogd"]
+[ext_resource type="PackedScene" uid="uid://bbkgdfrk2xm2k" path="res://character/babe.tscn" id="5_6luhc"]
 [ext_resource type="PackedScene" uid="uid://buwoxsiax72l2" path="res://character/demon.tscn" id="5_j1ywm"]
+[ext_resource type="PackedScene" uid="uid://dvex5jaqtfi3p" path="res://item/bomb.tscn" id="6_483cd"]
+[ext_resource type="PackedScene" uid="uid://ms0ksfsoqt33" path="res://character/goblin.tscn" id="7_fl612"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_piqll"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -30,8 +32,18 @@ script = ExtResource("1_5qmym")
 environment = SubResource("Environment_gtt7s")
 
 [node name="Ground" parent="." instance=ExtResource("2_p3vng")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
 
 [node name="Demon" parent="." instance=ExtResource("5_j1ywm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)
 
-[node name="Goblin" parent="." instance=ExtResource("4_vdogd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+[node name="Bomb" parent="." instance=ExtResource("6_483cd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5327, 0.1, 30.6322)
+
+[node name="Goblin" parent="." instance=ExtResource("7_fl612")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5073, 0, 32.0993)
+axis_lock_linear_y = false
+
+[node name="Babe" parent="." instance=ExtResource("5_6luhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5812, 2.38419e-07, 30.5774)
+axis_lock_linear_y = false

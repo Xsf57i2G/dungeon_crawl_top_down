@@ -11,6 +11,4 @@ script = ExtResource("1_ijr7l")
 
 [node name="Level 1" parent="." instance=ExtResource("2_5e4uy")]
 
-[connection signal="collected" from="Level 1/Demon" to="." method="_on_demon_collected"]
-
 [editable path="Level 1"]

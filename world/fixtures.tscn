@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://i3iy6jlim87u"]
+[gd_scene load_steps=5 format=3 uid="uid://i3iy6jlim87u"]
 
 [ext_resource type="Script" path="res://world/fixtures.gd" id="1_tcnfi"]
-[ext_resource type="PackedScene" uid="uid://by7wi8brogbv6" path="res://effects/shadow.tscn" id="2_s321m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_iswwb"]
 
@@ -17,9 +16,6 @@ mesh = SubResource("BoxMesh_iswwb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_0hlg3")
-
-[node name="Shadow" parent="." instance=ExtResource("2_s321m")]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -0.4, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 

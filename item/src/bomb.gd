@@ -7,7 +7,6 @@ func use():
 	explode()
 
 func explode():
-	$Fire.show()
 	$AnimationPlayer2.play("Grow")
 
 	await get_tree().create_timer(1.5).timeout

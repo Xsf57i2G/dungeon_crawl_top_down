@@ -1,107 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfra4br278mk1"]
+[gd_scene load_steps=3 format=3 uid="uid://ojcskbtohcx4"]
 
-[ext_resource type="Script" path="res://character/src/character.gd" id="1_ymcd0"]
-[ext_resource type="PackedScene" uid="uid://by7wi8brogbv6" path="res://effects/shadow.tscn" id="2_agwyg"]
-[ext_resource type="AudioStream" uid="uid://dtcy7mtmtpl23" path="res://character/step.wav" id="4_uwghg"]
-[ext_resource type="AudioStream" uid="uid://bkf07ydofijtq" path="res://character/scream_1.wav" id="5_wpoyh"]
-[ext_resource type="AudioStream" uid="uid://bwr2c71vmsihn" path="res://character/scream_2.wav" id="6_quhaf"]
-[ext_resource type="AudioStream" uid="uid://del0t4cxd0va6" path="res://character/scream_3.wav" id="7_3dlx8"]
-[ext_resource type="AudioStream" uid="uid://c4ba3geakyibg" path="res://character/scream_4.wav" id="8_asdp6"]
-[ext_resource type="PackedScene" uid="uid://bbdqtapofrulf" path="res://character/demon.glb" id="12_mhfui"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2f3rs"]
+radial_segments = 4
+rings = 1
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k4n5k"]
-radius = 0.4
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpoyd"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dr1dp"]
-streams_count = 1
-stream_0/stream = ExtResource("4_uwghg")
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_q8uq2"]
-radius = 1.0
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bj0ih"]
-streams_count = 4
-stream_0/stream = ExtResource("5_wpoyh")
-stream_1/stream = ExtResource("6_quhaf")
-stream_2/stream = ExtResource("7_3dlx8")
-stream_3/stream = ExtResource("8_asdp6")
-
-[node name="Character" type="CharacterBody3D"]
+[node name="Character" type="RigidBody3D"]
+collision_layer = 8
 axis_lock_linear_y = true
-axis_lock_angular_y = true
-script = ExtResource("1_ymcd0")
+lock_rotation = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_2f3rs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_k4n5k")
-
-[node name="Shadow" parent="." instance=ExtResource("2_agwyg")]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0.1, 0)
-
-[node name="Death" type="AudioStreamPlayer3D" parent="."]
-
-[node name="Step" type="AudioStreamPlayer3D" parent="."]
-stream = SubResource("AudioStreamRandomizer_dr1dp")
-volume_db = -10.0
-
-[node name="Timer" type="Timer" parent="Step"]
-one_shot = true
-autostart = true
-
-[node name="Model" parent="." instance=ExtResource("12_mhfui")]
-
-[node name="Belt" parent="Model/Armature" index="0"]
-visible = false
-
-[node name="Skeleton3D" parent="Model/Armature" index="1"]
-bones/1/rotation = Quaternion(0.0776504, 0.0793187, -0.813166, 0.57135)
-bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-0.777154, 0.45444, 0.0746194, 0.428892)
-bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(-0.458834, -0.187768, -0.0417807, 0.867449)
-bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(0.218364, 0.440676, 0.221122, 0.842156)
-bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.00551398, 0, 0, 0.999985)
-bones/6/rotation = Quaternion(0.0776504, -0.0793187, 0.813166, 0.57135)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-0.777154, -0.45444, -0.0746194, 0.428892)
-bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.458834, 0.187768, 0.0417806, 0.86745)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.218363, -0.440676, -0.221122, 0.842156)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/position = Vector3(-1.95518e-21, 0.721376, -1.42109e-14)
-bones/11/rotation = Quaternion(-0.658429, -0.254576, -0.294728, 0.644047)
-bones/11/scale = Vector3(1, 1, 1)
-bones/12/rotation = Quaternion(0.00299689, 0.125001, -0.708366, 0.694682)
-bones/12/scale = Vector3(1, 1, 1)
-bones/13/rotation = Quaternion(-0.000885933, -0.00099982, 0.660555, 0.750776)
-bones/14/position = Vector3(1.95518e-21, 0.721376, -1.42109e-14)
-bones/15/rotation = Quaternion(-0.641521, -0.277004, -0.31091, 0.644247)
-bones/15/scale = Vector3(1, 1, 1)
-bones/16/rotation = Quaternion(0.0331596, -0.000324546, 0.114606, 0.992857)
-bones/16/scale = Vector3(1, 1, 1)
-bones/17/rotation = Quaternion(-0.000885939, 0.000999822, -0.660555, 0.750776)
-
-[node name="Inventory" type="Area3D" parent="Model/Armature/Skeleton3D/Body" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/Armature/Skeleton3D/Body/Inventory"]
-shape = SubResource("SphereShape3D_q8uq2")
-
-[node name="Hand" type="Marker3D" parent="Model/Armature/Skeleton3D/Body/Inventory"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-
-[node name="Back" type="Marker3D" parent="Model/Armature/Skeleton3D/Body/Inventory"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="Shorts" parent="Model/Armature/Skeleton3D" index="1"]
-visible = false
-
-[node name="Hit" type="AudioStreamPlayer3D" parent="."]
-stream = SubResource("AudioStreamRandomizer_bj0ih")
-
-[editable path="Model"]
+shape = SubResource("CapsuleShape3D_xpoyd")
