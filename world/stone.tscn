@@ -6,21 +6,46 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ljo6f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_o27hj"]
+resource_local_to_scene = true
 material = ExtResource("2_phb4o")
 
-[sub_resource type="Animation" id="Animation_s4i4v"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_d5nxm"]
+[sub_resource type="Animation" id="Animation_cx1bv"]
 resource_name = "Hit"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c0vqw"]
-_data = {
-&"RESET": SubResource("Animation_s4i4v"),
-&"Hit": SubResource("Animation_d5nxm")
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shading_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
 }
 
-[node name="Stone" type="StaticBody3D"]
+[sub_resource type="Animation" id="Animation_r8vtc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shading_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vgwyv"]
+_data = {
+&"RESET": SubResource("Animation_r8vtc"),
+&"Hit": SubResource("Animation_cx1bv")
+}
+
+[node name="Voxel" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_5bm5s")
 
@@ -33,7 +58,7 @@ mesh = SubResource("BoxMesh_o27hj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_c0vqw")
+&"": SubResource("AnimationLibrary_vgwyv")
 }
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

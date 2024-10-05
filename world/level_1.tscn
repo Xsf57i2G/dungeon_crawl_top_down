@@ -1,15 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cqfeuif3ilyqa"]
+[gd_scene load_steps=12 format=3 uid="uid://cqfeuif3ilyqa"]
 
 [ext_resource type="Script" path="res://world/level_1.gd" id="1_5qmym"]
 [ext_resource type="PackedScene" uid="uid://507bnvhay5sf" path="res://character/spider.tscn" id="4_pmjvb"]
 [ext_resource type="PackedScene" uid="uid://bqb8uvjpaya86" path="res://character/demon.tscn" id="5_j1ywm"]
-[ext_resource type="PackedScene" uid="uid://ms0ksfsoqt33" path="res://character/goblin.tscn" id="6_0grwk"]
 [ext_resource type="PackedScene" uid="uid://78xnej5ntss3" path="res://item/torch.tscn" id="7_2fqg6"]
 [ext_resource type="PackedScene" uid="uid://c8m7pqavfmrj2" path="res://world/computer.tscn" id="8_xqkem"]
 [ext_resource type="PackedScene" uid="uid://fagnu4ducvni" path="res://character/Babe/babe.tscn" id="9_dapiw"]
-[ext_resource type="PackedScene" uid="uid://0uudipouqipi" path="res://item/key.tscn" id="9_wii0k"]
 [ext_resource type="PackedScene" uid="uid://cxd73uuixfxu0" path="res://world/boulder.tscn" id="10_3dk8d"]
-[ext_resource type="PackedScene" uid="uid://c06tu7gepjs4x" path="res://item/potion.tscn" id="10_rwbmo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_piqll"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -48,10 +45,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9686, -1.90735e-06, 33.220
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 29)
 script = null
 
-[node name="Goblin" parent="." instance=ExtResource("6_0grwk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 32)
-script = null
-
 [node name="Torch" parent="." instance=ExtResource("7_2fqg6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.6, 31)
 physics_material_override = SubResource("PhysicsMaterial_a86g8")
@@ -59,37 +52,24 @@ physics_material_override = SubResource("PhysicsMaterial_a86g8")
 [node name="Computer" parent="." instance=ExtResource("8_xqkem")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 30, 0, 30)
 
-[node name="Key2" parent="." instance=ExtResource("9_wii0k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.3608, 0, 31.0399)
-physics_material_override = SubResource("PhysicsMaterial_a86g8")
-
 [node name="Babe" parent="." instance=ExtResource("9_dapiw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 30)
 
-[node name="Potion2" parent="." instance=ExtResource("10_rwbmo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9788, 0.670577, 31.5399)
-
 [node name="Boulder" parent="." instance=ExtResource("10_3dk8d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.32, 2.5, 26.6994)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 2.5, 25)
 
-[connection signal="body_entered" from="Gem" to="Gem" method="_on_body_entered"]
-[connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@19098" to="@RigidBody3D@19098" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@19256" to="@RigidBody3D@19256" method="_on_body_entered"]
-[connection signal="body_entered" from="Diamond" to="Diamond" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@19762" to="@RigidBody3D@19762" method="_on_body_entered"]
-[connection signal="body_entered" from="Bomb" to="Bomb" method="_on_body_entered"]
-[connection signal="body_entered" from="Chest" to="Chest" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@20639" to="@RigidBody3D@20639" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@21037" to="@RigidBody3D@21037" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@21220" to="@RigidBody3D@21220" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@21331" to="@RigidBody3D@21331" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@21909" to="@RigidBody3D@21909" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@22062" to="@RigidBody3D@22062" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@22480" to="@RigidBody3D@22480" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@22601" to="@RigidBody3D@22601" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@22761" to="@RigidBody3D@22761" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@22836" to="@RigidBody3D@22836" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@22975" to="@RigidBody3D@22975" method="_on_body_entered"]
-[connection signal="body_entered" from="@RigidBody3D@23613" to="@RigidBody3D@23613" method="_on_body_entered"]
 [connection signal="body_entered" from="Potion" to="Potion" method="_on_body_entered"]
+[connection signal="body_entered" from="@RigidBody3D@476293" to="@RigidBody3D@476293" method="_on_body_entered"]
+[connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]
+[connection signal="body_entered" from="Chest" to="Chest" method="_on_body_entered"]
+[connection signal="body_entered" from="@RigidBody3D@477620" to="@RigidBody3D@477620" method="_on_body_entered"]
+[connection signal="body_entered" from="@RigidBody3D@477779" to="@RigidBody3D@477779" method="_on_body_entered"]
+[connection signal="body_entered" from="@RigidBody3D@478578" to="@RigidBody3D@478578" method="_on_body_entered"]
+[connection signal="body_entered" from="@RigidBody3D@479569" to="@RigidBody3D@479569" method="_on_body_entered"]
+[connection signal="body_entered" from="@RigidBody3D@480571" to="@RigidBody3D@480571" method="_on_body_entered"]
+[connection signal="body_entered" from="Diamond" to="Diamond" method="_on_body_entered"]
+[connection signal="body_entered" from="@RigidBody3D@480953" to="@RigidBody3D@480953" method="_on_body_entered"]
+[connection signal="body_entered" from="Bomb" to="Bomb" method="_on_body_entered"]
+[connection signal="body_entered" from="Gem" to="Gem" method="_on_body_entered"]
+[connection signal="body_entered" from="@RigidBody3D@481519" to="@RigidBody3D@481519" method="_on_body_entered"]
+[connection signal="body_entered" from="@RigidBody3D@481625" to="@RigidBody3D@481625" method="_on_body_entered"]

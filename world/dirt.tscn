@@ -21,6 +21,7 @@ color_ramp = SubResource("Gradient_thx4f")
 noise = SubResource("FastNoiseLite_6ly3v")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfl1m"]
+resource_local_to_scene = true
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.341825, 0.265945, 0.0914962, 1)
 albedo_texture = SubResource("NoiseTexture2D_65liq")

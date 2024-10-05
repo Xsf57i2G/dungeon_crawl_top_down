@@ -17,6 +17,7 @@ color_ramp = SubResource("Gradient_vgsu8")
 noise = SubResource("FastNoiseLite_g4kns")
 
 [resource]
+resource_local_to_scene = true
 shading_mode = 2
 albedo_texture = SubResource("NoiseTexture2D_sie2l")
 uv1_triplanar = true

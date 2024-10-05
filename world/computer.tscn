@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8m7pqavfmrj2"]
+[gd_scene load_steps=8 format=3 uid="uid://c8m7pqavfmrj2"]
 
 [ext_resource type="PackedScene" uid="uid://i3iy6jlim87u" path="res://world/fixtures.tscn" id="1_52pws"]
 [ext_resource type="ArrayMesh" uid="uid://cssmtjjh5esmd" path="res://world/computer.res" id="2_jol6a"]
+[ext_resource type="Script" path="res://world/computer.gd" id="2_l5dc6"]
 
 [sub_resource type="Animation" id="Animation_c8r05"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Computer:mesh:surface_0/material:emission")
+tracks/0/path = NodePath("Computer:mesh:surface_1/material:emission")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +24,7 @@ resource_name = "Boot"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Computer:mesh:surface_0/material:emission")
+tracks/0/path = NodePath("Computer:mesh:surface_1/material:emission")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,11 +35,11 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_f34pl"]
-resource_name = "Power Off"
+resource_name = "Shutdown"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Computer:mesh:surface_0/material:emission")
+tracks/0/path = NodePath("Computer:mesh:surface_1/material:emission")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,11 +53,12 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_c8r05"),
 &"Boot": SubResource("Animation_nctrk"),
-&"Power Off": SubResource("Animation_f34pl")
+&"Shutdown": SubResource("Animation_f34pl")
 }
 
 [node name="Computer" instance=ExtResource("1_52pws")]
 collision_layer = 0
+script = ExtResource("2_l5dc6")
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -67,8 +69,8 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Computer" type="MeshInstance3D" parent="." index="2"]
+layers = 4
 mesh = ExtResource("2_jol6a")
-skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
@@ -76,8 +78,11 @@ libraries = {
 }
 
 [node name="Camera3D" type="Camera3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 1.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 2)
+cull_mask = 4
 projection = 1
+size = 0.8
+far = 5.0
 
 [connection signal="body_entered" from="Area3D" to="." method="boot"]
-[connection signal="body_exited" from="Area3D" to="." method="power_off"]
+[connection signal="body_exited" from="Area3D" to="." method="shutdown"]

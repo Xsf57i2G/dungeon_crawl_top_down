@@ -30,7 +30,7 @@ func _ready():
 func generate():
 	var center_x = width / 2.0
 	var center_z = depth / 2.0
-	var radius = 4
+	var spawn_radius = 4
 
 	for x in width:
 		for z in depth:
@@ -40,7 +40,7 @@ func generate():
 			stone.position = Vector3(x, -0.5, z)
 			add_child(stone)
 
-			if abs(x - center_x) < radius and abs(z - center_z) < radius:
+			if abs(x - center_x) < spawn_radius and abs(z - center_z) < spawn_radius:
 				continue
 
 			if n > 0.01:

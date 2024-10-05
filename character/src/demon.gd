@@ -51,6 +51,7 @@ func _physics_process(delta):
 		if is_on_wall():
 			if abs(direction.x) < 0.1 or abs(direction.z) < 0.1:
 				if $Armature/Skeleton3D/Body/RayCast3D.is_colliding():
+					direction = velocity.normalized()
 					animation.play("Squish")
 
 		velocity.x = move_toward(velocity.x, direction.x * speed, acceleration * delta)
@@ -81,6 +82,7 @@ func hit(n):
 		die()
 
 func use():
+	animation.stop()
 	animation.play("Upper Cut")
 	var body = ray.get_collider()
 	if ray.is_colliding() and body is Character:

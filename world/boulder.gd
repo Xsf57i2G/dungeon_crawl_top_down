@@ -1,12 +1,19 @@
-extends RigidBody3D
+extends StaticBody3D
 
-func _physics_process(_delta):
-	roll(Vector3.FORWARD)
+var directions = [
+	Vector3.FORWARD,
+	Vector3.BACK,
+	Vector3.LEFT,
+	Vector3.RIGHT,
+]
+var direction = Vector3.ZERO
 
-func roll(direction):
-	position += direction
+func _ready():
+	direction = directions.pick_random()
 
-	rotate_y(0.1)
+func _physics_process(delta):
+	position.y = 2.5
+	position += direction * delta * 2
 
 func crush(body):
 	if body.has_method("hit"):
