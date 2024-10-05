@@ -1,2 +1,2 @@
 class_name Gem
-extends Consumable
+extends RigidBody3D

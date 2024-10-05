@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://507bnvhay5sf"]
+
+[ext_resource type="PackedScene" uid="uid://ojcskbtohcx4" path="res://character/character.tscn" id="1_48r1s"]
+[ext_resource type="PackedScene" uid="uid://duqrnvngib3el" path="res://character/Spider.glb" id="2_tkxjv"]
+
+[node name="Spider" instance=ExtResource("1_48r1s")]
+
+[node name="Spider" parent="." index="1" instance=ExtResource("2_tkxjv")]
+
+[node name="Skeleton3D" parent="Spider/Armature" index="0"]
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+
+[node name="AnimationPlayer" parent="Spider" index="1"]
+autoplay = "Idle"
+
+[editable path="Spider"]

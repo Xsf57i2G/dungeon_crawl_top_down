@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgcv2adau1c42"]
-
-[ext_resource type="Script" path="res://world/spider's_den.gd" id="1_s2ehs"]
-
-[node name="Spider\'s Den" type="Node3D"]
-script = ExtResource("1_s2ehs")

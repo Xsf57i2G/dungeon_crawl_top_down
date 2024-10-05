@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dsmqwq87cpxwc"]
+[gd_scene load_steps=21 format=3 uid="uid://dsmqwq87cpxwc"]
 
 [ext_resource type="Script" path="res://time.gd" id="1_5wr0b"]
 [ext_resource type="Texture2D" uid="uid://b8fy5d2k1mqvb" path="res://interface/heart/0001.png" id="1_iwqwg"]
@@ -56,16 +56,10 @@ frame_6/duration = 1.0
 frame_7/texture = ExtResource("17_a6j7r")
 frame_7/duration = 1.0
 
-[sub_resource type="SystemFont" id="SystemFont_yabqa"]
-font_names = PackedStringArray("ProggyCleanTT")
-subpixel_positioning = 0
-
 [sub_resource type="LabelSettings" id="LabelSettings_ix4b1"]
-font = SubResource("SystemFont_yabqa")
 shadow_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,10 +98,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AnimatedTexture_ipwia")
-
-[node name="Score" type="Label" parent="MarginContainer/VSplitContainer/VSplitContainer"]
-layout_mode = 2
-text = "0"
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 1

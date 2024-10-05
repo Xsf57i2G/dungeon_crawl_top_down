@@ -17,7 +17,4 @@ shape = SubResource("SphereShape3D_crobk")
 [node name="MeshInstance3D" parent="." index="1"]
 mesh = SubResource("BoxMesh_bql70")
 
-[node name="Shadow" parent="." index="2"]
-transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, -0.1, 0)
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

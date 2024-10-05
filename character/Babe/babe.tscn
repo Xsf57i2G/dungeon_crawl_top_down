@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://fagnu4ducvni"]
+
+[ext_resource type="PackedScene" uid="uid://ojcskbtohcx4" path="res://character/character.tscn" id="1_jgnpe"]
+[ext_resource type="Script" path="res://character/src/babe.gd" id="2_q08x4"]
+[ext_resource type="PackedScene" uid="uid://bifekjhkrm4ub" path="res://character/Babe.glb" id="4_6les2"]
+
+[node name="Babe" instance=ExtResource("1_jgnpe")]
+script = ExtResource("2_q08x4")
+
+[node name="Shadow" parent="." index="1"]
+layers = 1
+
+[node name="Timer" type="Timer" parent="." index="2"]
+
+[node name="Babe" parent="." index="3" instance=ExtResource("4_6les2")]
+
+[node name="Skeleton3D" parent="Babe/Armature" index="0"]
+bones/0/position = Vector3(8.376e-08, 0.165613, -2.98023e-08)
+bones/2/rotation = Quaternion(0.137518, -8.63474e-08, 5.42866e-09, 0.990499)
+bones/3/rotation = Quaternion(-2.28964e-21, 7.10543e-15, 8.13442e-36, 1)
+bones/4/rotation = Quaternion(0.188568, -0.060719, 0.706863, 0.679043)
+bones/5/rotation = Quaternion(0.31997, -0.290671, 0.567114, 0.701079)
+bones/6/rotation = Quaternion(-0.0732369, 0.00822411, -0.120662, 0.989954)
+bones/7/rotation = Quaternion(0.0725309, -0.01306, 0.186009, 0.97978)
+bones/9/rotation = Quaternion(0.188567, 0.0607188, -0.706863, 0.679043)
+bones/10/rotation = Quaternion(0.31997, 0.290671, -0.567114, 0.701079)
+bones/11/rotation = Quaternion(-0.0732369, -0.00822379, 0.120662, 0.989954)
+bones/12/rotation = Quaternion(0.0725309, 0.01306, -0.186009, 0.97978)
+bones/13/rotation = Quaternion(0.872262, 0.00101135, 0.000285578, 0.489037)
+bones/14/position = Vector3(-1.84083e-09, 0.165612, -1.99612e-08)
+bones/14/rotation = Quaternion(-0.485593, -0.489072, -0.299802, 0.659641)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.630748, -0.555238, -0.307037, -0.446763)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.14186, 0.0122657, -0.967726, 0.207922)
+bones/17/rotation = Quaternion(-0.0854667, -0.114345, -0.0795859, 0.986553)
+bones/18/position = Vector3(-3.24034e-08, 0.165612, 7.14972e-09)
+bones/18/rotation = Quaternion(-0.485593, 0.489072, 0.299802, 0.659641)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(0.630748, 0.555238, 0.307037, -0.446763)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(0.14186, -0.0122655, 0.967726, 0.207922)
+bones/21/rotation = Quaternion(-0.0854668, 0.114345, 0.0795859, 0.986553)
+
+[node name="Dagger" parent="Babe/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.432891, -0.781819, -0.448737, -0.212468, -0.572262, 0.79207, -0.87605, -0.247537, -0.413838, 0.328731, 0.0220884, -0.121502)
+
+[node name="AnimationPlayer" parent="Babe" index="1"]
+autoplay = "Idle"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Babe"]

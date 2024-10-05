@@ -1,85 +1,83 @@
-[gd_scene load_steps=7 format=4 uid="uid://c8m7pqavfmrj2"]
+[gd_scene load_steps=7 format=3 uid="uid://c8m7pqavfmrj2"]
 
 [ext_resource type="PackedScene" uid="uid://i3iy6jlim87u" path="res://world/fixtures.tscn" id="1_52pws"]
-[ext_resource type="Material" uid="uid://csrs6c0hmufkq" path="res://world/dirt.tres" id="2_2njjc"]
-[ext_resource type="ArrayMesh" uid="uid://b3ofec7ex4kqa" path="res://world/computer.res" id="3_7o4va"]
+[ext_resource type="ArrayMesh" uid="uid://cssmtjjh5esmd" path="res://world/computer.res" id="2_jol6a"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxx6q"]
-resource_name = "Computer"
-cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 0.784314, 1)
-roughness = 0.5
+[sub_resource type="Animation" id="Animation_c8r05"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Computer:mesh:surface_0/material:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_60gj1"]
-_surfaces = [{
-"aabb": AABB(-0.51899, -0.0125, -0.5, 1.41605, 1.46692, 1.60921),
-"format": 34896613377,
-"index_count": 180,
-"index_data": PackedByteArray("GAAXABYAEgAWABcAEwAYABYAFgASABMAEwAVABgAEgAXABQAFAATABIAGAAUABcAFAAVABMAGAAVABQAAwAKAAgACAABAAMAAAADAAEAAAACAAMAAwACAAoACQACAAAACQAAAAEACQAKAAIACAALAAEACQABAAsACgAEAAgABAALAAgABwAJAAsABAAHAAsABgAKAAkABwAGAAkABgAFAAoACgAFAAQABQAGACIABgAjACIABgAHACMABQAiACEABQAhACQABwAkACMABQAkAAQABwAEACQADAAEAAcADQAEAAwADAAHAA8ADQAOAAQABwAEAA4ADAAQAA0ADAAPABAAEAAOAA0ADwAHABEADwARABAABwAOABEAEAARAA4AHwAeACAAHAAgAB4AHAAfACAAHwAdAB4AHAAeABoAHAAbAB8AGQAeAB0AGQAaAB4AGQAdAB8AGQAcABoAGQAfABsAGQAbABwA"),
-"name": "Computer",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 37,
-"vertex_data": PackedByteArray("CKY95gAAAAAIpv1qAAAAAJ0Vn+cAAAAAnRX9agAAAABuA7ZQFJ8AAAAA//8UnwAAqrnS+sidAAA3uLZQFJ8AAG4DtlCKTwAAN7iX+YpPAABuAxr3ik8AADe4tlCKTwAAbgNcBBSfAABuA1wEAAAAAG4DtlAAAAAAN7hcBBSfAAA3uFwEAAAAADe4tlAAAAAAIhYAAP//AAAiFkUP//8AAJMJGwFUwQAAkwl3GFTBAAA/yBQGe+QAAJy7AAC0pQAAnLtFD7SlAAD+/y4CxecAAP7/LgIWqQAAUNkuAsXnAABQ2S4CFqkAAP//YBsO5QAA//9xHEKrAABQ2XEcmeUAAFDZYBvNqwAARBd/5FicAAAvoSfj65gAAG2lRXwsmwAA8BngefCaAAA=")
-}, {
-"aabb": AABB(-0.390295, 0.685876, 0.461262, 0.786362, 0.610973, 0.0824655),
-"format": 34896613377,
-"index_count": 12,
-"index_data": PackedByteArray("AwACAAEAAAABAAIABAACAAMABAAAAAIA"),
-"name": "Screen",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 5,
-"vertex_data": PackedByteArray("AAD//+dCAABc+MT8AAAAAMnm++z//wAA///BBQcsAADQBAAAcCcAAA==")
-}]
-blend_shape_mode = 0
+[sub_resource type="Animation" id="Animation_nctrk"]
+resource_name = "Boot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Computer:mesh:surface_0/material:emission")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_07lwg"]
-resource_name = "computer_Cube"
-_surfaces = [{
-"aabb": AABB(-0.51899, -0.0125, -0.5, 1.41605, 1.46692, 1.60921),
-"attribute_data": PackedByteArray("//////+f/38gICD//1//f///////n/+////////f/38AAAD//x//fwAAAP//X/+///////8f/z///////18AAP//////X/////////+fAAD//////5//////////3/8///////+fAAD//////5//////////3/8//////w2bDTurq6v//1//P6urq///n/8/UFBQ//8f/19QUFD//1//3///////n/9f//////+f/9///////9//XyEhIf//X/9fCwsL//8f/z8LCwv//18AAAsLC///X///AAAA//8f/38AAAD//1//v///////n/+////////f/38FBQX//1//PwUFBf//X/9///////+f/3/6+vr//x//P/r6+v//XwAA+vr6//9f/////////58AAP//////n//////////f/z8JCQn//x//fwkJCf//X/+/k5OT//+f/7+Tk5P//9//f/////99ef8/gYGB//9f/383Nzf//5//fyYmJv//H/8/JiYm//9fAAAmJib//1///z09Pf//H/9/PT09//9f/7/V1dX//1//P/X19f//X/9/8/Pz/5KOlvrz8/P/u52SFBQUFP+SjmjFFBQU/7udbKv8/Pz/ko5oRfr6+v+SjpZ6//////WN3BH/////1Y7WLv////+xcWku/////+NxvhE="),
-"format": 34896613407,
-"index_count": 180,
-"index_data": PackedByteArray("LgAtACwALAAjACUAJwAuACwAJwArAC4AIgAsAC0AIgAtACgALgApAC0ALgAqACkAKQAqACYAKQAmACQABQAVABMAFQAIABMAFQANAAgABQACABUAAAACAAUAAAAFAAEAFAAAAAEAFAADAAAAFAAWAAMAEgABAAQAEgAXAAEAFAABABcABgAXABIABgAQABcAEAAUABcADwAWABQAEAAPABQADwAOABYADwAQAD4ADwA+AD0AEAA/AD4ADAAPAD0AEAAHAD8ADAA/AAcADAA8AD8ADAA9ADwAHAAKABoAHAAdAAoAIAAdABwAIAAhAB0AGAAgABsAGAAfACAAHwAhACAAHwARACEAEQAeACEAEQALAB4AGQARAB8AGQAJABEAOgA5ADsAOgA3ADkAMAA3ADoAMAA6ADQANQA7ADkANQA6ADsANQA0ADoANQA5ADMALwA0ADUALwA1ADIAMQAzADgAMQA4ADYA"),
-"material": SubResource("StandardMaterial3D_uxx6q"),
-"name": "Computer",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 64,
-"vertex_data": PackedByteArray("CKY95gAAq/YIpv1qAABn4Z0Vn+cAAIHenRWf5wAAK+udFf1qAABZ6J0V/WoAABv8bgO2UBSfJKduA7ZQFJ+n3W4DtlAUn73QbgO2UBSfSsBuA7ZQFJ9KwG4DtlAUn4f2AAD//xSfE7UAAP//FJ+/wAAA//8Un2P1qrnS+sidft83uLZQFJ9asTe4tlAUnwTdbgO2UIpP2s1uA7ZQik9C8De4l/mKTwTrbgMa94pP+MluAxr3ik8l5je4tlCKT5bLbgNcBBSfP6huA1wEFJ9z0W4DXAQUn3PRbgNcBAAAk+FuA1wEAAAa+24DtlAAAG/ZbgO2UAAA4ug3uFwEFJ+Atje4XAQAAOraN7i2UAAA+vQiFgAA///toyIWAAD//2rNIhYAAP//as0iFkUP////vyIWRQ////+/IhZFD///mfaTCRsBVMEh4JMJGwFUwe31kwl3GFTBM9OTCXcYVMEh4z/IFAZ75BXLnLsAALSlxN2cu0UPtKWH+v7/LgLF597o/v8uAsXn2tz+/y4Cxefr2v7/LgIWqTn3/v8uAhapsrRQ2S4Cxeed9VDZLgIWqYvZ//9gGw7lHfj//2AbDuVq7f//cRxCq+bV//9xHEKrkbNQ2XEcmeX12FDZYBvNq2rCRBd/5FicdKovoSfj65gZym2lRXwsm3ev8BngefCaaMdDP5UiiyksS6fHzLs/d+HYkyI1iFbKzNL3QuWv0df28t7Q4Pm5+MXIufjFyIJom54b7gLHIvoUyYlp/56kJ5EN8xaNOGYpsgxWNZaX+soQ5dI44Ra328u5Dm0gvb8dBEmcQhmvMNCz+TDQs/mxJ5+L+spQ1/rK5roYdczSaxHLOOMnMEs4PXog3z5opAku+v4JLvr+0/+5MtP/uTKRbemc/CvFiHPLxdpJ0PC5T3kK0kYcCSIlLPVN3TylIrl1DNUq2XO0z8fivFNo9JwP7evIxjxMIk0ppAvWx8TbaTkGarrQNvimOX/n1igfS8YFuzjuAmsJxwqYANb5F/n8A8sC")
-}, {
-"aabb": AABB(-0.390295, 0.685876, 0.461262, 0.786362, 0.610973, 0.0824655),
-"attribute_data": PackedByteArray("//////WN3BH/////1Y7WLv////9aiw0s/////7FxaS7/////43G+EQ=="),
-"format": 34896613407,
-"index_count": 12,
-"index_data": PackedByteArray("AwACAAEAAAABAAIABAACAAMABAAAAAIA"),
-"material": ExtResource("2_2njjc"),
-"name": "Screen",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 5,
-"vertex_data": PackedByteArray("AAD//+dCr8Fc+MT8AACtxcnm++z//3PF///BBQcst8DQBAAAcCdSwR0AGAdMCwEAiNzUAmL8ofl2BKcC")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_60gj1")
+[sub_resource type="Animation" id="Animation_f34pl"]
+resource_name = "Power Off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Computer:mesh:surface_0/material:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [null, null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iebmq"]
+_data = {
+&"RESET": SubResource("Animation_c8r05"),
+&"Boot": SubResource("Animation_nctrk"),
+&"Power Off": SubResource("Animation_f34pl")
+}
 
 [node name="Computer" instance=ExtResource("1_52pws")]
+collision_layer = 0
 
-[node name="Computer" type="MeshInstance3D" parent="." index="0"]
-mesh = SubResource("ArrayMesh_07lwg")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D" parent="." index="1"]
-visible = false
-mesh = ExtResource("3_7o4va")
-
-[node name="CollisionShape3D" parent="." index="2"]
+[node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Shadow" parent="." index="3"]
-transform = Transform3D(20, 0, 0, 0, -8.74228e-07, -20, 0, 20, -8.74228e-07, 0, 0, 0)
+[node name="Area3D" parent="." index="1"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.5, 0)
+collision_layer = 0
+collision_mask = 2
 
-[node name="Area3D" parent="." index="4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5, 0)
+[node name="Computer" type="MeshInstance3D" parent="." index="2"]
+mesh = ExtResource("2_jol6a")
+skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_iebmq")
+}
+
+[node name="Camera3D" type="Camera3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 1.7)
+projection = 1
+
+[connection signal="body_entered" from="Area3D" to="." method="boot"]
+[connection signal="body_exited" from="Area3D" to="." method="power_off"]

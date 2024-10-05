@@ -1,44 +1,14 @@
 class_name Character
-extends CharacterBody3D
+extends RigidBody3D
 
-signal dropped(item)
-signal died
-
-@export var speed = 5.0
-@export var damage = 1
-@export var health = 3
-
-var unconscious = false
-var dead = false
-var items = []
-
-func _process(_delta):
-	if dead:
-		return
+var health = 3
 
 func hit(n):
-	$Hit.play()
+	$Babe/AnimationPlayer.play("Fall")
 
 	health -= n
 	if health <= 0:
-		die()
+		queue_free()
 
-func die():
-	if dead:
-		return
-
-	dead = true
-
-	$Death.play()
-
-	died.emit()
-
-func move(direction):
-	if dead:
-		return
-
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
-
-func heal(n):
-	health += n
+func _on_animation_player_animation_finished(_anim_name):
+	$Babe/AnimationPlayer.play("Idle")

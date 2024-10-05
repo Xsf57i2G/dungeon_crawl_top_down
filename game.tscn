@@ -1,14 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://oxeis7gs7eqp"]
+[gd_scene load_steps=3 format=3 uid="uid://oxeis7gs7eqp"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ijr7l"]
 [ext_resource type="PackedScene" uid="uid://cqfeuif3ilyqa" path="res://world/level_1.tscn" id="2_5e4uy"]
-[ext_resource type="PackedScene" uid="uid://dsmqwq87cpxwc" path="res://hud.tscn" id="2_gytoe"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_ijr7l")
 
-[node name="HUD" parent="." instance=ExtResource("2_gytoe")]
-
 [node name="Level 1" parent="." instance=ExtResource("2_5e4uy")]
 
-[editable path="Level 1"]
+[connection signal="body_entered" from="Level 1/Bomb" to="Level 1/Bomb" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/Key" to="Level 1/Key" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@458741" to="Level 1/@RigidBody3D@458741" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/Chest" to="Level 1/Chest" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@458839" to="Level 1/@RigidBody3D@458839" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/Potion" to="Level 1/Potion" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@458918" to="Level 1/@RigidBody3D@458918" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@459013" to="Level 1/@RigidBody3D@459013" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@459120" to="Level 1/@RigidBody3D@459120" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@459198" to="Level 1/@RigidBody3D@459198" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@459379" to="Level 1/@RigidBody3D@459379" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@459502" to="Level 1/@RigidBody3D@459502" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@459630" to="Level 1/@RigidBody3D@459630" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@459671" to="Level 1/@RigidBody3D@459671" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@459806" to="Level 1/@RigidBody3D@459806" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@459923" to="Level 1/@RigidBody3D@459923" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@459929" to="Level 1/@RigidBody3D@459929" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@460227" to="Level 1/@RigidBody3D@460227" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@460302" to="Level 1/@RigidBody3D@460302" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@460310" to="Level 1/@RigidBody3D@460310" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@460479" to="Level 1/@RigidBody3D@460479" method="_on_body_entered"]
+[connection signal="body_entered" from="Level 1/@RigidBody3D@460550" to="Level 1/@RigidBody3D@460550" method="_on_body_entered"]

@@ -45,10 +45,10 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-10, -200)
-nodes/fragment/0/position = Vector2(640, 580)
+graph_offset = Vector2(-67.0818, 163.354)
+nodes/fragment/0/position = Vector2(640, 240)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_goq8q")
 nodes/fragment/2/position = Vector2(60, 180)
 nodes/fragment/4/node = SubResource("VisualShaderNodeMix_822xu")
-nodes/fragment/4/position = Vector2(380, 580)
+nodes/fragment/4/position = Vector2(380, 380)
 nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 4, 0, 0, 1, 2, 0, 4, 0)

@@ -16,24 +16,22 @@ emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3(0, 0.5, 0)
 scale_min = 0.1
+scale_max = 0.5
 scale_curve = SubResource("CurveTexture_l61pr")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_voy6o"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmyxy"]
 transparency = 1
-blend_mode = 1
 shading_mode = 0
-disable_ambient_light = true
-disable_fog = true
-albedo_color = Color(2, 2, 1, 0.501961)
+albedo_color = Color(1, 1, 0.666667, 1)
 albedo_texture = ExtResource("1_6jxpm")
-disable_receive_shadows = true
-shadow_to_opacity = true
-billboard_mode = 1
+billboard_mode = 3
 billboard_keep_scale = true
-proximity_fade_enabled = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="QuadMesh" id="QuadMesh_i3u3l"]
-material = SubResource("StandardMaterial3D_voy6o")
+[sub_resource type="QuadMesh" id="QuadMesh_uhp0p"]
+material = SubResource("StandardMaterial3D_pmyxy")
 
 [node name="Shimmer" type="GPUParticles3D"]
 lifetime = 2.0
@@ -41,4 +39,4 @@ randomness = 1.0
 fixed_fps = 8
 interpolate = false
 process_material = SubResource("ParticleProcessMaterial_pbedw")
-draw_pass_1 = SubResource("QuadMesh_i3u3l")
+draw_pass_1 = SubResource("QuadMesh_uhp0p")

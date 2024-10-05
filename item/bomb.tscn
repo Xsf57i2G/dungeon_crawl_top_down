@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://dvex5jaqtfi3p"]
+[gd_scene load_steps=9 format=4 uid="uid://dvex5jaqtfi3p"]
 
 [ext_resource type="PackedScene" uid="uid://dijo1unbl6q5f" path="res://item/item.tscn" id="1_jatkk"]
 [ext_resource type="Script" path="res://item/src/bomb.gd" id="2_ippwu"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_al66v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c64re"]
 resource_local_to_scene = true
@@ -106,27 +104,23 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1yr2h"]
 _data = {
-"Grow": SubResource("Animation_ggjcx"),
-"RESET": SubResource("Animation_4wycl")
+&"RESET": SubResource("Animation_4wycl"),
+&"Grow": SubResource("Animation_ggjcx")
 }
 
 [node name="Bomb" instance=ExtResource("1_jatkk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 script = ExtResource("2_ippwu")
 spin = true
 
-[node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49012e-08, 0)
-shape = SubResource("SphereShape3D_al66v")
-
 [node name="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, -0.5, 0)
+visible = true
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_3k7xr")
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="6"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="4"]
 libraries = {
-"": SubResource("AnimationLibrary_1yr2h")
+&"": SubResource("AnimationLibrary_1yr2h")
 }
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

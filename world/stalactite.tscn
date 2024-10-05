@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://c6l0m1uh7ylgj"]
+[gd_scene load_steps=10 format=4 uid="uid://c6l0m1uh7ylgj"]
 
 [ext_resource type="Script" path="res://world/stalactite.gd" id="1_35dh8"]
-[ext_resource type="PackedScene" uid="uid://by7wi8brogbv6" path="res://effects/shadow.tscn" id="2_8y54a"]
 [ext_resource type="Material" uid="uid://csrs6c0hmufkq" path="res://world/dirt.tres" id="2_xohyq"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bt7vn"]
@@ -147,8 +146,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jdw8a"]
 _data = {
-"Fall": SubResource("Animation_5eqp4"),
-"RESET": SubResource("Animation_hulof")
+&"RESET": SubResource("Animation_hulof"),
+&"Fall": SubResource("Animation_5eqp4")
 }
 
 [node name="Stalactite" type="StaticBody3D"]
@@ -172,12 +171,9 @@ collision_mask = 14
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_es01y")
 
-[node name="Shadow" parent="." instance=ExtResource("2_8y54a")]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -3, 0)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_jdw8a")
+&"": SubResource("AnimationLibrary_jdw8a")
 }
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

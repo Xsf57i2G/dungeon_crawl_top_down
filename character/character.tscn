@@ -1,20 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://ojcskbtohcx4"]
+[gd_scene load_steps=5 format=3 uid="uid://ojcskbtohcx4"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_2f3rs"]
-radial_segments = 4
-rings = 1
+[ext_resource type="Script" path="res://character/src/character.gd" id="1_mv3db"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpoyd"]
 
+[sub_resource type="Gradient" id="Gradient_okhub"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f3m2m"]
+gradient = SubResource("Gradient_okhub")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.1)
+metadata/_snap_enabled = true
+
 [node name="Character" type="RigidBody3D"]
 collision_layer = 8
-axis_lock_linear_y = true
 lock_rotation = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_2f3rs")
+freeze_mode = 1
+script = ExtResource("1_mv3db")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_xpoyd")
+
+[node name="Shadow" type="Decal" parent="."]
+layers = 2
+texture_albedo = SubResource("GradientTexture2D_f3m2m")
+modulate = Color(0, 0, 0, 1)

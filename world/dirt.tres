@@ -1,7 +1,7 @@
-[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://csrs6c0hmufkq"]
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://csrs6c0hmufkq"]
 
 [sub_resource type="Gradient" id="Gradient_vgsu8"]
-offsets = PackedFloat32Array(0, 0.6)
+colors = PackedColorArray(0.288569, 0.275639, 0.259222, 1, 0.448837, 0.427741, 0.406661, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g4kns"]
@@ -9,30 +9,14 @@ frequency = 0.4
 fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sie2l"]
-width = 64
-height = 64
+width = 8
+height = 8
 seamless = true
+seamless_blend_skirt = 1.0
 color_ramp = SubResource("Gradient_vgsu8")
 noise = SubResource("FastNoiseLite_g4kns")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xije6"]
-frequency = 0.4
-fractal_type = 0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ijsp6"]
-width = 8
-height = 8
-in_3d_space = true
-seamless_blend_skirt = 0.3
-as_normal_map = true
-bump_strength = 1.0
-noise = SubResource("FastNoiseLite_xije6")
-
 [resource]
-vertex_color_use_as_albedo = true
-albedo_color = Color(3, 3, 3, 1)
+shading_mode = 2
 albedo_texture = SubResource("NoiseTexture2D_sie2l")
-normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_ijsp6")
 uv1_triplanar = true
-texture_filter = 0

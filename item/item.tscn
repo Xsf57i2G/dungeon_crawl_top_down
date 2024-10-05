@@ -1,23 +1,32 @@
-[gd_scene load_steps=11 format=3 uid="uid://dijo1unbl6q5f"]
+[gd_scene load_steps=9 format=3 uid="uid://dijo1unbl6q5f"]
 
 [ext_resource type="Script" path="res://item/src/item.gd" id="1_wv88b"]
 [ext_resource type="PackedScene" uid="uid://ptemqk5lnfq7" path="res://effects/shimmer.tscn" id="2_2a8lu"]
-[ext_resource type="AudioStream" uid="uid://dtcy7mtmtpl23" path="res://character/sfx/step.wav" id="4_0s6wd"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a86g8"]
-bounce = 0.2
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lboso"]
+rough = true
 absorbent = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oc77y"]
-size = Vector3(1, 1.1, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_5l1s6"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_0y6cx"]
 radial_segments = 4
 rings = 1
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rkdf4"]
-streams_count = 1
-stream_0/stream = ExtResource("4_0s6wd")
+[sub_resource type="Animation" id="Animation_2milj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1.5, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_578ki"]
 resource_name = "Boing"
@@ -35,21 +44,6 @@ tracks/0/keys = {
 "values": [Vector3(1.2, 1, 1.2), Vector3(0.8, 1.2, 0.8), Vector3(1.2, 1, 1.2)]
 }
 
-[sub_resource type="Animation" id="Animation_2milj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1.5, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_glrcb"]
 _data = {
 &"RESET": SubResource("Animation_2milj"),
@@ -58,25 +52,21 @@ _data = {
 
 [node name="Item" type="RigidBody3D"]
 collision_layer = 8
-collision_mask = 15
-physics_material_override = SubResource("PhysicsMaterial_a86g8")
+physics_material_override = SubResource("PhysicsMaterial_lboso")
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_wv88b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_oc77y")
+shape = SubResource("BoxShape3D_5l1s6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_0y6cx")
 
 [node name="Shimmer" parent="." instance=ExtResource("2_2a8lu")]
-visible = false
-
-[node name="Step" type="AudioStreamPlayer3D" parent="."]
-stream = SubResource("AudioStreamRandomizer_rkdf4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

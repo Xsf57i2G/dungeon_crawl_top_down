@@ -11,8 +11,6 @@ var items = {
 }
 
 func open():
-	$AnimationPlayer.play("Open")
-
 	var item = items.keys()[randi() % items.size()].instantiate()
 
 	get_parent().add_child(item)

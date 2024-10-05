@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgo5utyooiydo"]
+
+[ext_resource type="PackedScene" uid="uid://b7yr18inm5rha" path="res://world/stone.tscn" id="1_7l2me"]
+
+[sub_resource type="Gradient" id="Gradient_wxdkw"]
+colors = PackedColorArray(0.411973, 0.376483, 0.326839, 1, 0.806019, 0.765179, 0.708347, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jsi6l"]
+frequency = 0.4
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yu55l"]
+width = 8
+height = 8
+seamless = true
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_wxdkw")
+noise = SubResource("FastNoiseLite_jsi6l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81x6q"]
+shading_mode = 2
+albedo_texture = SubResource("NoiseTexture2D_yu55l")
+emission_enabled = true
+emission = Color(1, 0.313726, 0, 1)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_wv5jm"]
+material = SubResource("StandardMaterial3D_81x6q")
+
+[node name="Lava" instance=ExtResource("1_7l2me")]
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_wv5jm")
